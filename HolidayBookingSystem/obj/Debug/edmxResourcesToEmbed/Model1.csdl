@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bookingsystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="7" />
+    <Property Name="RemainingDays" Type="Int32" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="DepartmentID" Type="Int32" />
+    <Property Name="Pwd" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="PwdSalt" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="bookingsystemModel.FK__Users__Departmen__6FE99F9F" FromRole="User" ToRole="Department" />
+    <NavigationProperty Name="Role" Relationship="bookingsystemModel.FK__Users__RoleID__6EF57B66" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityContainer Name="HBSModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Departments" EntityType="bookingsystemModel.Department" />
+    <EntitySet Name="Roles" EntityType="bookingsystemModel.Role" />
+    <AssociationSet Name="FK__Users__Departmen__6FE99F9F" Association="bookingsystemModel.FK__Users__Departmen__6FE99F9F">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__RoleID__6EF57B66" Association="bookingsystemModel.FK__Users__RoleID__6EF57B66">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="bookingsystemModel.FK__Users__Departmen__6FE99F9F" FromRole="Department" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="bookingsystemModel.FK__Users__RoleID__6EF57B66" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <Association Name="FK__Users__Departmen__6FE99F9F">
+    <End Type="bookingsystemModel.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="bookingsystemModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__RoleID__6EF57B66">
+    <End Type="bookingsystemModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="bookingsystemModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

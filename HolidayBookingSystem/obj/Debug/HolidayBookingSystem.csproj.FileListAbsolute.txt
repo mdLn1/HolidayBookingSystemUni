@@ -1,0 +1,16 @@
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\HolidayBookingSystem.exe.config
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\HolidayBookingSystem.exe
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\HolidayBookingSystem.pdb
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.csprojAssemblyReference.cache
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.LoginForm.resources
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.Properties.Resources.resources
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.csproj.GenerateResource.cache
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.exe
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.pdb
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\EntityFramework.dll
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\EntityFramework.xml
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.csproj.CopyComplete
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.Dashboard.resources
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.UC_AddUser.resources
