@@ -13,10 +13,10 @@ namespace HolidayBookingSystem
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HBSModelData : DbContext
+    public partial class HBSModel : DbContext
     {
-        public HBSModelData()
-            : base("name=HBSModelData")
+        public HBSModel()
+            : base("name=HBSModel")
         {
         }
     
@@ -26,6 +26,8 @@ namespace HolidayBookingSystem
         }
     
         public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<HolidayRequest> HolidayRequests { get; set; }
+        public virtual DbSet<PeakTime> PeakTimes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }

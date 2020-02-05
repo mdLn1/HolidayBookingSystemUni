@@ -10,7 +10,7 @@ namespace HolidayBookingSystem
     {
         public void RegisterAdmin()
         {
-            using (HBSModelData _entity = new HBSModelData())
+            using (HBSModel _entity = new HBSModel())
             {
                 User admin = new User();
                 admin.Username = "admin";

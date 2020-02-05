@@ -14,3 +14,5 @@ C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookin
 C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.csproj.CopyComplete
 C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.Dashboard.resources
 C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.UC_AddUser.resources
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.UC_DeleteUser.resources
+C:\Users\gabri\Documents\HolidaybookingSystem\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.UC_EditUser.resources

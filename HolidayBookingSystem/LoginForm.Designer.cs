@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel_top = new System.Windows.Forms.Panel();
             this.loginPictureBox = new System.Windows.Forms.PictureBox();
+            this.btn_skip = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -51,6 +52,7 @@
             // panel_top
             // 
             this.panel_top.Controls.Add(this.loginPictureBox);
+            this.panel_top.Controls.Add(this.btn_skip);
             this.panel_top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_top.Location = new System.Drawing.Point(0, 0);
             this.panel_top.Name = "panel_top";
@@ -67,6 +69,16 @@
             this.loginPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.loginPictureBox.TabIndex = 4;
             this.loginPictureBox.TabStop = false;
+            // 
+            // btn_skip
+            // 
+            this.btn_skip.Location = new System.Drawing.Point(382, 194);
+            this.btn_skip.Name = "btn_skip";
+            this.btn_skip.Size = new System.Drawing.Size(93, 44);
+            this.btn_skip.TabIndex = 9;
+            this.btn_skip.Text = "Skip";
+            this.btn_skip.UseVisualStyleBackColor = true;
+            this.btn_skip.Click += new System.EventHandler(this.btn_skip_Click);
             // 
             // panel2
             // 
@@ -194,6 +206,7 @@
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.PictureBox picture_user;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btn_skip;
     }
 }
 

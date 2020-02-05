@@ -38,11 +38,9 @@
             this.btn_delete_employee = new System.Windows.Forms.Button();
             this.btn_add_employee = new System.Windows.Forms.Button();
             this.panel_main = new System.Windows.Forms.Panel();
-            this.uC_AddUser = new HolidayBookingSystem.UC_AddUser();
             this.panel_top.SuspendLayout();
             this.panel_side.SuspendLayout();
             this.panel_manage_side.SuspendLayout();
-            this.panel_main.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_top
@@ -123,6 +121,7 @@
             this.btn_edit_employee.TabIndex = 3;
             this.btn_edit_employee.Text = "Edit Employee";
             this.btn_edit_employee.UseVisualStyleBackColor = true;
+            this.btn_edit_employee.Click += new System.EventHandler(this.btn_edit_employee_Click);
             // 
             // btn_delete_employee
             // 
@@ -133,6 +132,7 @@
             this.btn_delete_employee.TabIndex = 2;
             this.btn_delete_employee.Text = "Delete Employee";
             this.btn_delete_employee.UseVisualStyleBackColor = true;
+            this.btn_delete_employee.Click += new System.EventHandler(this.btn_delete_employee_Click);
             // 
             // btn_add_employee
             // 
@@ -147,20 +147,11 @@
             // 
             // panel_main
             // 
-            this.panel_main.Controls.Add(this.uC_AddUser);
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(200, 50);
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(1478, 763);
             this.panel_main.TabIndex = 2;
-            // 
-            // uC_AddUser
-            // 
-            this.uC_AddUser.Location = new System.Drawing.Point(20, 15);
-            this.uC_AddUser.Name = "uC_AddUser";
-            this.uC_AddUser.Size = new System.Drawing.Size(600, 466);
-            this.uC_AddUser.TabIndex = 1;
-            this.uC_AddUser.Visible = false;
             // 
             // Dashboard
             // 
@@ -178,7 +169,6 @@
             this.panel_top.ResumeLayout(false);
             this.panel_side.ResumeLayout(false);
             this.panel_manage_side.ResumeLayout(false);
-            this.panel_main.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -195,6 +185,5 @@
         private System.Windows.Forms.Button btn_edit_employee;
         private System.Windows.Forms.Button btn_delete_employee;
         private System.Windows.Forms.Button btn_add_employee;
-        private UC_AddUser uC_AddUser;
     }
 }

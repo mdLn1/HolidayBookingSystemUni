@@ -62,22 +62,25 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Department.cs">
-      <DependentUpon>HBSModel.tt</DependentUpon>
+      <DependentUpon>HBSEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="HBSModel.Context.cs">
+    <Compile Include="HBSEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HBSModel.Context.tt</DependentUpon>
+      <DependentUpon>HBSEntity.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="HBSModel.cs">
+    <Compile Include="HBSEntity.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HBSModel.tt</DependentUpon>
+      <DependentUpon>HBSEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="HBSModel.Designer.cs">
+    <Compile Include="HBSEntity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HBSModel.edmx</DependentUpon>
+      <DependentUpon>HBSEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="HolidayRequest.cs">
+      <DependentUpon>HBSEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -85,10 +88,13 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PeakTime.cs">
+      <DependentUpon>HBSEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
-      <DependentUpon>HBSModel.tt</DependentUpon>
+      <DependentUpon>HBSEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="UC-AddUser.cs">
       <SubType>UserControl</SubType>
@@ -96,8 +102,20 @@
     <Compile Include="UC-AddUser.Designer.cs">
       <DependentUpon>UC-AddUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC-DeleteUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC-DeleteUser.Designer.cs">
+      <DependentUpon>UC-DeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC-EditUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC-EditUser.Designer.cs">
+      <DependentUpon>UC-EditUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>HBSModel.tt</DependentUpon>
+      <DependentUpon>HBSEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Dashboard.resx">
@@ -118,12 +136,18 @@
     <EmbeddedResource Include="UC-AddUser.resx">
       <DependentUpon>UC-AddUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="HBSModel.edmx">
+    <EmbeddedResource Include="UC-DeleteUser.resx">
+      <DependentUpon>UC-DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC-EditUser.resx">
+      <DependentUpon>UC-EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="HBSEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HBSModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>HBSEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="HBSModel.edmx.diagram">
-      <DependentUpon>HBSModel.edmx</DependentUpon>
+    <None Include="HBSEntity.edmx.diagram">
+      <DependentUpon>HBSEntity.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -143,15 +167,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HBSModel.Context.tt">
+    <Content Include="HBSEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HBSModel.edmx</DependentUpon>
-      <LastGenOutput>HBSModel.Context.cs</LastGenOutput>
+      <DependentUpon>HBSEntity.edmx</DependentUpon>
+      <LastGenOutput>HBSEntity.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="HBSModel.tt">
+    <Content Include="HBSEntity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HBSModel.edmx</DependentUpon>
-      <LastGenOutput>HBSModel.cs</LastGenOutput>
+      <DependentUpon>HBSEntity.edmx</DependentUpon>
+      <LastGenOutput>HBSEntity.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

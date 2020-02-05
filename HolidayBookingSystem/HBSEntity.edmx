@@ -4,13 +4,31 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="bookingsystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="bookingsystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DepartmentName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HolidayRequests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EndDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Feasible" Type="bit" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PeakTimes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EndDate" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -32,6 +50,18 @@
           <Property Name="Pwd" Type="varbinary(max)" Nullable="false" />
           <Property Name="PwdSalt" Type="varbinary(max)" Nullable="false" />
         </EntityType>
+        <Association Name="FK__HolidayRe__UserI__7B5B524B">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="HolidayRequests">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Users__Departmen__75A278F5">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -58,8 +88,14 @@
         </Association>
         <EntityContainer Name="bookingsystemModelStoreContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HolidayRequests" EntityType="Self.HolidayRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PeakTimes" EntityType="Self.PeakTimes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__HolidayRe__UserI__7B5B524B" Association="Self.FK__HolidayRe__UserI__7B5B524B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="HolidayRequests" EntitySet="HolidayRequests" />
+          </AssociationSet>
           <AssociationSet Name="FK__Users__Departmen__75A278F5" Association="Self.FK__Users__Departmen__75A278F5">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Users" EntitySet="Users" />
@@ -69,7 +105,8 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bookingsystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -78,16 +115,35 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Users" Relationship="bookingsystemModel.FK__Users__Departmen__75A278F5" FromRole="Department" ToRole="User" />
-          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__Departmen__75A278F5" FromRole="Departments" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="HolidayRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Feasible" Type="Boolean" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__HolidayRe__UserI__7B5B524B" FromRole="HolidayRequests" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="PeakTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Users" Relationship="bookingsystemModel.FK__Users__RoleID__74AE54BC" FromRole="Role" ToRole="User" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RoleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__RoleID__74AE54BC" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -101,65 +157,104 @@
           <Property Name="DepartmentID" Type="Int32" />
           <Property Name="Pwd" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="PwdSalt" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <NavigationProperty Name="Department" Relationship="bookingsystemModel.FK__Users__Departmen__75A278F5" FromRole="User" ToRole="Department" />
-          <NavigationProperty Name="Role" Relationship="bookingsystemModel.FK__Users__RoleID__74AE54BC" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Users__Departmen__75A278F5" FromRole="Users" ToRole="Departments" />
+          <NavigationProperty Name="HolidayRequests" Relationship="Self.FK__HolidayRe__UserI__7B5B524B" FromRole="Users" ToRole="HolidayRequests" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleID__74AE54BC" FromRole="Users" ToRole="Roles" />
         </EntityType>
-        <EntityContainer Name="HBSModelData" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Departments" EntityType="Self.Department" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Users__Departmen__75A278F5" Association="bookingsystemModel.FK__Users__Departmen__75A278F5">
-            <End Role="Department" EntitySet="Departments" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Users__RoleID__74AE54BC" Association="bookingsystemModel.FK__Users__RoleID__74AE54BC">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-        </EntityContainer>
         <Association Name="FK__Users__Departmen__75A278F5">
-          <End Type="bookingsystemModel.Department" Role="Department" Multiplicity="0..1" />
-          <End Type="bookingsystemModel.User" Role="User" Multiplicity="*" />
+          <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Department">
+            <Principal Role="Departments">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="User">
+            <Dependent Role="Users">
               <PropertyRef Name="DepartmentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__RoleID__74AE54BC">
-          <End Type="bookingsystemModel.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="bookingsystemModel.User" Role="User" Multiplicity="*" />
+        <Association Name="FK__HolidayRe__UserI__7B5B524B">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="HolidayRequests" Type="Self.HolidayRequest" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Role">
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="HolidayRequests">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__RoleID__74AE54BC">
+          <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="User">
+            <Dependent Role="Users">
               <PropertyRef Name="RoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="HBSModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="HolidayRequests" EntityType="Self.HolidayRequest" />
+          <EntitySet Name="PeakTimes" EntityType="Self.PeakTime" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Users__Departmen__75A278F5" Association="Self.FK__Users__Departmen__75A278F5">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HolidayRe__UserI__7B5B524B" Association="Self.FK__HolidayRe__UserI__7B5B524B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="HolidayRequests" EntitySet="HolidayRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__RoleID__74AE54BC" Association="Self.FK__Users__RoleID__74AE54BC">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="bookingsystemModelStoreContainer" CdmEntityContainer="HBSModelData">
+        <EntityContainerMapping StorageEntityContainer="bookingsystemModelStoreContainer" CdmEntityContainer="HBSModel">
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="bookingsystemModel.Department">
               <MappingFragment StoreEntitySet="Departments">
-                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HolidayRequests">
+            <EntityTypeMapping TypeName="bookingsystemModel.HolidayRequest">
+              <MappingFragment StoreEntitySet="HolidayRequests">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Feasible" ColumnName="Feasible" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PeakTimes">
+            <EntityTypeMapping TypeName="bookingsystemModel.PeakTime">
+              <MappingFragment StoreEntitySet="PeakTimes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="bookingsystemModel.Role">
               <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

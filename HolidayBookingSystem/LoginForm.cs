@@ -33,7 +33,7 @@ namespace HolidayBookingSystem
             
             string username = tb_username.Text;
             string password = tb_password.Text;
-            using (HBSModelData _entity = new HBSModelData())
+            using (HBSModel _entity = new HBSModel())
             {
                 var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
                 if (_user == null)
@@ -54,6 +54,14 @@ namespace HolidayBookingSystem
                 this.Close();
             }
             
+        }
+
+        private void btn_skip_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Dashboard dashboard = new Dashboard();
+            dashboard.ShowDialog();
+            this.Close();
         }
     }
 }

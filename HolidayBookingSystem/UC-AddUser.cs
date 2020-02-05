@@ -12,6 +12,20 @@ namespace HolidayBookingSystem
 {
     public partial class UC_AddUser : UserControl
     {
+        private static UC_AddUser _instance;
+
+        public static UC_AddUser Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new UC_AddUser();
+                    _instance.initializeRolesDepartments();
+                }
+                return _instance;
+            }
+        }
         public UC_AddUser()
         {
             InitializeComponent();
@@ -21,24 +35,12 @@ namespace HolidayBookingSystem
             tb_password.PasswordChar = '*';
             // The control will allow no more than 14 characters.
             tb_password.MaxLength = 20;
-            using (HBSModelData _entity = new HBSModelData())
-            {
-                List<Role> _roles = _entity.Roles.ToList();
-                foreach (Role role in _roles)
-                {
-                    cb_roles.Items.Add(role.RoleName);
-                }
-                List<Department> _departments = _entity.Departments.ToList();
-                foreach (Department department in _departments)
-                {
-                    cb_departments.Items.Add(department.DepartmentName);
-                }
-            }
+            //initializeRolesDepartments();
         }
         Utils utils = new Utils();
         private void btn_register_employee_Click(object sender, EventArgs e)
         {
-            using (HBSModelData _entity = new HBSModelData())
+            using (HBSModel _entity = new HBSModel())
             {
                 User newUser = new User();
                 newUser.Username = tb_username.Text;
@@ -84,6 +86,28 @@ namespace HolidayBookingSystem
                     MessageBox.Show("Something went wrong!", "Error", MessageBoxButtons.OK);
                 }
             }
+        }
+
+        public void initializeRolesDepartments()
+        {
+            using (HBSModel _entity = new HBSModel())
+            {
+                List<Role> _roles = _entity.Roles.ToList();
+                foreach (Role role in _roles)
+                {
+                    cb_roles.Items.Add(role.RoleName);
+                }
+                List<Department> _departments = _entity.Departments.ToList();
+                foreach (Department department in _departments)
+                {
+                    cb_departments.Items.Add(department.DepartmentName);
+                }
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
