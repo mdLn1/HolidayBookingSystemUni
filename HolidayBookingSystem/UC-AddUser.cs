@@ -63,6 +63,7 @@ namespace HolidayBookingSystem
                 {
 
                     MessageBox.Show("Please select role and department", "Error Message", MessageBoxButtons.OK);
+                    return;
 
                 }
 

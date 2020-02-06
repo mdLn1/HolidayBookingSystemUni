@@ -71,10 +71,12 @@ namespace HolidayBookingSystem
                 panel_main.Controls.Add(UC_EditUser.Instance);
                 UC_EditUser.Instance.Dock = DockStyle.Fill;
                 UC_EditUser.Instance.BringToFront();
+                UC_EditUser.Instance.initializeUserList();
             }
             else
             {
                 UC_EditUser.Instance.BringToFront();
+                UC_EditUser.Instance.initializeUserList();
             }
         }
     }

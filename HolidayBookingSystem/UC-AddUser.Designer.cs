@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_username = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -41,18 +40,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dp_add_employee = new System.Windows.Forms.DateTimePicker();
-            this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1295, 690);
-            this.panel1.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -68,10 +57,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dp_add_employee);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(3, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1295, 690);
+            this.groupBox1.Size = new System.Drawing.Size(1429, 644);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Employee";
@@ -79,7 +67,7 @@
             // 
             // tb_username
             // 
-            this.tb_username.Location = new System.Drawing.Point(521, 24);
+            this.tb_username.Location = new System.Drawing.Point(674, 168);
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(225, 31);
             this.tb_username.TabIndex = 2;
@@ -87,7 +75,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(383, 187);
+            this.label7.Location = new System.Drawing.Point(536, 384);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 25);
             this.label7.TabIndex = 11;
@@ -95,7 +83,7 @@
             // 
             // btn_register_employee
             // 
-            this.btn_register_employee.Location = new System.Drawing.Point(485, 296);
+            this.btn_register_employee.Location = new System.Drawing.Point(644, 445);
             this.btn_register_employee.Name = "btn_register_employee";
             this.btn_register_employee.Size = new System.Drawing.Size(159, 51);
             this.btn_register_employee.TabIndex = 1;
@@ -106,7 +94,7 @@
             // cb_roles
             // 
             this.cb_roles.FormattingEnabled = true;
-            this.cb_roles.Location = new System.Drawing.Point(521, 184);
+            this.cb_roles.Location = new System.Drawing.Point(674, 381);
             this.cb_roles.Name = "cb_roles";
             this.cb_roles.Size = new System.Drawing.Size(225, 33);
             this.cb_roles.TabIndex = 10;
@@ -114,7 +102,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(383, 27);
+            this.label1.Location = new System.Drawing.Point(536, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 25);
             this.label1.TabIndex = 3;
@@ -123,7 +111,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(383, 131);
+            this.label6.Location = new System.Drawing.Point(536, 328);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 25);
             this.label6.TabIndex = 9;
@@ -131,7 +119,7 @@
             // 
             // tb_password
             // 
-            this.tb_password.Location = new System.Drawing.Point(521, 74);
+            this.tb_password.Location = new System.Drawing.Point(674, 218);
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(225, 31);
             this.tb_password.TabIndex = 4;
@@ -139,7 +127,7 @@
             // cb_departments
             // 
             this.cb_departments.FormattingEnabled = true;
-            this.cb_departments.Location = new System.Drawing.Point(521, 128);
+            this.cb_departments.Location = new System.Drawing.Point(674, 325);
             this.cb_departments.Name = "cb_departments";
             this.cb_departments.Size = new System.Drawing.Size(225, 33);
             this.cb_departments.TabIndex = 8;
@@ -147,7 +135,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(383, 77);
+            this.label4.Location = new System.Drawing.Point(536, 221);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 25);
             this.label4.TabIndex = 5;
@@ -156,7 +144,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(384, 237);
+            this.label5.Location = new System.Drawing.Point(537, 273);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 25);
             this.label5.TabIndex = 7;
@@ -164,29 +152,27 @@
             // 
             // dp_add_employee
             // 
-            this.dp_add_employee.Location = new System.Drawing.Point(546, 237);
+            this.dp_add_employee.Location = new System.Drawing.Point(674, 273);
             this.dp_add_employee.Name = "dp_add_employee";
-            this.dp_add_employee.Size = new System.Drawing.Size(200, 31);
+            this.dp_add_employee.Size = new System.Drawing.Size(225, 31);
             this.dp_add_employee.TabIndex = 6;
             // 
             // UC_AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.groupBox1);
             this.Name = "UC_AddUser";
-            this.Size = new System.Drawing.Size(1295, 690);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Size = new System.Drawing.Size(1450, 670);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tb_username;
         private System.Windows.Forms.Label label7;
