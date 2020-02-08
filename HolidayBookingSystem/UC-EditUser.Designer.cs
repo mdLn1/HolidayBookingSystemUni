@@ -95,17 +95,18 @@
             // 
             // btn_show_all
             // 
+            this.btn_show_all.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_show_all.Location = new System.Drawing.Point(685, 43);
             this.btn_show_all.Name = "btn_show_all";
             this.btn_show_all.Size = new System.Drawing.Size(103, 42);
             this.btn_show_all.TabIndex = 9;
             this.btn_show_all.Text = "Show All";
-            this.btn_show_all.UseVisualStyleBackColor = true;
+            this.btn_show_all.UseVisualStyleBackColor = false;
             this.btn_show_all.Click += new System.EventHandler(this.btn_show_all_Click);
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(576, 43);
+            this.btn_Search.Location = new System.Drawing.Point(425, 43);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(103, 42);
             this.btn_Search.TabIndex = 8;

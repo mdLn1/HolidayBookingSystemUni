@@ -110,35 +110,51 @@ namespace HolidayBookingSystem
 
         private void btn_details_Click(object sender, EventArgs e)
         {
-            using (HBSModel _entity = new HBSModel())
-            {
-                var _user = _entity.Users.FirstOrDefault(user => user.Username == _selectedUser.Username);
-                _user.Username = tb_username.Text;
-                _user.RoleID = _entity.Roles.SingleOrDefault(role => role.RoleName == cb_roles.SelectedItem.ToString()).ID;
-                _user.DepartmentID = _entity.Departments.SingleOrDefault(role => role.DepartmentName == cb_departments.SelectedItem.ToString()).ID;
-                _user.StartDate = dp_edit.Value.Date;
-                _selectedUser = _user;
-                _entity.SaveChanges();
-                initializeUserList();
-                initializeUserBox();
-            }
-        }
-        private void btn_password_Click(object sender, EventArgs e)
-        {
-            if (tb_password.Text == tb_repeat_password.Text)
+            try
             {
                 using (HBSModel _entity = new HBSModel())
                 {
                     var _user = _entity.Users.FirstOrDefault(user => user.Username == _selectedUser.Username);
-                    // hash the password
-                    byte[] passwordHash, passwordSalt;
-                    utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
-                    _user.Pwd = passwordHash;
-                    _user.PwdSalt = passwordSalt;
+                    _user.Username = tb_username.Text;
+                    _user.RoleID = _entity.Roles.SingleOrDefault(role => role.RoleName == cb_roles.SelectedItem.ToString()).ID;
+                    _user.DepartmentID = _entity.Departments.SingleOrDefault(role => role.DepartmentName == cb_departments.SelectedItem.ToString()).ID;
+                    _user.StartDate = dp_edit.Value.Date;
+                    _selectedUser = _user;
                     _entity.SaveChanges();
-                    MessageBox.Show("Password Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    initializeUserList();
                     initializeUserBox();
                 }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Could not connect to database \n"+err, "Error Message", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btn_password_Click(object sender, EventArgs e)
+        {
+            if (tb_password.Text == tb_repeat_password.Text)
+            {
+                try
+                {
+                    using (HBSModel _entity = new HBSModel())
+                    {
+                        var _user = _entity.Users.FirstOrDefault(user => user.Username == _selectedUser.Username);
+                        // hash the password
+                        byte[] passwordHash, passwordSalt;
+                        utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
+                        _user.Pwd = passwordHash;
+                        _user.PwdSalt = passwordSalt;
+                        _entity.SaveChanges();
+                        MessageBox.Show("Password Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        initializeUserBox();
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show("Could not access the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
                 
             }
             else
@@ -155,22 +171,32 @@ namespace HolidayBookingSystem
             cb_departments.SelectedIndex = cb_departments.FindStringExact(department);
             dp_edit.Value = (DateTime)start;
         }
+
         private void initializeRolesDepartments()
         {
-            using (HBSModel _entity = new HBSModel())
+            try
             {
-                List<Role> _roles = _entity.Roles.ToList();
-                foreach (Role role in _roles)
+                using (HBSModel _entity = new HBSModel())
                 {
-                    cb_roles.Items.Add(role.RoleName);
-                }
-                List<Department> _departments = _entity.Departments.ToList();
-                foreach (Department department in _departments)
-                {
-                    cb_departments.Items.Add(department.DepartmentName);
+                    List<Role> _roles = _entity.Roles.ToList();
+                    foreach (Role role in _roles)
+                    {
+                        cb_roles.Items.Add(role.RoleName);
+                    }
+                    List<Department> _departments = _entity.Departments.ToList();
+                    foreach (Department department in _departments)
+                    {
+                        cb_departments.Items.Add(department.DepartmentName);
+                    }
                 }
             }
+            catch (Exception err)
+            {
+                MessageBox.Show("Could not connect to database \n" + err, "Error Message", MessageBoxButtons.OK);
+            }
+
         }
+
         public void initializeUserList()
         {
             lv_search.Items.Clear();

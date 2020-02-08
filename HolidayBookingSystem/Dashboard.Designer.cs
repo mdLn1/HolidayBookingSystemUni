@@ -98,7 +98,7 @@
             this.panel_side.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_side.Location = new System.Drawing.Point(0, 50);
             this.panel_side.Name = "panel_side";
-            this.panel_side.Size = new System.Drawing.Size(200, 763);
+            this.panel_side.Size = new System.Drawing.Size(200, 691);
             this.panel_side.TabIndex = 1;
             // 
             // panel_manage_side
@@ -109,7 +109,7 @@
             this.panel_manage_side.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_manage_side.Location = new System.Drawing.Point(0, 0);
             this.panel_manage_side.Name = "panel_manage_side";
-            this.panel_manage_side.Size = new System.Drawing.Size(200, 763);
+            this.panel_manage_side.Size = new System.Drawing.Size(200, 691);
             this.panel_manage_side.TabIndex = 2;
             // 
             // btn_edit_employee
@@ -150,7 +150,7 @@
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_main.Location = new System.Drawing.Point(200, 50);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(1478, 763);
+            this.panel_main.Size = new System.Drawing.Size(1478, 691);
             this.panel_main.TabIndex = 2;
             // 
             // Dashboard
@@ -158,7 +158,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1678, 813);
+            this.ClientSize = new System.Drawing.Size(1678, 741);
             this.Controls.Add(this.panel_main);
             this.Controls.Add(this.panel_side);
             this.Controls.Add(this.panel_top);
