@@ -1,0 +1,11 @@
+C:\Users\gabri\Documents\HBS\HBSDatabase\bin\Debug\HBSDatabase.dll.config
+C:\Users\gabri\Documents\HBS\HBSDatabase\bin\Debug\HBSDatabase.dll
+C:\Users\gabri\Documents\HBS\HBSDatabase\bin\Debug\HBSDatabase.pdb
+C:\Users\gabri\Documents\HBS\HBSDatabase\bin\Debug\EntityFramework.dll
+C:\Users\gabri\Documents\HBS\HBSDatabase\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gabri\Documents\HBS\HBSDatabase\bin\Debug\EntityFramework.xml
+C:\Users\gabri\Documents\HBS\HBSDatabase\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gabri\Documents\HBS\HBSDatabase\obj\Debug\HBSDatabase.csprojAssemblyReference.cache
+C:\Users\gabri\Documents\HBS\HBSDatabase\obj\Debug\HBSDatabase.csproj.CopyComplete
+C:\Users\gabri\Documents\HBS\HBSDatabase\obj\Debug\HBSDatabase.dll
+C:\Users\gabri\Documents\HBS\HBSDatabase\obj\Debug\HBSDatabase.pdb
