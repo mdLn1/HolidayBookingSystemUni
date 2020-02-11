@@ -44,7 +44,7 @@
             // btn_refresh
             // 
             this.btn_refresh.BackColor = System.Drawing.Color.LightGreen;
-            this.btn_refresh.Location = new System.Drawing.Point(1284, 579);
+            this.btn_refresh.Location = new System.Drawing.Point(1290, 579);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(125, 52);
             this.btn_refresh.TabIndex = 1;
@@ -64,7 +64,7 @@
             this.lv_users.HideSelection = false;
             this.lv_users.Location = new System.Drawing.Point(11, 30);
             this.lv_users.Name = "lv_users";
-            this.lv_users.Size = new System.Drawing.Size(1411, 543);
+            this.lv_users.Size = new System.Drawing.Size(1402, 543);
             this.lv_users.TabIndex = 2;
             this.lv_users.UseCompatibleStateImageBehavior = false;
             this.lv_users.View = System.Windows.Forms.View.Details;
@@ -102,7 +102,7 @@
             // btn_delete
             // 
             this.btn_delete.BackColor = System.Drawing.Color.DarkRed;
-            this.btn_delete.Location = new System.Drawing.Point(1155, 579);
+            this.btn_delete.Location = new System.Drawing.Point(1161, 579);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(123, 52);
             this.btn_delete.TabIndex = 3;
@@ -117,7 +117,7 @@
             this.groupBox2.Controls.Add(this.btn_delete);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1444, 647);
+            this.groupBox2.Size = new System.Drawing.Size(1434, 647);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Delete Employee";
