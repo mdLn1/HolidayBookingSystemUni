@@ -14,6 +14,7 @@ namespace HolidayBookingSystem
     public partial class LoginForm : Form
     {
         private Utils utils = new Utils();
+        
         public LoginForm()
         {
             InitializeComponent();
@@ -21,39 +22,55 @@ namespace HolidayBookingSystem
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            // Set to no text.
-            tb_password.Text = "";
-            // The password character is an asterisk.
-            tb_password.PasswordChar = '*';
-            // The control will allow no more than 14 characters.
-            tb_password.MaxLength = 20;
+
         }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            
-            string username = tb_username.Text;
-            string password = tb_password.Text;
-            using (HBSModel _entity = new HBSModel())
+            try
             {
-                var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
-                if (_user == null)
+                if (String.IsNullOrEmpty(tb_username.Text))
                 {
-                    MessageBox.Show("User not found", "Message", MessageBoxButtons.OK);
-                    return;
+                    throw new Exception("Empty Username String");
                 }
 
-                if (!utils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
+                if (String.IsNullOrEmpty(tb_password.Text))
                 {
-                    MessageBox.Show("Wrong password", "Message", MessageBoxButtons.OK);
-                    return;
+                    throw new Exception("Empty Password String");
                 }
 
-                this.Hide();
-                Dashboard dashboard = new Dashboard();
-                dashboard.ShowDialog();
-                this.Close();
+                string username = tb_username.Text;
+                string password = tb_password.Text;
+                using (HBSModel _entity = new HBSModel())
+                {
+                    var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
+                    if (_user == null)
+                    {
+                        throw new Exception("User not found");
+                    }
+
+                    if (!utils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
+                    {
+                        throw new Exception("Incorrect Login Details");
+                    }
+
+                    // Only users matching the role Head and beloging to the Office department can login as admins
+                    if (_user.DepartmentID != 6 && _user.RoleID != 1)
+                    {
+                        throw new Exception("User is not an admin");
+                    }
+
+                    this.Hide();
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.ShowDialog();
+                    this.Close();
+                }
+            }   
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Encountered \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             
         }
 

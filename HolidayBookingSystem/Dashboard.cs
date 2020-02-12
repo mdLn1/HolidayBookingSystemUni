@@ -46,6 +46,7 @@ namespace HolidayBookingSystem
             else
             {
                 UC_AddUser.Instance.BringToFront();
+                UC_AddUser.Instance.initialiseForm();
             }
         }
 

@@ -37,10 +37,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tb_username = new System.Windows.Forms.TextBox();
-            this.tb_password = new System.Windows.Forms.TextBox();
             this.btn_login = new System.Windows.Forms.Button();
             this.picture_user = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tb_password = new HolidayBookingSystem.TextBox_Password();
             this.panel_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loginPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
@@ -123,22 +123,13 @@
             this.tb_username.Size = new System.Drawing.Size(384, 24);
             this.tb_username.TabIndex = 4;
             // 
-            // tb_password
-            // 
-            this.tb_password.BackColor = System.Drawing.Color.White;
-            this.tb_password.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_password.Location = new System.Drawing.Point(95, 477);
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(387, 24);
-            this.tb_password.TabIndex = 5;
-            // 
             // btn_login
             // 
             this.btn_login.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_login.Location = new System.Drawing.Point(120, 566);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(263, 83);
-            this.btn_login.TabIndex = 6;
+            this.btn_login.TabIndex = 9;
             this.btn_login.Text = "Login";
             this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
@@ -163,16 +154,26 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // tb_password
+            // 
+            this.tb_password.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_password.Location = new System.Drawing.Point(94, 476);
+            this.tb_password.MaxLength = 20;
+            this.tb_password.Name = "tb_password";
+            this.tb_password.PasswordChar = '*';
+            this.tb_password.Size = new System.Drawing.Size(380, 24);
+            this.tb_password.TabIndex = 6;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(500, 727);
+            this.Controls.Add(this.tb_password);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.picture_user);
             this.Controls.Add(this.btn_login);
-            this.Controls.Add(this.tb_password);
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
@@ -202,11 +203,11 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox tb_username;
-        private System.Windows.Forms.TextBox tb_password;
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.PictureBox picture_user;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_skip;
+        private TextBox_Password tb_password;
     }
 }
 
