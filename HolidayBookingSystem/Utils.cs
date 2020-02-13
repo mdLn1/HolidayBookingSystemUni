@@ -64,18 +64,19 @@ namespace HolidayBookingSystem
                 users.Add("gabriel");
                 foreach(string username in users)
                 {
-                    User admin = new User();
-                    admin.Username = username;
+                    User newUser = new User();
+                    newUser.Username = username;
                     byte[] passwordHash, passwordSalt;
                     CreatePasswordHash("password", out passwordHash, out passwordSalt);
-                    admin.Pwd = passwordHash;
-                    admin.PwdSalt = passwordSalt;
-                    admin.RoleID = role.ID;
-                    admin.DepartmentID = department.ID;
-                    _entity.Users.Add(admin);
+                    newUser.Pwd = passwordHash;
+                    newUser.PwdSalt = passwordSalt;
+                    newUser.StartDate = DateTime.Now.Date;
+                    newUser.RoleID = role.ID;
+                    newUser.DepartmentID = department.ID;
+                    _entity.Users.Add(newUser);
 
-                    role.Users.Add(admin);
-                    department.Users.Add(admin);
+                    role.Users.Add(newUser);
+                    department.Users.Add(newUser);
                 }
                 
                 _entity.Roles.Add(role);
@@ -99,11 +100,6 @@ namespace HolidayBookingSystem
 
                 return true;
             }
-        }
-
-        public static void popMessageBox(String message, String caption, MessageBoxButtons buttons, MessageBoxIcon icon)
-        {
-            MessageBox.Show(message, caption, buttons, icon);
         }
 
         public static void popDefaultErrorMessageBox(String message)

@@ -28,7 +28,6 @@ namespace HolidayBookingSystem
         }
 
         private User _selectedUser = new User();
-        private Validator validator = new Validator();
 
         public UC_EditUser()
         {
@@ -45,10 +44,9 @@ namespace HolidayBookingSystem
                 }
                 using (HBSModel _entity = new HBSModel())
                 {
-                    var _users = _entity.Users.Where(user => user.Username.Contains(tb_search.Text)).ToList();
+                    var _users = _entity.Users.Where(user => user.Username.Contains(tb_search.Text) && user.Username != Utils.ADMIN_ROLE).ToList();
                     if (_users != null)
                     {
-                        _users.RemoveAll(u => u.Username == "admin");
                         lv_search.Items.Clear();
                         
                         foreach (User user in _users)
@@ -85,8 +83,8 @@ namespace HolidayBookingSystem
                         _selectedUser = _entity.Users.Find(Convert.ToInt32(item.SubItems[0].Text));
                         updateUserBox(
                             _selectedUser.Username.ToString(),
-                            _entity.Roles.Find(Convert.ToInt32(_selectedUser.RoleID)).RoleName.ToString(),
-                            _entity.Departments.Find(Convert.ToInt32(_selectedUser.DepartmentID)).DepartmentName.ToString(),
+                            _selectedUser.Role.RoleName,
+                            _selectedUser.Department.DepartmentName,
                             _selectedUser.StartDate);
 
                     }
@@ -128,12 +126,14 @@ namespace HolidayBookingSystem
                     _user.StartDate = dp_edit.Value.Date;
                     _selectedUser = _user;
                     _entity.SaveChanges();
-                    initializeUserList();
-                    initializeUserBox();
+                    
                 }
+                initializeUserList();
+                initializeUserBox();
             }
             catch (Exception err)
             {
+                Utils.popDefaultErrorMessageBox("Error:\n" + err.Message);
             }
         }
 
@@ -149,7 +149,7 @@ namespace HolidayBookingSystem
                 {
                     throw new Exception("Passwords do not match");
                 }
-                if (!validator.checkPasswordComplexity(tb_password.Text))
+                if (!Validator.checkPasswordComplexity(tb_password.Text))
                 {
                     throw new Exception("Password complexity does not match requirements");
                 }
@@ -168,7 +168,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox("Error:\n" + ex.Message);
             }
         }
 
@@ -187,13 +187,11 @@ namespace HolidayBookingSystem
             {
                 using (HBSModel _entity = new HBSModel())
                 {
-                    List<Role> _roles = _entity.Roles.ToList();
-                    foreach (Role role in _roles)
+                    foreach (Role role in _entity.Roles.ToList())
                     {
                         cb_roles.Items.Add(role.RoleName);
                     }
-                    List<Department> _departments = _entity.Departments.ToList();
-                    foreach (Department department in _departments)
+                    foreach (Department department in _entity.Departments.ToList())
                     {
                         cb_departments.Items.Add(department.DepartmentName);
                     }
@@ -201,7 +199,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception err)
             {
-                MessageBox.Show("Could not connect to database \n" + err, "Error Message", MessageBoxButtons.OK);
+                Utils.popDefaultErrorMessageBox("Could not connect to database \n" + err.Message);
             }
 
         }
@@ -221,8 +219,8 @@ namespace HolidayBookingSystem
                         arr[0] = usr.id.ToString();
                         arr[1] = usr.Username.ToString();
                         arr[2] = usr.RemainingDays.ToString() == "" ? "N/A" : usr.RemainingDays.ToString();
-                        arr[3] = _entity.Roles.Find(Convert.ToInt32(usr.RoleID)).RoleName.ToString();
-                        arr[4] = _entity.Departments.Find(Convert.ToInt32(usr.DepartmentID)).DepartmentName.ToString();
+                        arr[3] = usr.Role.RoleName;
+                        arr[4] = usr.Department.DepartmentName;
                         ListViewItem item = new ListViewItem(arr);
                         lv_search.Items.Add(item);
                     }
@@ -230,7 +228,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception e)
             {
-                MessageBox.Show("Could not retrive Item from DB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox("Could not retrieve Item from DB");
             }
         }
 

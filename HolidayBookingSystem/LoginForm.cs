@@ -21,13 +21,18 @@ namespace HolidayBookingSystem
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-           
+            tb_username.Text = "Username";
+            tb_password.PasswordChar = '\0';
+            tb_password.Text = "Password";
         }
 
         public void formValuesChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(tb_username.Text.Trim()) 
-                || String.IsNullOrEmpty(tb_password.Text.Trim())) {
+            string username = tb_username.Text.Trim();
+            string password = tb_password.Text.Trim();
+            if (String.IsNullOrEmpty(username) 
+                || String.IsNullOrEmpty(password) 
+                || !username.Equals("Username") || !password.Equals("Password")) {
                 btn_login.ForeColor = Color.White;
                 btn_login.BackColor = Color.IndianRed;
                 btn_login.Cursor = Cursors.No;
@@ -37,6 +42,45 @@ namespace HolidayBookingSystem
                 btn_login.BackColor = Color.Green;
                 btn_login.ForeColor = Color.White;
                 btn_login.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if(textBox.Name == "tb_username")
+            {
+                if (tb_username.Text == "Username")
+                {
+                    tb_username.Text = "";
+                }
+            } else
+            {
+                if (tb_password.Text == "Password")
+                {
+                    tb_password.Text = "";
+                    tb_password.PasswordChar = '*';
+                }
+            }
+            
+        }
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Name == "tb_username")
+            {
+                if (tb_username.Text.Trim() == "")
+                {
+                    tb_username.Text = "Username";
+                }
+            } else
+            {
+                if (tb_password.Text.Trim() == "")
+                {
+                    tb_password.PasswordChar = '\0';
+                    tb_password.Text = "Password";
+                }
             }
         }
 
@@ -50,30 +94,27 @@ namespace HolidayBookingSystem
             {
                 string username = tb_username.Text.Trim();
                 string password = tb_password.Text.Trim();
-                if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
+                if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password) 
+                    || !username.Equals("Username") || !password.Equals("Password"))
                 {
-                    Utils.popDefaultErrorMessageBox("Username and password must not be empty");
-                    return;
+                    throw new Exception("Username and password must not be empty");
                 }
                 using (HBSModel _entity = new HBSModel())
                 {
                     var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
                     if (_user == null)
                     {
-                        Utils.popDefaultErrorMessageBox("User not found");
-                        return;
+                        throw new Exception("User not found");
                     }
                     if (!Utils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
                     {
-                        Utils.popDefaultErrorMessageBox("Invalid login attempt");
-                        return;
+                        throw new Exception("Invalid login attempt");
                     }
 
                     // Only users matching the role Head and beloging to the Office department can login as admins
                     if (_user.Role.RoleName != Utils.ADMIN_ROLE)
                     {
-                        Utils.popDefaultErrorMessageBox("Only admins can login with this app");
-                        return;
+                        throw new Exception("Only admins can login with this app");
                     }
 
                     this.Hide();
@@ -96,6 +137,26 @@ namespace HolidayBookingSystem
             Dashboard dashboard = new Dashboard();
             dashboard.ShowDialog();
             this.Close();
+        }
+
+        private void textBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Name == "tb_username")
+            {
+                if (tb_username.Text == "Username")
+                {
+                    tb_username.Text = "";
+                }
+            }
+            else
+            {
+                if (tb_password.Text == "Password")
+                {
+                    tb_password.Text = "";
+                    tb_password.PasswordChar = '*';
+                }
+            }
         }
     }
 }

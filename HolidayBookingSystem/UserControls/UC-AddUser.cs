@@ -22,7 +22,7 @@ namespace HolidayBookingSystem
                 if (_instance == null)
                 {
                     _instance = new UC_AddUser();
-                    _instance.initializeRolesDepartments();
+                    _instance.initializeRolesAndDepartments();
                 }
                 return _instance;
             }
@@ -32,7 +32,6 @@ namespace HolidayBookingSystem
             InitializeComponent();
         }
 
-        private Validator validator = new Validator();
         private void btn_register_employee_Click(object sender, EventArgs e)
         {
             try
@@ -52,7 +51,7 @@ namespace HolidayBookingSystem
                     throw new Exception("Passwords do not match");
                 }
 
-                if (!validator.checkPasswordComplexity(tb_password.Text))
+                if (!Validator.checkPasswordComplexity(tb_password.Text))
                 {
                     throw new Exception("Password does not match the required complexity");
                 }
@@ -106,11 +105,11 @@ namespace HolidayBookingSystem
                         cb_roles.SelectedIndex = -1;
                         dp_add_employee.Value = DateTime.Now;
                         dp_add_employee.Format = DateTimePickerFormat.Custom;
-                        MessageBox.Show("Employee correctly registered", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Employee successfully registered", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch
                     {
-                        MessageBox.Show("Something went wrong!", "Error", MessageBoxButtons.OK);
+                        Utils.popDefaultErrorMessageBox("Something went wrong");
                     }
                 }
             }
@@ -121,7 +120,7 @@ namespace HolidayBookingSystem
 
         }
 
-        public void initializeRolesDepartments()
+        public void initializeRolesAndDepartments()
         {
             try
             {
@@ -154,7 +153,7 @@ namespace HolidayBookingSystem
             _instance.tb_username.Text = "";
             _instance.tb_password.Text = "";
             _instance.tb_repeat_password.Text = "";
-            _instance.initializeRolesDepartments();
+            _instance.initializeRolesAndDepartments();
             _instance.dp_add_employee.Value = DateTime.Now;
         }
     }

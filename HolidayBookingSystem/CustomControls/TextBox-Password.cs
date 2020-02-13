@@ -20,6 +20,7 @@ namespace HolidayBookingSystem
             this.Text = "";
             // The password character is an asterisk.
             this.PasswordChar = '*';
+            
             // The control will allow no more than 14 characters.
             this.MaxLength = 32;
         }

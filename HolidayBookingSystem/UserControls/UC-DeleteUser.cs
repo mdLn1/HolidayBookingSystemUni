@@ -67,25 +67,33 @@ namespace HolidayBookingSystem
             }
         }
 
+
+
         private void btn_delete_Click(object sender, EventArgs e)
         {
             try {
+                
+                   
+                
                 int selIndex = lv_users.SelectedIndices[0];
                 ListViewItem item = lv_users.Items[selIndex];
-
-                using (HBSModel _entity = new HBSModel())
+                if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    User userDelete = _entity.Users.Find(Convert.ToInt32(item.SubItems[0].Text));
-                    _entity.Users.Remove(userDelete);
-                    _entity.SaveChanges();
+                    using (HBSModel _entity = new HBSModel())
+                    {
+                        User userDelete = _entity.Users.Find(Convert.ToInt32(item.SubItems[0].Text));
+                        _entity.Users.Remove(userDelete);
+                        _entity.SaveChanges();
+                    }
+                    initializeUserList();
                 }
             }
             catch (Exception ex)
             {
-                Utils.popDefaultErrorMessageBox("Could complete delete operation. Ensure to select a user.\n" + ex.Message);
+                Utils.popDefaultErrorMessageBox("Could not complete delete operation. Ensure to select a user.\n" + ex.Message);
             }
             
-            initializeUserList();
+            
         }
     }
 }
