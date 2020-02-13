@@ -101,6 +101,7 @@ namespace HolidayBookingSystem
                         _entity.SaveChanges();
                         tb_username.Text = "";
                         tb_password.Text = "";
+                        tb_repeat_password.Text = "";
                         cb_departments.SelectedIndex = -1;
                         cb_roles.SelectedIndex = -1;
                         dp_add_employee.Value = DateTime.Now;

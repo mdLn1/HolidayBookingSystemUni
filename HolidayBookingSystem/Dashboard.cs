@@ -22,7 +22,7 @@ namespace HolidayBookingSystem
         private void btn_manage_Click(object sender, EventArgs e)
         {
             panel_manage_side.Show();
-            
+            panel_main.Show();
         }
 
         private void btn_holiday_Click(object sender, EventArgs e)
