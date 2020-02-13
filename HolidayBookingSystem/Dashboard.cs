@@ -13,7 +13,6 @@ namespace HolidayBookingSystem
 {
     public partial class Dashboard : Form
     {
-        Utils utils = new Utils();
         public Dashboard()
         {
             InitializeComponent();

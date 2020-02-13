@@ -28,7 +28,6 @@ namespace HolidayBookingSystem
         }
 
         private User _selectedUser = new User();
-        private Utils utils = new Utils();
         private Validator validator = new Validator();
 
         public UC_EditUser()
@@ -58,8 +57,8 @@ namespace HolidayBookingSystem
                             arr[0] = user.id.ToString();
                             arr[1] = user.Username.ToString();
                             arr[2] = user.RemainingDays.ToString() == "" ? "N/A" : user.RemainingDays.ToString();
-                            arr[3] = _entity.Roles.Find(Convert.ToInt32(user.RoleID)).RoleName.ToString();
-                            arr[4] = _entity.Departments.Find(Convert.ToInt32(user.DepartmentID)).DepartmentName.ToString();
+                            arr[3] = user.Role.RoleName;
+                            arr[4] = user.Department.DepartmentName;
                             ListViewItem item = new ListViewItem(arr);
                             lv_search.Items.Add(item);
                         }
@@ -69,7 +68,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception err)
             {
-                MessageBox.Show("Something went wrong \n" + err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox("Something went wrong \n" + err.Message);
             }
         }
 
@@ -94,12 +93,12 @@ namespace HolidayBookingSystem
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show("Could not connect to DB \n" + err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utils.popDefaultErrorMessageBox("Could not connect to DB \n" + err.Message);
                 }
                 lv_search.SelectedIndices.Clear();
             } else
             {
-                MessageBox.Show("Please select a user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox("Please select a user");
             }
         }
 
@@ -135,7 +134,6 @@ namespace HolidayBookingSystem
             }
             catch (Exception err)
             {
-                MessageBox.Show("Error: \n" + err.Message, "Error Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -160,7 +158,7 @@ namespace HolidayBookingSystem
                     var _user = _entity.Users.FirstOrDefault(user => user.Username == _selectedUser.Username);
                     // hash the password
                     byte[] passwordHash, passwordSalt;
-                    utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
+                    Utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
                     _user.Pwd = passwordHash;
                     _user.PwdSalt = passwordSalt;
                     _entity.SaveChanges();

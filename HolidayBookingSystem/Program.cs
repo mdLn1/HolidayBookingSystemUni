@@ -16,6 +16,8 @@ namespace HolidayBookingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Utils.RegisterAdmin();
+            //Utils.RegisterUsers();
             Application.Run(new LoginForm());
         }
     }

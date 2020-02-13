@@ -13,8 +13,7 @@ namespace HolidayBookingSystem
 {
     public partial class LoginForm : Form
     {
-        private Utils utils = new Utils();
-        
+
         public LoginForm()
         {
             InitializeComponent();
@@ -22,42 +21,59 @@ namespace HolidayBookingSystem
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+           
+        }
 
+        public void formValuesChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tb_username.Text.Trim()) 
+                || String.IsNullOrEmpty(tb_password.Text.Trim())) {
+                btn_login.ForeColor = Color.White;
+                btn_login.BackColor = Color.IndianRed;
+                btn_login.Cursor = Cursors.No;
+            }
+            else
+            {
+                btn_login.BackColor = Color.Green;
+                btn_login.ForeColor = Color.White;
+                btn_login.Cursor = Cursors.Hand;
+            }
         }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+            if(btn_login.Cursor == Cursors.No)
+            {   
+                return;
+            }
             try
             {
-                if (String.IsNullOrEmpty(tb_username.Text))
+                string username = tb_username.Text.Trim();
+                string password = tb_password.Text.Trim();
+                if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                 {
-                    throw new Exception("Empty Username String");
+                    Utils.popDefaultErrorMessageBox("Username and password must not be empty");
+                    return;
                 }
-
-                if (String.IsNullOrEmpty(tb_password.Text))
-                {
-                    throw new Exception("Empty Password String");
-                }
-
-                string username = tb_username.Text;
-                string password = tb_password.Text;
                 using (HBSModel _entity = new HBSModel())
                 {
                     var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
                     if (_user == null)
                     {
-                        throw new Exception("User not found");
+                        Utils.popDefaultErrorMessageBox("User not found");
+                        return;
                     }
-
-                    if (!utils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
+                    if (!Utils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
                     {
-                        throw new Exception("Incorrect Login Details");
+                        Utils.popDefaultErrorMessageBox("Invalid login attempt");
+                        return;
                     }
 
                     // Only users matching the role Head and beloging to the Office department can login as admins
-                    if (_user.DepartmentID != 6 && _user.RoleID != 1)
+                    if (_user.Role.RoleName != Utils.ADMIN_ROLE)
                     {
-                        throw new Exception("User is not an admin");
+                        Utils.popDefaultErrorMessageBox("Only admins can login with this app");
+                        return;
                     }
 
                     this.Hide();
@@ -65,13 +81,13 @@ namespace HolidayBookingSystem
                     dashboard.ShowDialog();
                     this.Close();
                 }
-            }   
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Encountered \n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox(ex.Message);
             }
-            
-            
+
+
         }
 
         private void btn_skip_Click(object sender, EventArgs e)

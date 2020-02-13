@@ -32,7 +32,6 @@ namespace HolidayBookingSystem
             InitializeComponent();
         }
 
-        Utils utils = new Utils();
         private Validator validator = new Validator();
         private void btn_register_employee_Click(object sender, EventArgs e)
         {
@@ -43,9 +42,9 @@ namespace HolidayBookingSystem
                     throw new Exception("Username must be above 6 characters");
                 }
 
-                if (String.IsNullOrEmpty(tb_password.Text) || String.IsNullOrEmpty(tb_repeat_password.Text))
+                if (String.IsNullOrEmpty(tb_password.Text))
                 {
-                    throw new Exception("Password field is empty");
+                    throw new Exception("Password field must be filled");
                 }
 
                 if (tb_password.Text != tb_repeat_password.Text)
@@ -55,7 +54,7 @@ namespace HolidayBookingSystem
 
                 if (!validator.checkPasswordComplexity(tb_password.Text))
                 {
-                    throw new Exception("Passwords does not matches the required complexity");
+                    throw new Exception("Password does not match the required complexity");
                 }
 
                 if (cb_departments.SelectedIndex == -1)
@@ -75,7 +74,7 @@ namespace HolidayBookingSystem
 
                     // hash the password
                     byte[] passwordHash, passwordSalt;
-                    utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
+                    Utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
                     newUser.Pwd = passwordHash;
                     newUser.PwdSalt = passwordSalt;
 
@@ -89,8 +88,7 @@ namespace HolidayBookingSystem
                     }
                     catch (Exception ex)
                     {
-
-                        MessageBox.Show("Please select valid role and department:\n" + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.popDefaultErrorMessageBox("Please select valid role and department:\n" + ex.Message);
                         return;
 
                     }
@@ -118,7 +116,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Registration Error: \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox("Registration Error: \n" + ex.Message);
             }
 
         }
@@ -129,13 +127,11 @@ namespace HolidayBookingSystem
             {
                 using (HBSModel _entity = new HBSModel())
                 {
-                    List<Role> _roles = _entity.Roles.ToList();
-                    foreach (Role role in _roles)
+                    foreach (Role role in _entity.Roles.ToList())
                     {
                         cb_roles.Items.Add(role.RoleName);
                     }
-                    List<Department> _departments = _entity.Departments.ToList();
-                    foreach (Department department in _departments)
+                    foreach (Department department in _entity.Departments.ToList())
                     {
                         cb_departments.Items.Add(department.DepartmentName);
                     }
@@ -143,7 +139,7 @@ namespace HolidayBookingSystem
             }
             catch
             {
-                MessageBox.Show("Could not connect to the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox("Could not connect to the database");
             }
 
         }

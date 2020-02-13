@@ -51,11 +51,11 @@ namespace HolidayBookingSystem
                     {
                         string[] arr = new string[6];
                         arr[0] = usr.id.ToString();
-                        arr[1] = usr.Username.ToString();
+                        arr[1] = usr.Username;
                         arr[2] = usr.StartDate.ToString().Substring(0,10);
                         arr[3] = usr.RemainingDays.ToString() == "" ? "N/A" : usr.RemainingDays.ToString();
-                        arr[4] = _entity.Roles.Find(Convert.ToInt32(usr.RoleID)).RoleName.ToString();
-                        arr[5] = _entity.Departments.Find(Convert.ToInt32(usr.DepartmentID)).DepartmentName.ToString();
+                        arr[4] = usr.Role.RoleName;
+                        arr[5] = usr.Department.DepartmentName;
                         ListViewItem item = new ListViewItem(arr);
                         lv_users.Items.Add(item);
                     }
@@ -63,7 +63,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception err)
             {
-                MessageBox.Show("Could not retrive Item from DB \n" + err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox("Could not retrieve Item from DB \n" + err.Message);
             }
         }
 
@@ -82,7 +82,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could complete delete operation. Ensure to select a user.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.popDefaultErrorMessageBox("Could complete delete operation. Ensure to select a user.\n" + ex.Message);
             }
             
             initializeUserList();
