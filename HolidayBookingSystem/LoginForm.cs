@@ -30,9 +30,7 @@ namespace HolidayBookingSystem
         {
             string username = tb_username.Text.Trim();
             string password = tb_password.Text.Trim();
-            if (String.IsNullOrEmpty(username) 
-                || String.IsNullOrEmpty(password) 
-                || !username.Equals("Username") || !password.Equals("Password")) {
+            if (!inputValuesChanged(username, password)) {
                 btn_login.ForeColor = Color.White;
                 btn_login.BackColor = Color.IndianRed;
                 btn_login.Cursor = Cursors.No;
@@ -94,8 +92,7 @@ namespace HolidayBookingSystem
             {
                 string username = tb_username.Text.Trim();
                 string password = tb_password.Text.Trim();
-                if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password) 
-                    || !username.Equals("Username") || !password.Equals("Password"))
+                if (!inputValuesChanged(username, password))
                 {
                     throw new Exception("Username and password must not be empty");
                 }
@@ -157,6 +154,15 @@ namespace HolidayBookingSystem
                     tb_password.PasswordChar = '*';
                 }
             }
+        }
+
+        public bool inputValuesChanged(string username, string password)
+        {
+            if (String.IsNullOrEmpty(username)
+                || String.IsNullOrEmpty(password)
+                || username.Equals("Username") || password.Equals("Password"))
+                return false;
+            return true;
         }
     }
 }

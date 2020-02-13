@@ -70,36 +70,6 @@ namespace HolidayBookingSystem
             }
         }
 
-        private void btn_edit_Click(object sender, EventArgs e)
-        {
-            if (lv_search.SelectedIndices.Count > 0)
-            {
-                int selIndex = lv_search.SelectedIndices[0];
-                ListViewItem item = lv_search.Items[selIndex];
-                try
-                {
-                    using (HBSModel _entity = new HBSModel())
-                    {
-                        _selectedUser = _entity.Users.Find(Convert.ToInt32(item.SubItems[0].Text));
-                        updateUserBox(
-                            _selectedUser.Username.ToString(),
-                            _selectedUser.Role.RoleName,
-                            _selectedUser.Department.DepartmentName,
-                            _selectedUser.StartDate);
-
-                    }
-                }
-                catch (Exception err)
-                {
-                    Utils.popDefaultErrorMessageBox("Could not connect to DB \n" + err.Message);
-                }
-                lv_search.SelectedIndices.Clear();
-            } else
-            {
-                Utils.popDefaultErrorMessageBox("Please select a user");
-            }
-        }
-
         private void btn_show_all_Click(object sender, EventArgs e)
         {
             initializeUserList();
@@ -243,6 +213,34 @@ namespace HolidayBookingSystem
             cb_roles.Items.Clear();
             dp_edit.Value = DateTime.Now;
             _selectedUser = new User();
+        }
+
+
+        private void lv_search_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lv_search.SelectedIndices.Count > 0)
+            {
+                int selIndex = lv_search.SelectedIndices[0];
+                ListViewItem item = lv_search.Items[selIndex];
+                try
+                {
+                    using (HBSModel _entity = new HBSModel())
+                    {
+                        _selectedUser = _entity.Users.Find(Convert.ToInt32(item.SubItems[0].Text));
+                        updateUserBox(
+                            _selectedUser.Username.ToString(),
+                            _selectedUser.Role.RoleName,
+                            _selectedUser.Department.DepartmentName,
+                            _selectedUser.StartDate);
+
+                    }
+                }
+                catch (Exception err)
+                {
+                    Utils.popDefaultErrorMessageBox("Could not connect to DB \n" + err.Message);
+                }
+            }
+            
         }
     }
 }

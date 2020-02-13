@@ -49,10 +49,11 @@
             // 
             this.btn_refresh.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_refresh.BackColor = System.Drawing.Color.Green;
+            this.btn_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_refresh.ForeColor = System.Drawing.Color.White;
             this.btn_refresh.Location = new System.Drawing.Point(402, 13);
-            this.btn_refresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_refresh.Margin = new System.Windows.Forms.Padding(2);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(73, 27);
             this.btn_refresh.TabIndex = 1;
@@ -69,10 +70,13 @@
             this.RemainingDays,
             this.Role,
             this.Department});
+            this.lv_users.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lv_users.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_users.FullRowSelect = true;
+            this.lv_users.GridLines = true;
             this.lv_users.HideSelection = false;
             this.lv_users.Location = new System.Drawing.Point(0, 0);
-            this.lv_users.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lv_users.Margin = new System.Windows.Forms.Padding(2);
             this.lv_users.Name = "lv_users";
             this.lv_users.Size = new System.Drawing.Size(808, 286);
             this.lv_users.TabIndex = 2;
@@ -113,10 +117,11 @@
             // 
             this.btn_delete.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_delete.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_delete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.ForeColor = System.Drawing.Color.White;
             this.btn_delete.Location = new System.Drawing.Point(328, 13);
-            this.btn_delete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(2);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(71, 27);
             this.btn_delete.TabIndex = 3;
@@ -130,9 +135,9 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(812, 348);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
@@ -144,7 +149,7 @@
             this.panel2.Controls.Add(this.btn_delete);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(2, 294);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(808, 52);
             this.panel2.TabIndex = 5;
@@ -154,7 +159,7 @@
             this.panel1.Controls.Add(this.lv_users);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(2, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(808, 286);
             this.panel1.TabIndex = 4;
@@ -164,7 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UC_DeleteUser";
             this.Size = new System.Drawing.Size(812, 348);
             this.groupBox2.ResumeLayout(false);

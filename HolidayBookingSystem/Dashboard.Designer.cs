@@ -51,17 +51,20 @@
             this.panel_top.Controls.Add(this.btn_manage);
             this.panel_top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_top.Location = new System.Drawing.Point(0, 0);
+            this.panel_top.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(1942, 50);
+            this.panel_top.Size = new System.Drawing.Size(962, 26);
             this.panel_top.TabIndex = 0;
             // 
             // btn_calendar
             // 
             this.btn_calendar.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btn_calendar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_calendar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_calendar.Location = new System.Drawing.Point(442, 0);
+            this.btn_calendar.Location = new System.Drawing.Point(220, 0);
+            this.btn_calendar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_calendar.Name = "btn_calendar";
-            this.btn_calendar.Size = new System.Drawing.Size(221, 50);
+            this.btn_calendar.Size = new System.Drawing.Size(110, 26);
             this.btn_calendar.TabIndex = 3;
             this.btn_calendar.Text = "Calendar View";
             this.btn_calendar.UseVisualStyleBackColor = false;
@@ -70,10 +73,12 @@
             // btn_holiday
             // 
             this.btn_holiday.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btn_holiday.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_holiday.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_holiday.Location = new System.Drawing.Point(221, 0);
+            this.btn_holiday.Location = new System.Drawing.Point(110, 0);
+            this.btn_holiday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_holiday.Name = "btn_holiday";
-            this.btn_holiday.Size = new System.Drawing.Size(221, 50);
+            this.btn_holiday.Size = new System.Drawing.Size(110, 26);
             this.btn_holiday.TabIndex = 2;
             this.btn_holiday.Text = "Holiday Requests";
             this.btn_holiday.UseVisualStyleBackColor = false;
@@ -82,10 +87,12 @@
             // btn_manage
             // 
             this.btn_manage.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btn_manage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_manage.Dock = System.Windows.Forms.DockStyle.Left;
             this.btn_manage.Location = new System.Drawing.Point(0, 0);
+            this.btn_manage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_manage.Name = "btn_manage";
-            this.btn_manage.Size = new System.Drawing.Size(221, 50);
+            this.btn_manage.Size = new System.Drawing.Size(110, 26);
             this.btn_manage.TabIndex = 1;
             this.btn_manage.Text = "Manage Employees";
             this.btn_manage.UseVisualStyleBackColor = false;
@@ -96,9 +103,10 @@
             this.panel_side.BackColor = System.Drawing.SystemColors.MenuBar;
             this.panel_side.Controls.Add(this.panel_manage_side);
             this.panel_side.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_side.Location = new System.Drawing.Point(0, 50);
+            this.panel_side.Location = new System.Drawing.Point(0, 26);
+            this.panel_side.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_side.Name = "panel_side";
-            this.panel_side.Size = new System.Drawing.Size(200, 736);
+            this.panel_side.Size = new System.Drawing.Size(100, 383);
             this.panel_side.TabIndex = 1;
             // 
             // panel_manage_side
@@ -108,16 +116,19 @@
             this.panel_manage_side.Controls.Add(this.btn_add_employee);
             this.panel_manage_side.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_manage_side.Location = new System.Drawing.Point(0, 0);
+            this.panel_manage_side.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_manage_side.Name = "panel_manage_side";
-            this.panel_manage_side.Size = new System.Drawing.Size(200, 736);
+            this.panel_manage_side.Size = new System.Drawing.Size(100, 383);
             this.panel_manage_side.TabIndex = 2;
             // 
             // btn_edit_employee
             // 
+            this.btn_edit_employee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_edit_employee.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_edit_employee.Location = new System.Drawing.Point(0, 84);
+            this.btn_edit_employee.Location = new System.Drawing.Point(0, 44);
+            this.btn_edit_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_edit_employee.Name = "btn_edit_employee";
-            this.btn_edit_employee.Size = new System.Drawing.Size(200, 42);
+            this.btn_edit_employee.Size = new System.Drawing.Size(100, 22);
             this.btn_edit_employee.TabIndex = 3;
             this.btn_edit_employee.Text = "Edit Employee";
             this.btn_edit_employee.UseVisualStyleBackColor = true;
@@ -125,10 +136,12 @@
             // 
             // btn_delete_employee
             // 
+            this.btn_delete_employee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_delete_employee.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_delete_employee.Location = new System.Drawing.Point(0, 42);
+            this.btn_delete_employee.Location = new System.Drawing.Point(0, 22);
+            this.btn_delete_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_delete_employee.Name = "btn_delete_employee";
-            this.btn_delete_employee.Size = new System.Drawing.Size(200, 42);
+            this.btn_delete_employee.Size = new System.Drawing.Size(100, 22);
             this.btn_delete_employee.TabIndex = 2;
             this.btn_delete_employee.Text = "Delete Employee";
             this.btn_delete_employee.UseVisualStyleBackColor = true;
@@ -136,10 +149,12 @@
             // 
             // btn_add_employee
             // 
+            this.btn_add_employee.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_add_employee.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_add_employee.Location = new System.Drawing.Point(0, 0);
+            this.btn_add_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_add_employee.Name = "btn_add_employee";
-            this.btn_add_employee.Size = new System.Drawing.Size(200, 42);
+            this.btn_add_employee.Size = new System.Drawing.Size(100, 22);
             this.btn_add_employee.TabIndex = 1;
             this.btn_add_employee.Text = "Add Employee";
             this.btn_add_employee.UseVisualStyleBackColor = true;
@@ -148,21 +163,23 @@
             // panel_main
             // 
             this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_main.Location = new System.Drawing.Point(200, 50);
+            this.panel_main.Location = new System.Drawing.Point(100, 26);
+            this.panel_main.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(1742, 736);
+            this.panel_main.Size = new System.Drawing.Size(862, 383);
             this.panel_main.TabIndex = 2;
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1942, 786);
+            this.ClientSize = new System.Drawing.Size(962, 409);
             this.Controls.Add(this.panel_main);
             this.Controls.Add(this.panel_side);
             this.Controls.Add(this.panel_top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
