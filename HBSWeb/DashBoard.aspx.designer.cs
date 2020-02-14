@@ -11,7 +11,7 @@ namespace HBSWeb
 {
 
 
-    public partial class About
+    public partial class DashBoard1
     {
     }
 }

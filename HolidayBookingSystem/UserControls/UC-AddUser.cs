@@ -70,7 +70,11 @@ namespace HolidayBookingSystem
                 {
                     User newUser = new User();
                     newUser.Username = tb_username.Text;
-
+                    var isAlreadyRegistered = _entity.Users.FirstOrDefault(x => x.Username == newUser.Username);
+                    if (isAlreadyRegistered != null)
+                    {
+                        throw new Exception("Username already registered");
+                    }
                     // hash the password
                     byte[] passwordHash, passwordSalt;
                     Utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
