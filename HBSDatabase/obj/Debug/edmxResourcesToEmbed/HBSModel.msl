@@ -12,6 +12,7 @@
     <EntitySetMapping Name="HolidayRequests">
       <EntityTypeMapping TypeName="bookingsystemModel.HolidayRequest">
         <MappingFragment StoreEntitySet="HolidayRequests">
+          <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
@@ -40,6 +41,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="bookingsystemModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
@@ -48,6 +50,14 @@
           <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
           <ScalarProperty Name="Pwd" ColumnName="Pwd" />
           <ScalarProperty Name="PwdSalt" ColumnName="PwdSalt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusRequests">
+      <EntityTypeMapping TypeName="bookingsystemModel.StatusRequest">
+        <MappingFragment StoreEntitySet="StatusRequests">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

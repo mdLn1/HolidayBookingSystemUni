@@ -12,16 +12,18 @@ namespace HBSDatabase
     using System;
     using System.Collections.Generic;
     
-    public partial class HolidayRequest
+    public partial class StatusRequest
     {
-        public int ID { get; set; }
-        public System.DateTime StartDate { get; set; }
-        public System.DateTime EndDate { get; set; }
-        public Nullable<bool> Feasible { get; set; }
-        public int UserID { get; set; }
-        public int RequestStatusID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public StatusRequest()
+        {
+            this.HolidayRequests = new HashSet<HolidayRequest>();
+        }
     
-        public virtual User User { get; set; }
-        public virtual StatusRequest StatusRequest { get; set; }
+        public int ID { get; set; }
+        public string Status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HolidayRequest> HolidayRequests { get; set; }
     }
 }

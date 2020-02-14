@@ -96,8 +96,13 @@ namespace HolidayBookingSystem
 
                     }
 
+                    newUser.PhoneNumber = tb_phone_number.Text;
+
                     // get date and make it to datetime2
                     newUser.StartDate = dp_add_employee.Value.Date;
+
+                    // calculate remaining days
+                    newUser.RemainingDays = Utils.CalculateHolidayAllowanceOnRegistration(dp_add_employee.Value.Date);
 
                     try
                     {
@@ -150,7 +155,10 @@ namespace HolidayBookingSystem
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            initialiseForm();
+            if (MessageBox.Show("Are you sure you want to clear the form?", "Confirm Clearing", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                initialiseForm();
+            }
         }
 
         public void initialiseForm()

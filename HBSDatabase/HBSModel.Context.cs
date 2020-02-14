@@ -30,5 +30,6 @@ namespace HBSDatabase
         public virtual DbSet<PeakTime> PeakTimes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<StatusRequest> StatusRequests { get; set; }
     }
 }

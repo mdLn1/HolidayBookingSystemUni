@@ -78,6 +78,9 @@
     <Compile Include="Role.cs">
       <DependentUpon>HBSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StatusRequest.cs">
+      <DependentUpon>HBSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>HBSModel.tt</DependentUpon>
     </Compile>

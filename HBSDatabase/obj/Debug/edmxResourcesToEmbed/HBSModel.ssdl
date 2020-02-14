@@ -12,18 +12,19 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
-    <Property Name="EndDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
     <Property Name="Feasible" Type="bit" />
     <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RequestStatusID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PeakTimes">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
-    <Property Name="EndDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -32,19 +33,39 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleName" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
+  <EntityType Name="StatusRequests">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="32" Nullable="false" />
+  </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="StartDate" Type="datetime2" Precision="7" />
+    <Property Name="StartDate" Type="date" />
     <Property Name="RemainingDays" Type="int" />
     <Property Name="RoleID" Type="int" />
     <Property Name="DepartmentID" Type="int" />
     <Property Name="Pwd" Type="varbinary(max)" Nullable="false" />
     <Property Name="PwdSalt" Type="varbinary(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="32" />
   </EntityType>
+  <Association Name="FK__HolidayRe__Reque__04E4BC85">
+    <End Role="StatusRequests" Type="Self.StatusRequests" Multiplicity="1" />
+    <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusRequests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HolidayRequests">
+        <PropertyRef Name="RequestStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__HolidayRe__UserI__7B5B524B">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="*" />
@@ -86,7 +107,12 @@
     <EntitySet Name="HolidayRequests" EntityType="Self.HolidayRequests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PeakTimes" EntityType="Self.PeakTimes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusRequests" EntityType="Self.StatusRequests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__HolidayRe__Reque__04E4BC85" Association="Self.FK__HolidayRe__Reque__04E4BC85">
+      <End Role="StatusRequests" EntitySet="StatusRequests" />
+      <End Role="HolidayRequests" EntitySet="HolidayRequests" />
+    </AssociationSet>
     <AssociationSet Name="FK__HolidayRe__UserI__7B5B524B" Association="Self.FK__HolidayRe__UserI__7B5B524B">
       <End Role="Users" EntitySet="Users" />
       <End Role="HolidayRequests" EntitySet="HolidayRequests" />

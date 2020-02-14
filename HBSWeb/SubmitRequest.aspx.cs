@@ -26,6 +26,7 @@ namespace HBSWeb
                 holidayRequest.EndDate = endDate;
                 string username = Session["username"] as string;
                 holidayRequest.UserID = _entity.Users.FirstOrDefault(user => user.Username == username).id;
+                holidayRequest.RequestStatusID = _entity.StatusRequests.FirstOrDefault(status => status.Status == "Pending").ID;
                 _entity.HolidayRequests.Add(holidayRequest);
                 _entity.SaveChanges();
                 Response.Redirect("/Dashboard");

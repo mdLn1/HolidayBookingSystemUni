@@ -28,6 +28,7 @@ namespace HBSDatabase
         public Nullable<int> DepartmentID { get; set; }
         public byte[] Pwd { get; set; }
         public byte[] PwdSalt { get; set; }
+        public string PhoneNumber { get; set; }
     
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
