@@ -11,7 +11,10 @@ namespace HBSWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Request.QueryString["HolidayRequest"] == "Success")
+            {
+                HolidayRequestAlert.Visible = true;
+            }
         }
     }
 }

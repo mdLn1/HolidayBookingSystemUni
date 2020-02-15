@@ -565,3 +565,11 @@ function WebForm_SetElementY(element, y) {
         element.style.top = y + "px";
     }
 }
+
+function Confirm_Submit()
+{
+    if (confirm("Are you sure you to submit the request?") == true)
+        return true;
+    else
+        return false;
+}

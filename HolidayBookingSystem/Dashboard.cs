@@ -22,19 +22,31 @@ namespace HolidayBookingSystem
         private void btn_manage_Click(object sender, EventArgs e)
         {
             panel_manage_side.Show();
+            panel_holiday_requests.Hide();
+            panel_calendar_view.Hide();
+            panel_manage_employee.Show();
+            panel_manage_employee.Location = new Point(1,0);
             panel_main.Show();
         }
 
         private void btn_holiday_Click(object sender, EventArgs e)
         {
-            panel_manage_side.Hide();
-            panel_main.Hide();
+            panel_manage_side.Show();
+            panel_manage_employee.Hide();
+            panel_calendar_view.Hide();
+            panel_holiday_requests.Show();
+            panel_holiday_requests.Location = new Point(1, 0);
+            panel_main.Show();
         }
 
         private void btn_calendar_Click(object sender, EventArgs e)
         {
-            panel_manage_side.Hide();
-            panel_main.Hide();
+            panel_manage_side.Show();
+            panel_holiday_requests.Hide();
+            panel_manage_employee.Hide();
+            panel_calendar_view.Show();
+            panel_calendar_view.Location = new Point(1, 0);
+            panel_main.Show();
         }
 
         private void btn_add_employee_Click(object sender, EventArgs e)

@@ -11,16 +11,16 @@ namespace HBSWeb
 {
 
 
-    public partial class DashBoard1
+    public partial class RequestsHistory
     {
 
         /// <summary>
-        /// HolidayRequestAlert control.
+        /// RequestHistoryTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HolidayRequestAlert;
+        protected global::System.Web.UI.WebControls.Table RequestHistoryTable;
     }
 }
