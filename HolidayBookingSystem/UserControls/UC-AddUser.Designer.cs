@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_phone_number = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.btn_clear = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -53,8 +55,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btn_register_employee = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tb_phone_number = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -87,13 +87,35 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1450, 669);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Employee";
+            // 
+            // tb_phone_number
+            // 
+            this.tb_phone_number.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tb_phone_number.Location = new System.Drawing.Point(584, 291);
+            this.tb_phone_number.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_phone_number.MaxLength = 32;
+            this.tb_phone_number.Name = "tb_phone_number";
+            this.tb_phone_number.Size = new System.Drawing.Size(224, 31);
+            this.tb_phone_number.TabIndex = 8;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(339, 291);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(216, 31);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Phone Number:";
             // 
             // btn_clear
             // 
@@ -103,7 +125,7 @@
             this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clear.ForeColor = System.Drawing.Color.White;
             this.btn_clear.Location = new System.Drawing.Point(712, 526);
-            this.btn_clear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_clear.Margin = new System.Windows.Forms.Padding(4);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(160, 52);
             this.btn_clear.TabIndex = 19;
@@ -130,7 +152,7 @@
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.panel8);
             this.panel5.Location = new System.Drawing.Point(428, 271);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(650, 2);
             this.panel5.TabIndex = 17;
@@ -141,7 +163,7 @@
             this.panel6.BackColor = System.Drawing.Color.Black;
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Location = new System.Drawing.Point(0, 158);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(650, 2);
             this.panel6.TabIndex = 16;
@@ -150,7 +172,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.Black;
             this.panel7.Location = new System.Drawing.Point(0, 140);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(450, 2);
             this.panel7.TabIndex = 2;
@@ -159,7 +181,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.Black;
             this.panel8.Location = new System.Drawing.Point(0, 140);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(450, 2);
             this.panel8.TabIndex = 2;
@@ -171,7 +193,7 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(422, 117);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(650, 2);
             this.panel2.TabIndex = 15;
@@ -182,7 +204,7 @@
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(0, 158);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(650, 2);
             this.panel1.TabIndex = 16;
@@ -191,7 +213,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(0, 140);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(450, 2);
             this.panel4.TabIndex = 2;
@@ -200,7 +222,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(0, 140);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(450, 2);
             this.panel3.TabIndex = 2;
@@ -221,7 +243,7 @@
             // 
             this.tb_repeat_password.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tb_repeat_password.Location = new System.Drawing.Point(584, 198);
-            this.tb_repeat_password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_repeat_password.Margin = new System.Windows.Forms.Padding(4);
             this.tb_repeat_password.MaxLength = 32;
             this.tb_repeat_password.Name = "tb_repeat_password";
             this.tb_repeat_password.PasswordChar = '*';
@@ -232,7 +254,7 @@
             // 
             this.tb_password.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tb_password.Location = new System.Drawing.Point(584, 142);
-            this.tb_password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_password.Margin = new System.Windows.Forms.Padding(4);
             this.tb_password.MaxLength = 32;
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
@@ -243,7 +265,7 @@
             // 
             this.tb_username.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tb_username.Location = new System.Drawing.Point(584, 50);
-            this.tb_username.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_username.Margin = new System.Windows.Forms.Padding(4);
             this.tb_username.MaxLength = 32;
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(224, 31);
@@ -266,7 +288,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(472, 393);
+            this.label7.Location = new System.Drawing.Point(472, 396);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 31);
@@ -278,7 +300,7 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(404, 445);
+            this.label5.Location = new System.Drawing.Point(404, 448);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(151, 31);
@@ -290,8 +312,8 @@
             this.cb_roles.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cb_roles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_roles.FormattingEnabled = true;
-            this.cb_roles.Location = new System.Drawing.Point(584, 397);
-            this.cb_roles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_roles.Location = new System.Drawing.Point(584, 400);
+            this.cb_roles.Margin = new System.Windows.Forms.Padding(4);
             this.cb_roles.Name = "cb_roles";
             this.cb_roles.Size = new System.Drawing.Size(224, 33);
             this.cb_roles.TabIndex = 12;
@@ -301,8 +323,8 @@
             this.cb_departments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cb_departments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_departments.FormattingEnabled = true;
-            this.cb_departments.Location = new System.Drawing.Point(584, 341);
-            this.cb_departments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_departments.Location = new System.Drawing.Point(584, 344);
+            this.cb_departments.Margin = new System.Windows.Forms.Padding(4);
             this.cb_departments.Name = "cb_departments";
             this.cb_departments.Size = new System.Drawing.Size(224, 33);
             this.cb_departments.TabIndex = 10;
@@ -310,8 +332,8 @@
             // dp_add_employee
             // 
             this.dp_add_employee.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dp_add_employee.Location = new System.Drawing.Point(584, 447);
-            this.dp_add_employee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dp_add_employee.Location = new System.Drawing.Point(584, 450);
+            this.dp_add_employee.Margin = new System.Windows.Forms.Padding(4);
             this.dp_add_employee.Name = "dp_add_employee";
             this.dp_add_employee.Size = new System.Drawing.Size(224, 31);
             this.dp_add_employee.TabIndex = 14;
@@ -348,7 +370,7 @@
             this.btn_register_employee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_register_employee.ForeColor = System.Drawing.Color.White;
             this.btn_register_employee.Location = new System.Drawing.Point(540, 526);
-            this.btn_register_employee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_register_employee.Margin = new System.Windows.Forms.Padding(4);
             this.btn_register_employee.Name = "btn_register_employee";
             this.btn_register_employee.Size = new System.Drawing.Size(160, 52);
             this.btn_register_employee.TabIndex = 1;
@@ -361,41 +383,19 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(380, 337);
+            this.label6.Location = new System.Drawing.Point(380, 340);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(175, 31);
             this.label6.TabIndex = 9;
             this.label6.Text = "Department:";
             // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(339, 288);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(216, 31);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Phone Number:";
-            // 
-            // tb_phone_number
-            // 
-            this.tb_phone_number.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tb_phone_number.Location = new System.Drawing.Point(584, 288);
-            this.tb_phone_number.Margin = new System.Windows.Forms.Padding(4);
-            this.tb_phone_number.MaxLength = 32;
-            this.tb_phone_number.Name = "tb_phone_number";
-            this.tb_phone_number.Size = new System.Drawing.Size(224, 31);
-            this.tb_phone_number.TabIndex = 8;
-            // 
             // UC_AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_AddUser";
             this.Size = new System.Drawing.Size(1450, 669);
             this.groupBox1.ResumeLayout(false);

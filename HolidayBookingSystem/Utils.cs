@@ -10,7 +10,7 @@ namespace HolidayBookingSystem
 {
     public static class Utils
     {
-        public static String ADMIN_ROLE = "admin";
+        public static String ADMIN_ROLE = "Admin";
         public static void RegisterAdmin()
         {
             using (HBSModel _entity = new HBSModel())

@@ -94,6 +94,7 @@ namespace HolidayBookingSystem
                     _user.RoleID = _entity.Roles.SingleOrDefault(role => role.RoleName == cb_roles.SelectedItem.ToString()).ID;
                     _user.DepartmentID = _entity.Departments.SingleOrDefault(role => role.DepartmentName == cb_departments.SelectedItem.ToString()).ID;
                     _user.StartDate = dp_edit.Value.Date;
+                    _user.PhoneNumber = tb_phone_number.Text;
                     _selectedUser = _user;
                     _entity.SaveChanges();
                     
@@ -142,12 +143,13 @@ namespace HolidayBookingSystem
             }
         }
 
-        private void updateUserBox(string username, string role, string department, DateTime? start)
+        private void updateUserBox(string username, string role, string department, DateTime? start, string phoneNumber)
         {
             tb_username.Text = username;
             initializeRolesDepartments();
             cb_roles.SelectedIndex = cb_roles.FindStringExact(role);
             cb_departments.SelectedIndex = cb_departments.FindStringExact(department);
+            tb_phone_number.Text = phoneNumber;
             dp_edit.Value = (DateTime)start;
         }
 
@@ -207,6 +209,7 @@ namespace HolidayBookingSystem
             tb_password.Text = "";
             tb_repeat_password.Text = "";
             tb_username.Text = "";
+            tb_phone_number.Text = "";
             cb_departments.SelectedIndex = -1;
             cb_departments.Items.Clear();
             cb_roles.SelectedIndex = -1;
@@ -231,7 +234,8 @@ namespace HolidayBookingSystem
                             _selectedUser.Username.ToString(),
                             _selectedUser.Role.RoleName,
                             _selectedUser.Department.DepartmentName,
-                            _selectedUser.StartDate);
+                            _selectedUser.StartDate,
+                            _selectedUser.PhoneNumber);
 
                     }
                 }

@@ -49,13 +49,14 @@ namespace HolidayBookingSystem
                     _users.RemoveAll(u => u.Username == "admin");
                     foreach (User usr in _users)
                     {
-                        string[] arr = new string[6];
+                        string[] arr = new string[7];
                         arr[0] = usr.id.ToString();
                         arr[1] = usr.Username;
                         arr[2] = usr.StartDate.ToString().Substring(0,10);
                         arr[3] = usr.RemainingDays.ToString() == "" ? "N/A" : usr.RemainingDays.ToString();
                         arr[4] = usr.Role.RoleName;
                         arr[5] = usr.Department.DepartmentName;
+                        arr[6] = usr.PhoneNumber == null ? "N/A" : usr.PhoneNumber;
                         ListViewItem item = new ListViewItem(arr);
                         lv_users.Items.Add(item);
                     }

@@ -40,6 +40,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -52,10 +53,10 @@
             this.btn_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_refresh.ForeColor = System.Drawing.Color.White;
-            this.btn_refresh.Location = new System.Drawing.Point(402, 13);
-            this.btn_refresh.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_refresh.Location = new System.Drawing.Point(804, 25);
+            this.btn_refresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_refresh.Name = "btn_refresh";
-            this.btn_refresh.Size = new System.Drawing.Size(73, 27);
+            this.btn_refresh.Size = new System.Drawing.Size(146, 52);
             this.btn_refresh.TabIndex = 1;
             this.btn_refresh.Text = "Refresh";
             this.btn_refresh.UseVisualStyleBackColor = false;
@@ -69,16 +70,17 @@
             this.StartDate,
             this.RemainingDays,
             this.Role,
-            this.Department});
+            this.Department,
+            this.PhoneNumber});
             this.lv_users.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lv_users.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lv_users.FullRowSelect = true;
             this.lv_users.GridLines = true;
             this.lv_users.HideSelection = false;
             this.lv_users.Location = new System.Drawing.Point(0, 0);
-            this.lv_users.Margin = new System.Windows.Forms.Padding(2);
+            this.lv_users.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lv_users.Name = "lv_users";
-            this.lv_users.Size = new System.Drawing.Size(808, 286);
+            this.lv_users.Size = new System.Drawing.Size(1616, 550);
             this.lv_users.TabIndex = 2;
             this.lv_users.UseCompatibleStateImageBehavior = false;
             this.lv_users.View = System.Windows.Forms.View.Details;
@@ -105,11 +107,13 @@
             // 
             // Role
             // 
+            this.Role.DisplayIndex = 4;
             this.Role.Text = "Role";
             this.Role.Width = 80;
             // 
             // Department
             // 
+            this.Department.DisplayIndex = 5;
             this.Department.Text = "Department";
             this.Department.Width = 100;
             // 
@@ -120,10 +124,10 @@
             this.btn_delete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(328, 13);
-            this.btn_delete.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_delete.Location = new System.Drawing.Point(656, 25);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(71, 27);
+            this.btn_delete.Size = new System.Drawing.Size(142, 52);
             this.btn_delete.TabIndex = 3;
             this.btn_delete.Text = "Delete";
             this.btn_delete.UseVisualStyleBackColor = false;
@@ -135,10 +139,10 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(812, 348);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(1624, 669);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Delete Employee";
@@ -148,30 +152,36 @@
             this.panel2.Controls.Add(this.btn_refresh);
             this.panel2.Controls.Add(this.btn_delete);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(2, 294);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(4, 565);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(808, 52);
+            this.panel2.Size = new System.Drawing.Size(1616, 100);
             this.panel2.TabIndex = 5;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.lv_users);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(2, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(4, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(808, 286);
+            this.panel1.Size = new System.Drawing.Size(1616, 550);
             this.panel1.TabIndex = 4;
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.DisplayIndex = 6;
+            this.PhoneNumber.Text = "Phone Number";
+            this.PhoneNumber.Width = 100;
             // 
             // UC_DeleteUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox2);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UC_DeleteUser";
-            this.Size = new System.Drawing.Size(812, 348);
+            this.Size = new System.Drawing.Size(1624, 669);
             this.groupBox2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -192,5 +202,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ColumnHeader PhoneNumber;
     }
 }
