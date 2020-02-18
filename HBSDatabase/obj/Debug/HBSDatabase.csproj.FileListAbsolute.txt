@@ -20,3 +20,14 @@ D:\github_reps\HBS\HBSDatabase\obj\Debug\HBSDatabase.csprojAssemblyReference.cac
 D:\github_reps\HBS\HBSDatabase\obj\Debug\HBSDatabase.csproj.CopyComplete
 D:\github_reps\HBS\HBSDatabase\obj\Debug\HBSDatabase.dll
 D:\github_reps\HBS\HBSDatabase\obj\Debug\HBSDatabase.pdb
+D:\github_reps\HolidayBookingSystem\HBSDatabase\bin\Debug\HBSDatabase.dll.config
+D:\github_reps\HolidayBookingSystem\HBSDatabase\bin\Debug\HBSDatabase.dll
+D:\github_reps\HolidayBookingSystem\HBSDatabase\bin\Debug\HBSDatabase.pdb
+D:\github_reps\HolidayBookingSystem\HBSDatabase\bin\Debug\EntityFramework.dll
+D:\github_reps\HolidayBookingSystem\HBSDatabase\bin\Debug\EntityFramework.SqlServer.dll
+D:\github_reps\HolidayBookingSystem\HBSDatabase\bin\Debug\EntityFramework.xml
+D:\github_reps\HolidayBookingSystem\HBSDatabase\bin\Debug\EntityFramework.SqlServer.xml
+D:\github_reps\HolidayBookingSystem\HBSDatabase\obj\Debug\HBSDatabase.csprojAssemblyReference.cache
+D:\github_reps\HolidayBookingSystem\HBSDatabase\obj\Debug\HBSDatabase.csproj.CopyComplete
+D:\github_reps\HolidayBookingSystem\HBSDatabase\obj\Debug\HBSDatabase.dll
+D:\github_reps\HolidayBookingSystem\HBSDatabase\obj\Debug\HBSDatabase.pdb
