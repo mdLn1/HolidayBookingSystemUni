@@ -15,22 +15,22 @@ namespace HBSWeb
     {
 
         /// <summary>
-        /// cal_start_date control.
+        /// startDateCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar cal_start_date;
+        protected global::System.Web.UI.WebControls.Calendar startDateCalendar;
 
         /// <summary>
-        /// cal_end_date control.
+        /// endDateCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar cal_end_date;
+        protected global::System.Web.UI.WebControls.Calendar endDateCalendar;
 
         /// <summary>
         /// lbl_summary control.
@@ -42,21 +42,12 @@ namespace HBSWeb
         protected global::System.Web.UI.WebControls.Label lbl_summary;
 
         /// <summary>
-        /// btn_preview control.
+        /// submitButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_preview;
-
-        /// <summary>
-        /// btn_submit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_submit;
+        protected global::System.Web.UI.WebControls.Button submitButton;
     }
 }

@@ -1,10 +1,18 @@
 ﻿using System;
+using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
 
 public static class GeneralUtils
 {
-    public static String ADMIN_ROLE = "Admin";
+    public const string ADMIN_ROLE = "Admin";
+    public const string PENDING = "pending";
+    public const string APPROVED = "approved";
+    public const string DECLINED = "declined";
+
+    public const string WARNING_COLOR = "#8a6d3b";
+    public const string DANGER_COLOR = "#a94442";
+    public const string SUCCESS_COLOR = "#3c763d";
 
     public static int CalculateHolidayAllowanceOnRegistration(DateTime startDate)
     {

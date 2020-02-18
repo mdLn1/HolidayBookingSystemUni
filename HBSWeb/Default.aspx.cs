@@ -28,7 +28,7 @@ namespace HBSWeb
                     {
                         if (GeneralUtils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
                         {
-                            if(!_user.Role.RoleName.Equals(GeneralUtils.ADMIN_ROLE))
+                            if(_user.Role.RoleName != GeneralUtils.ADMIN_ROLE)
                             {
                                 Session["username"] = _user.Username;
                                 Session["userId"] = _user.id;

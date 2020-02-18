@@ -9,25 +9,26 @@ using System.Web.UI.WebControls;
 
 namespace HBSWeb
 {
-    public partial class SubmitRequest : System.Web.UI.Page
+    public partial class SubmitRequest : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             lbl_summary.Visible = false;
-            btn_submit.Enabled = false;
+            submitButton.Enabled = false;
         }
 
-        protected void btn_login_Click(object sender, EventArgs e)
+        protected void submitHolidayRequest(object sender, EventArgs e)
         {
-            DateTime startDate = cal_start_date.SelectedDate;
-            DateTime endDate = cal_end_date.SelectedDate;
+            DateTime startDate = startDateCalendar.SelectedDate;
+            DateTime endDate = endDateCalendar.SelectedDate;
             using (HBSModel _entity = new HBSModel())
             {
-                HolidayRequest holidayRequest = new HolidayRequest();
-                holidayRequest.StartDate = startDate;
-                holidayRequest.EndDate = endDate;
-                string username = Session["username"] as string;
-                holidayRequest.UserID = _entity.Users.FirstOrDefault(user => user.Username == username).id;
+                HolidayRequest holidayRequest = new HolidayRequest()
+                {
+                    StartDate = startDate,
+                    EndDate = endDate,
+                    UserID = (int)Session["userId"]
+                };
                 holidayRequest.RequestStatusID = _entity.StatusRequests.FirstOrDefault(status => status.Status == "Pending").ID;
                 _entity.HolidayRequests.Add(holidayRequest);
                 _entity.SaveChanges();
@@ -35,43 +36,44 @@ namespace HBSWeb
             }
         }
 
-        protected void btn_preview_Click(object sender, EventArgs e)
+        protected void displayHolidaySummary(string text, string color)
         {
-            DateTime startDate = cal_start_date.SelectedDate;
-            DateTime endDate = cal_end_date.SelectedDate;
-            if (startDate.Year == 0001 || endDate.Year == 0001) // Weak check
-            {
-                lbl_summary.Visible = true;
-                lbl_summary.BackColor = System.Drawing.ColorTranslator.FromHtml("#E54B4B");
-                lbl_summary.ForeColor = System.Drawing.Color.WhiteSmoke;
-                lbl_summary.Text = "Error! Select both Start Date and End Date.";
-            }
-            else if (startDate < DateTime.Today)
-            {
-                lbl_summary.Visible = true;
-                lbl_summary.BackColor = System.Drawing.ColorTranslator.FromHtml("#E54B4B");
-                lbl_summary.ForeColor = System.Drawing.Color.WhiteSmoke;
-                lbl_summary.Text = "Error! Please select a start date in the future.";
-            } 
-            else if (endDate < startDate)
-            {
-                lbl_summary.Visible = true;
-                lbl_summary.BackColor = System.Drawing.ColorTranslator.FromHtml("#E54B4B");
-                lbl_summary.ForeColor = System.Drawing.Color.WhiteSmoke;
-                lbl_summary.Text = "Error! Start date must be before end date, if you are requesting only 1 single day, please mark the same date.";
-            }
-            else
-            {
-                lbl_summary.Visible = true;
-                lbl_summary.BackColor = System.Drawing.ColorTranslator.FromHtml("#717C89");
-                lbl_summary.ForeColor = System.Drawing.Color.WhiteSmoke;
-                int daysRequested = endDate.DayOfYear - startDate.DayOfYear == 0 ? 1 : endDate.DayOfYear - startDate.DayOfYear + 1;
-                lbl_summary.Text = "You have selected to submit a request for a total of: " + daysRequested + " day(s). From " + 
-                                        startDate.Day + "-" + startDate.Month + "-" + startDate.Year + " to " +
-                                            endDate.Day + "-" + endDate.Month + "-" + endDate.Year;
-                btn_submit.Enabled = true;
-            }
-            
+            lbl_summary.Visible = true;
+            lbl_summary.BackColor = ColorTranslator.FromHtml(color);
+            lbl_summary.ForeColor = Color.Beige;
+            lbl_summary.Text = text;
         }
+
+        protected void verifySelectedDate(object sender, EventArgs e)
+        {
+            Calendar calendar = (Calendar)sender;
+            if(calendar.ID == startDateCalendar.ID)
+            {
+                if(startDateCalendar.SelectedDate < DateTime.Today)
+                {
+                    displayHolidaySummary("Please select a start date in the future.", GeneralUtils.DANGER_COLOR);
+                }
+            } else
+            {
+                if(endDateCalendar.SelectedDate < startDateCalendar.SelectedDate)
+                {
+                    displayHolidaySummary("Start date must be before end date", GeneralUtils.DANGER_COLOR);
+
+                } else
+                {
+                    DateTime startDate = startDateCalendar.SelectedDate;
+                    DateTime endDate = endDateCalendar.SelectedDate;
+                    int daysRequested = endDate.DayOfYear - startDate.DayOfYear == 0 ? 1 : endDate.DayOfYear - startDate.DayOfYear + 1;
+                    displayHolidaySummary("You have selected to submit a request for a total of: " + daysRequested + " day(s). From " +
+                                            startDate.ToShortDateString() + " to " +
+                                                endDate.ToShortDateString(), GeneralUtils.SUCCESS_COLOR);
+                    submitButton.BackColor = ColorTranslator.FromHtml(GeneralUtils.SUCCESS_COLOR);
+                    submitButton.BorderColor = ColorTranslator.FromHtml(GeneralUtils.SUCCESS_COLOR);
+                    submitButton.Enabled = true;
+                    
+                }
+            }
+        }
+
     }
 }

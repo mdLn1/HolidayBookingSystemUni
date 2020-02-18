@@ -17,34 +17,43 @@ namespace HBSWeb
                 int userId = (int) Session["userId"];
                 var userHolidayRequests = _entity.HolidayRequests.Where(request => request.UserID == userId)
                     .OrderByDescending(x => x.StartDate).ToList();
-                foreach (HolidayRequest hRequest in userHolidayRequests)
+                foreach (var holidayRequest in userHolidayRequests)
                 {
-                    TableRow newRow = new TableRow();
-                    TableCell StartDate = new TableCell();
-                    StartDate.Text = hRequest.StartDate.Day.ToString() + "/" + hRequest.StartDate.Month.ToString() + "/" + hRequest.StartDate.Year.ToString();
-                    TableCell EndDate = new TableCell();
-                    EndDate.Text = hRequest.EndDate.Day.ToString() + "/" + hRequest.EndDate.Month.ToString() + "/" + hRequest.EndDate.Year.ToString();
-                    TableCell Duration = new TableCell();
-                    Duration.Text = (hRequest.EndDate.DayOfYear - hRequest.StartDate.DayOfYear + 1).ToString();
-                    TableCell Status = new TableCell();
-                    Status.Text = hRequest.StatusRequest.Status;
-                    newRow.Cells.Add(StartDate);
-                    newRow.Cells.Add(EndDate);
-                    newRow.Cells.Add(Duration);
-                    newRow.Cells.Add(Status);
-                    if (hRequest.StatusRequest.Status == "Pending")
+                    TableRow tableRow = new TableRow();
+                    var requestStatus = holidayRequest.StatusRequest.Status;
+                    TableCell startDate = new TableCell
                     {
-                        newRow.CssClass = "warning";
-                    }
-                    if (hRequest.StatusRequest.Status == "Accepted")
+                        Text = holidayRequest.StartDate.ToShortDateString()
+                    };
+                    TableCell endDate = new TableCell
                     {
-                        newRow.CssClass = "success";
-                    }
-                    if (hRequest.StatusRequest.Status == "Rejected")
+                        Text = holidayRequest.EndDate.ToShortDateString()
+                    };
+                    TableCell duration = new TableCell
                     {
-                        newRow.CssClass = "danger";
+                        Text = (holidayRequest.EndDate - holidayRequest.StartDate).Days.ToString()
+                    };
+                    TableCell status = new TableCell
+                    {
+                        Text = requestStatus
+                    };
+                    tableRow.Cells.Add(startDate);
+                    tableRow.Cells.Add(endDate);
+                    tableRow.Cells.Add(duration);
+                    tableRow.Cells.Add(status);
+                    
+                    if (requestStatus == GeneralUtils.PENDING)
+                    {
+                        tableRow.CssClass = "warning";
                     }
-                    RequestHistoryTable.Rows.Add(newRow);
+                    else if (requestStatus == GeneralUtils.APPROVED)
+                    {
+                        tableRow.CssClass = "success";
+                    }
+                    else { 
+                        tableRow.CssClass = "danger";
+                    }
+                    RequestHistoryTable.Rows.Add(tableRow);
                 }
             }
         }
