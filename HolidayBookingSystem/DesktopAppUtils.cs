@@ -8,18 +8,17 @@ using HBSDatabase;
 
 namespace HolidayBookingSystem
 {
-    public static class Utils
+    public static class DesktopAppUtils
     {
-        public static String ADMIN_ROLE = "Admin";
         public static void RegisterAdmin()
         {
             using (HBSModel _entity = new HBSModel())
             {
-                if (_entity.Users.Any(x => x.Username == ADMIN_ROLE))
+                if (_entity.Users.Any(x => x.Username == GeneralUtils.ADMIN_ROLE))
                     return;
                 Role role = new Role()
                 {
-                    RoleName = ADMIN_ROLE
+                    RoleName = GeneralUtils.ADMIN_ROLE
                 };
                 
                 Department department = new Department()
@@ -27,9 +26,9 @@ namespace HolidayBookingSystem
                     DepartmentName = "Management"
                 };
                 User admin = new User();
-                admin.Username = ADMIN_ROLE;
+                admin.Username = GeneralUtils.ADMIN_ROLE;
                 byte[] passwordHash, passwordSalt;
-                CreatePasswordHash("Test123!", out passwordHash, out passwordSalt);
+                GeneralUtils.CreatePasswordHash("Test123!", out passwordHash, out passwordSalt);
                 admin.Pwd = passwordHash;
                 admin.PwdSalt = passwordSalt;
                 admin.RoleID = role.ID;
@@ -67,7 +66,7 @@ namespace HolidayBookingSystem
                     User newUser = new User();
                     newUser.Username = username;
                     byte[] passwordHash, passwordSalt;
-                    CreatePasswordHash("password", out passwordHash, out passwordSalt);
+                    GeneralUtils.CreatePasswordHash("password", out passwordHash, out passwordSalt);
                     newUser.Pwd = passwordHash;
                     newUser.PwdSalt = passwordSalt;
                     newUser.StartDate = DateTime.Now.Date;
@@ -86,45 +85,9 @@ namespace HolidayBookingSystem
             }
         }
 
-        public static bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
-            {
-                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-                for (int i = 0; i < computedHash.Length; i++)
-                {
-                    if (computedHash[i] != passwordHash[i])
-                        return false;
-                }
-
-                return true;
-            }
-        }
-
         public static void popDefaultErrorMessageBox(String message)
         {
             MessageBox.Show(message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hashgen = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordHash = hashgen.ComputeHash(Encoding.UTF8.GetBytes(password));
-                passwordSalt = hashgen.Key;
-            }
-
-        }
-
-        public static int CalculateHolidayAllowanceOnRegistration(DateTime startDate)
-        {
-            if (startDate.Year == DateTime.Now.Year)
-            {
-                return Convert.ToInt32(Math.Round((double)(365 - startDate.DayOfYear) / 12));
-            }
-            int years = DateTime.Now.Year - startDate.Year;
-            return 30 + Convert.ToInt32(Math.Floor((double)years / 5));
         }
 
     }

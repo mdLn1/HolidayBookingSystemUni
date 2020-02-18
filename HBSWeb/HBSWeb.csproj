@@ -206,7 +206,7 @@
     <Compile Include="SubmitRequest.aspx.designer.cs">
       <DependentUpon>SubmitRequest.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Utils.cs" />
+    <Compile Include="WebAppUtils.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,6 +233,10 @@
     <ProjectReference Include="..\HBSDatabase\HBSDatabase.csproj">
       <Project>{bb6319a2-7a1e-46c3-a944-753e98236b9b}</Project>
       <Name>HBSDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolutionUtils\SolutionUtils.csproj">
+      <Project>{a7c5b690-e6f4-484b-83f8-c93423ebcc90}</Project>
+      <Name>SolutionUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

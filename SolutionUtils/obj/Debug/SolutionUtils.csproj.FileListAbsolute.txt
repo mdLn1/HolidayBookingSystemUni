@@ -1,0 +1,5 @@
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\SolutionUtils.dll
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\SolutionUtils.pdb
+D:\github_reps\HolidayBookingSystem\SolutionUtils\obj\Debug\SolutionUtils.csprojAssemblyReference.cache
+D:\github_reps\HolidayBookingSystem\SolutionUtils\obj\Debug\SolutionUtils.dll
+D:\github_reps\HolidayBookingSystem\SolutionUtils\obj\Debug\SolutionUtils.pdb

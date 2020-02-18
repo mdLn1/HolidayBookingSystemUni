@@ -44,7 +44,7 @@ namespace HolidayBookingSystem
                 }
                 using (HBSModel _entity = new HBSModel())
                 {
-                    var _users = _entity.Users.Where(user => user.Username.Contains(tb_search.Text) && user.Username != Utils.ADMIN_ROLE).ToList();
+                    var _users = _entity.Users.Where(user => user.Username.Contains(tb_search.Text) && user.Username != GeneralUtils.ADMIN_ROLE).ToList();
                     if (_users != null)
                     {
                         lv_search.Items.Clear();
@@ -66,7 +66,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception err)
             {
-                Utils.popDefaultErrorMessageBox("Something went wrong \n" + err.Message);
+                DesktopAppUtils.popDefaultErrorMessageBox("Something went wrong \n" + err.Message);
             }
         }
 
@@ -104,7 +104,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception err)
             {
-                Utils.popDefaultErrorMessageBox("Error:\n" + err.Message);
+                DesktopAppUtils.popDefaultErrorMessageBox("Error:\n" + err.Message);
             }
         }
 
@@ -120,7 +120,7 @@ namespace HolidayBookingSystem
                 {
                     throw new Exception("Passwords do not match");
                 }
-                if (!Validator.checkPasswordComplexity(tb_password.Text))
+                if (!GeneralUtils.checkPasswordComplexity(tb_password.Text))
                 {
                     throw new Exception("Password complexity does not match requirements");
                 }
@@ -129,7 +129,7 @@ namespace HolidayBookingSystem
                     var _user = _entity.Users.FirstOrDefault(user => user.Username == _selectedUser.Username);
                     // hash the password
                     byte[] passwordHash, passwordSalt;
-                    Utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
+                    GeneralUtils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
                     _user.Pwd = passwordHash;
                     _user.PwdSalt = passwordSalt;
                     _entity.SaveChanges();
@@ -139,7 +139,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception ex)
             {
-                Utils.popDefaultErrorMessageBox("Error:\n" + ex.Message);
+                DesktopAppUtils.popDefaultErrorMessageBox("Error:\n" + ex.Message);
             }
         }
 
@@ -171,7 +171,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception err)
             {
-                Utils.popDefaultErrorMessageBox("Could not connect to database \n" + err.Message);
+                DesktopAppUtils.popDefaultErrorMessageBox("Could not connect to database \n" + err.Message);
             }
 
         }
@@ -184,7 +184,7 @@ namespace HolidayBookingSystem
                 using (HBSModel _entity = new HBSModel())
                 {
                     var _users = _entity.Users.ToList();
-                    _users.RemoveAll(u => u.Username == "admin");
+                    _users.RemoveAll(u => u.Role.RoleName.Equals(GeneralUtils.ADMIN_ROLE));
                     foreach (User usr in _users)
                     {
                         string[] arr = new string[5];
@@ -200,7 +200,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception e)
             {
-                Utils.popDefaultErrorMessageBox("Could not retrieve Item from DB");
+                DesktopAppUtils.popDefaultErrorMessageBox("Could not retrieve Item from DB");
             }
         }
 
@@ -241,7 +241,7 @@ namespace HolidayBookingSystem
                 }
                 catch (Exception err)
                 {
-                    Utils.popDefaultErrorMessageBox("Could not connect to DB \n" + err.Message);
+                    DesktopAppUtils.popDefaultErrorMessageBox("Could not connect to DB \n" + err.Message);
                 }
             }
             

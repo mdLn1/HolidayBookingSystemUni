@@ -12,36 +12,37 @@ namespace HBSWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbl_errorMsg.Visible = false;
+            errorMessageLabel.Visible = false;
         }
 
         protected void btn_login_Click(object sender, EventArgs e)
         {
             try
             {
-                string username = tb_username.Text.Trim();
-                string password = tb_password.Text.Trim();
+                string username = usernameTextBox.Text.Trim();
+                string password = passwordTextBox.Text.Trim();
                 using (HBSModel _entity = new HBSModel())
                 {
                     var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
                     if (_user != null)
                     {
-                        if (!Utils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
+                        if (GeneralUtils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
                         {
-                            lbl_errorMsg.Visible = true;
-                            lbl_errorMsg.Text = "Password not correct.\nTry Again!";
-                        }
-                        else
-                        {
-                            Session["username"] = _user.Username;
-                            Response.Redirect("Dashboard");
+                            if(!_user.Role.RoleName.Equals(GeneralUtils.ADMIN_ROLE))
+                            {
+                                Session["username"] = _user.Username;
+                                Session["userId"] = _user.id;
+                                Response.Redirect("Dashboard");
+                                return;
+                            } else
+                            {
+                                errorMessageLabel.Visible = true;
+                                errorMessageLabel.Text = "Admins cannot login through this website";
+                            }
                         }
                     }
-                    else
-                    {
-                        lbl_errorMsg.Visible = true;
-                        lbl_errorMsg.Text = "Username not registered.\n Try Again!";
-                    }
+                    errorMessageLabel.Visible = true;
+                    errorMessageLabel.Text = "Incorrect login details";
 
                 }
             }

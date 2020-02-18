@@ -103,13 +103,13 @@ namespace HolidayBookingSystem
                     {
                         throw new Exception("User not found");
                     }
-                    if (!Utils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
+                    if (!GeneralUtils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt))
                     {
                         throw new Exception("Invalid login attempt");
                     }
 
                     // Only users matching the role Head and beloging to the Office department can login as admins
-                    if (_user.Role.RoleName != Utils.ADMIN_ROLE)
+                    if (_user.Role.RoleName != GeneralUtils.ADMIN_ROLE)
                     {
                         throw new Exception("Only admins can login with this app");
                     }
@@ -122,7 +122,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception ex)
             {
-                Utils.popDefaultErrorMessageBox(ex.Message);
+                DesktopAppUtils.popDefaultErrorMessageBox(ex.Message);
             }
 
 

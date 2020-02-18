@@ -93,8 +93,7 @@
     <Compile Include="UserControls\UC-EditUser.Designer.cs">
       <DependentUpon>UC-EditUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils.cs" />
-    <Compile Include="Validator.cs" />
+    <Compile Include="DesktopAppUtils.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +139,10 @@
     <ProjectReference Include="..\HBSDatabase\HBSDatabase.csproj">
       <Project>{bb6319a2-7a1e-46c3-a944-753e98236b9b}</Project>
       <Name>HBSDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SolutionUtils\SolutionUtils.csproj">
+      <Project>{a7c5b690-e6f4-484b-83f8-c93423ebcc90}</Project>
+      <Name>SolutionUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

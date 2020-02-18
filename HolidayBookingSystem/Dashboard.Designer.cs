@@ -34,25 +34,25 @@
             this.btn_manage = new System.Windows.Forms.Button();
             this.panel_side = new System.Windows.Forms.Panel();
             this.panel_manage_side = new System.Windows.Forms.Panel();
-            this.btn_edit_employee = new System.Windows.Forms.Button();
-            this.btn_delete_employee = new System.Windows.Forms.Button();
-            this.btn_add_employee = new System.Windows.Forms.Button();
-            this.panel_main = new System.Windows.Forms.Panel();
-            this.panel_manage_employee = new System.Windows.Forms.Panel();
-            this.panel_holiday_requests = new System.Windows.Forms.Panel();
-            this.btn_day_view = new System.Windows.Forms.Button();
-            this.btn_history_requests = new System.Windows.Forms.Button();
-            this.btn_pending_requests = new System.Windows.Forms.Button();
             this.panel_calendar_view = new System.Windows.Forms.Panel();
             this.btn_3 = new System.Windows.Forms.Button();
             this.btn_2 = new System.Windows.Forms.Button();
             this.btn_1 = new System.Windows.Forms.Button();
+            this.panel_holiday_requests = new System.Windows.Forms.Panel();
+            this.btn_day_view = new System.Windows.Forms.Button();
+            this.btn_history_requests = new System.Windows.Forms.Button();
+            this.btn_pending_requests = new System.Windows.Forms.Button();
+            this.panel_manage_employee = new System.Windows.Forms.Panel();
+            this.btn_edit_employee = new System.Windows.Forms.Button();
+            this.btn_add_employee = new System.Windows.Forms.Button();
+            this.btn_delete_employee = new System.Windows.Forms.Button();
+            this.panel_main = new System.Windows.Forms.Panel();
             this.panel_top.SuspendLayout();
             this.panel_side.SuspendLayout();
             this.panel_manage_side.SuspendLayout();
-            this.panel_manage_employee.SuspendLayout();
-            this.panel_holiday_requests.SuspendLayout();
             this.panel_calendar_view.SuspendLayout();
+            this.panel_holiday_requests.SuspendLayout();
+            this.panel_manage_employee.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_top
@@ -63,9 +63,9 @@
             this.panel_top.Controls.Add(this.btn_manage);
             this.panel_top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_top.Location = new System.Drawing.Point(0, 0);
-            this.panel_top.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_top.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(1924, 50);
+            this.panel_top.Size = new System.Drawing.Size(962, 26);
             this.panel_top.TabIndex = 0;
             // 
             // btn_calendar
@@ -73,10 +73,10 @@
             this.btn_calendar.BackColor = System.Drawing.SystemColors.MenuBar;
             this.btn_calendar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_calendar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_calendar.Location = new System.Drawing.Point(440, 0);
-            this.btn_calendar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_calendar.Location = new System.Drawing.Point(220, 0);
+            this.btn_calendar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_calendar.Name = "btn_calendar";
-            this.btn_calendar.Size = new System.Drawing.Size(220, 50);
+            this.btn_calendar.Size = new System.Drawing.Size(110, 26);
             this.btn_calendar.TabIndex = 3;
             this.btn_calendar.Text = "Calendar View";
             this.btn_calendar.UseVisualStyleBackColor = false;
@@ -87,10 +87,10 @@
             this.btn_holiday.BackColor = System.Drawing.SystemColors.MenuBar;
             this.btn_holiday.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_holiday.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_holiday.Location = new System.Drawing.Point(220, 0);
-            this.btn_holiday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_holiday.Location = new System.Drawing.Point(110, 0);
+            this.btn_holiday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_holiday.Name = "btn_holiday";
-            this.btn_holiday.Size = new System.Drawing.Size(220, 50);
+            this.btn_holiday.Size = new System.Drawing.Size(110, 26);
             this.btn_holiday.TabIndex = 2;
             this.btn_holiday.Text = "Holiday Requests";
             this.btn_holiday.UseVisualStyleBackColor = false;
@@ -102,9 +102,9 @@
             this.btn_manage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_manage.Dock = System.Windows.Forms.DockStyle.Left;
             this.btn_manage.Location = new System.Drawing.Point(0, 0);
-            this.btn_manage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_manage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_manage.Name = "btn_manage";
-            this.btn_manage.Size = new System.Drawing.Size(220, 50);
+            this.btn_manage.Size = new System.Drawing.Size(110, 26);
             this.btn_manage.TabIndex = 1;
             this.btn_manage.Text = "Manage Employees";
             this.btn_manage.UseVisualStyleBackColor = false;
@@ -115,10 +115,10 @@
             this.panel_side.BackColor = System.Drawing.SystemColors.MenuBar;
             this.panel_side.Controls.Add(this.panel_manage_side);
             this.panel_side.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_side.Location = new System.Drawing.Point(0, 50);
-            this.panel_side.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_side.Location = new System.Drawing.Point(0, 26);
+            this.panel_side.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_side.Name = "panel_side";
-            this.panel_side.Size = new System.Drawing.Size(200, 737);
+            this.panel_side.Size = new System.Drawing.Size(100, 383);
             this.panel_side.TabIndex = 1;
             // 
             // panel_manage_side
@@ -128,133 +128,30 @@
             this.panel_manage_side.Controls.Add(this.panel_manage_employee);
             this.panel_manage_side.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_manage_side.Location = new System.Drawing.Point(0, 0);
-            this.panel_manage_side.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_manage_side.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_manage_side.Name = "panel_manage_side";
-            this.panel_manage_side.Size = new System.Drawing.Size(200, 737);
+            this.panel_manage_side.Size = new System.Drawing.Size(100, 383);
             this.panel_manage_side.TabIndex = 2;
-            // 
-            // btn_edit_employee
-            // 
-            this.btn_edit_employee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_edit_employee.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_edit_employee.Location = new System.Drawing.Point(0, 84);
-            this.btn_edit_employee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_edit_employee.Name = "btn_edit_employee";
-            this.btn_edit_employee.Size = new System.Drawing.Size(200, 42);
-            this.btn_edit_employee.TabIndex = 3;
-            this.btn_edit_employee.Text = "Edit Employee";
-            this.btn_edit_employee.UseVisualStyleBackColor = true;
-            this.btn_edit_employee.Click += new System.EventHandler(this.btn_edit_employee_Click);
-            // 
-            // btn_delete_employee
-            // 
-            this.btn_delete_employee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_delete_employee.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_delete_employee.Location = new System.Drawing.Point(0, 0);
-            this.btn_delete_employee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_delete_employee.Name = "btn_delete_employee";
-            this.btn_delete_employee.Size = new System.Drawing.Size(200, 42);
-            this.btn_delete_employee.TabIndex = 2;
-            this.btn_delete_employee.Text = "Delete Employee";
-            this.btn_delete_employee.UseVisualStyleBackColor = true;
-            this.btn_delete_employee.Click += new System.EventHandler(this.btn_delete_employee_Click);
-            // 
-            // btn_add_employee
-            // 
-            this.btn_add_employee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_add_employee.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_add_employee.Location = new System.Drawing.Point(0, 42);
-            this.btn_add_employee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_add_employee.Name = "btn_add_employee";
-            this.btn_add_employee.Size = new System.Drawing.Size(200, 42);
-            this.btn_add_employee.TabIndex = 1;
-            this.btn_add_employee.Text = "Add Employee";
-            this.btn_add_employee.UseVisualStyleBackColor = true;
-            this.btn_add_employee.Click += new System.EventHandler(this.btn_add_employee_Click);
-            // 
-            // panel_main
-            // 
-            this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_main.Location = new System.Drawing.Point(200, 50);
-            this.panel_main.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel_main.Name = "panel_main";
-            this.panel_main.Size = new System.Drawing.Size(1724, 737);
-            this.panel_main.TabIndex = 2;
-            // 
-            // panel_manage_employee
-            // 
-            this.panel_manage_employee.Controls.Add(this.btn_edit_employee);
-            this.panel_manage_employee.Controls.Add(this.btn_add_employee);
-            this.panel_manage_employee.Controls.Add(this.btn_delete_employee);
-            this.panel_manage_employee.Location = new System.Drawing.Point(1, 0);
-            this.panel_manage_employee.Name = "panel_manage_employee";
-            this.panel_manage_employee.Size = new System.Drawing.Size(200, 134);
-            this.panel_manage_employee.TabIndex = 4;
-            // 
-            // panel_holiday_requests
-            // 
-            this.panel_holiday_requests.Controls.Add(this.btn_day_view);
-            this.panel_holiday_requests.Controls.Add(this.btn_history_requests);
-            this.panel_holiday_requests.Controls.Add(this.btn_pending_requests);
-            this.panel_holiday_requests.Location = new System.Drawing.Point(0, 137);
-            this.panel_holiday_requests.Name = "panel_holiday_requests";
-            this.panel_holiday_requests.Size = new System.Drawing.Size(200, 176);
-            this.panel_holiday_requests.TabIndex = 5;
-            // 
-            // btn_day_view
-            // 
-            this.btn_day_view.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_day_view.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_day_view.Location = new System.Drawing.Point(0, 126);
-            this.btn_day_view.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_day_view.Name = "btn_day_view";
-            this.btn_day_view.Size = new System.Drawing.Size(200, 42);
-            this.btn_day_view.TabIndex = 3;
-            this.btn_day_view.Text = "Day View";
-            this.btn_day_view.UseVisualStyleBackColor = true;
-            // 
-            // btn_history_requests
-            // 
-            this.btn_history_requests.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_history_requests.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_history_requests.Location = new System.Drawing.Point(0, 84);
-            this.btn_history_requests.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_history_requests.Name = "btn_history_requests";
-            this.btn_history_requests.Size = new System.Drawing.Size(200, 42);
-            this.btn_history_requests.TabIndex = 1;
-            this.btn_history_requests.Text = "History";
-            this.btn_history_requests.UseVisualStyleBackColor = true;
-            // 
-            // btn_pending_requests
-            // 
-            this.btn_pending_requests.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_pending_requests.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_pending_requests.Location = new System.Drawing.Point(0, 0);
-            this.btn_pending_requests.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_pending_requests.Name = "btn_pending_requests";
-            this.btn_pending_requests.Size = new System.Drawing.Size(200, 84);
-            this.btn_pending_requests.TabIndex = 2;
-            this.btn_pending_requests.Text = "Pending Requests";
-            this.btn_pending_requests.UseVisualStyleBackColor = true;
             // 
             // panel_calendar_view
             // 
             this.panel_calendar_view.Controls.Add(this.btn_3);
             this.panel_calendar_view.Controls.Add(this.btn_2);
             this.panel_calendar_view.Controls.Add(this.btn_1);
-            this.panel_calendar_view.Location = new System.Drawing.Point(0, 319);
+            this.panel_calendar_view.Location = new System.Drawing.Point(0, 166);
+            this.panel_calendar_view.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_calendar_view.Name = "panel_calendar_view";
-            this.panel_calendar_view.Size = new System.Drawing.Size(200, 133);
+            this.panel_calendar_view.Size = new System.Drawing.Size(100, 69);
             this.panel_calendar_view.TabIndex = 6;
             // 
             // btn_3
             // 
             this.btn_3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_3.Location = new System.Drawing.Point(0, 84);
-            this.btn_3.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_3.Location = new System.Drawing.Point(0, 44);
+            this.btn_3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_3.Name = "btn_3";
-            this.btn_3.Size = new System.Drawing.Size(200, 42);
+            this.btn_3.Size = new System.Drawing.Size(100, 22);
             this.btn_3.TabIndex = 3;
             this.btn_3.Text = "Button3";
             this.btn_3.UseVisualStyleBackColor = true;
@@ -263,10 +160,10 @@
             // 
             this.btn_2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_2.Location = new System.Drawing.Point(0, 42);
-            this.btn_2.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_2.Location = new System.Drawing.Point(0, 22);
+            this.btn_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_2.Name = "btn_2";
-            this.btn_2.Size = new System.Drawing.Size(200, 42);
+            this.btn_2.Size = new System.Drawing.Size(100, 22);
             this.btn_2.TabIndex = 1;
             this.btn_2.Text = "Button2";
             this.btn_2.UseVisualStyleBackColor = true;
@@ -276,33 +173,139 @@
             this.btn_1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_1.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_1.Location = new System.Drawing.Point(0, 0);
-            this.btn_1.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_1.Name = "btn_1";
-            this.btn_1.Size = new System.Drawing.Size(200, 42);
+            this.btn_1.Size = new System.Drawing.Size(100, 22);
             this.btn_1.TabIndex = 2;
             this.btn_1.Text = "Button1";
             this.btn_1.UseVisualStyleBackColor = true;
             // 
+            // panel_holiday_requests
+            // 
+            this.panel_holiday_requests.Controls.Add(this.btn_day_view);
+            this.panel_holiday_requests.Controls.Add(this.btn_history_requests);
+            this.panel_holiday_requests.Controls.Add(this.btn_pending_requests);
+            this.panel_holiday_requests.Location = new System.Drawing.Point(0, 71);
+            this.panel_holiday_requests.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_holiday_requests.Name = "panel_holiday_requests";
+            this.panel_holiday_requests.Size = new System.Drawing.Size(100, 92);
+            this.panel_holiday_requests.TabIndex = 5;
+            // 
+            // btn_day_view
+            // 
+            this.btn_day_view.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_day_view.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_day_view.Location = new System.Drawing.Point(0, 66);
+            this.btn_day_view.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_day_view.Name = "btn_day_view";
+            this.btn_day_view.Size = new System.Drawing.Size(100, 22);
+            this.btn_day_view.TabIndex = 3;
+            this.btn_day_view.Text = "Day View";
+            this.btn_day_view.UseVisualStyleBackColor = true;
+            // 
+            // btn_history_requests
+            // 
+            this.btn_history_requests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_history_requests.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_history_requests.Location = new System.Drawing.Point(0, 44);
+            this.btn_history_requests.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_history_requests.Name = "btn_history_requests";
+            this.btn_history_requests.Size = new System.Drawing.Size(100, 22);
+            this.btn_history_requests.TabIndex = 1;
+            this.btn_history_requests.Text = "History";
+            this.btn_history_requests.UseVisualStyleBackColor = true;
+            // 
+            // btn_pending_requests
+            // 
+            this.btn_pending_requests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_pending_requests.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_pending_requests.Location = new System.Drawing.Point(0, 0);
+            this.btn_pending_requests.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_pending_requests.Name = "btn_pending_requests";
+            this.btn_pending_requests.Size = new System.Drawing.Size(100, 44);
+            this.btn_pending_requests.TabIndex = 2;
+            this.btn_pending_requests.Text = "Pending Requests";
+            this.btn_pending_requests.UseVisualStyleBackColor = true;
+            // 
+            // panel_manage_employee
+            // 
+            this.panel_manage_employee.Controls.Add(this.btn_edit_employee);
+            this.panel_manage_employee.Controls.Add(this.btn_add_employee);
+            this.panel_manage_employee.Controls.Add(this.btn_delete_employee);
+            this.panel_manage_employee.Location = new System.Drawing.Point(0, 0);
+            this.panel_manage_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_manage_employee.Name = "panel_manage_employee";
+            this.panel_manage_employee.Size = new System.Drawing.Size(100, 67);
+            this.panel_manage_employee.TabIndex = 4;
+            // 
+            // btn_edit_employee
+            // 
+            this.btn_edit_employee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_edit_employee.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_edit_employee.Location = new System.Drawing.Point(0, 22);
+            this.btn_edit_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_edit_employee.Name = "btn_edit_employee";
+            this.btn_edit_employee.Size = new System.Drawing.Size(100, 22);
+            this.btn_edit_employee.TabIndex = 3;
+            this.btn_edit_employee.Text = "Edit Employee";
+            this.btn_edit_employee.UseVisualStyleBackColor = true;
+            this.btn_edit_employee.Click += new System.EventHandler(this.btn_edit_employee_Click);
+            // 
+            // btn_add_employee
+            // 
+            this.btn_add_employee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_add_employee.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_add_employee.Location = new System.Drawing.Point(0, 0);
+            this.btn_add_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_add_employee.Name = "btn_add_employee";
+            this.btn_add_employee.Size = new System.Drawing.Size(100, 22);
+            this.btn_add_employee.TabIndex = 1;
+            this.btn_add_employee.Text = "Add Employee";
+            this.btn_add_employee.UseVisualStyleBackColor = true;
+            this.btn_add_employee.Click += new System.EventHandler(this.btn_add_employee_Click);
+            // 
+            // btn_delete_employee
+            // 
+            this.btn_delete_employee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_delete_employee.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_delete_employee.Location = new System.Drawing.Point(0, 45);
+            this.btn_delete_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_delete_employee.Name = "btn_delete_employee";
+            this.btn_delete_employee.Size = new System.Drawing.Size(100, 22);
+            this.btn_delete_employee.TabIndex = 2;
+            this.btn_delete_employee.Text = "Delete Employee";
+            this.btn_delete_employee.UseVisualStyleBackColor = true;
+            this.btn_delete_employee.Click += new System.EventHandler(this.btn_delete_employee_Click);
+            // 
+            // panel_main
+            // 
+            this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_main.Location = new System.Drawing.Point(100, 26);
+            this.panel_main.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel_main.Name = "panel_main";
+            this.panel_main.Size = new System.Drawing.Size(862, 383);
+            this.panel_main.TabIndex = 2;
+            // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1924, 787);
+            this.ClientSize = new System.Drawing.Size(962, 409);
             this.Controls.Add(this.panel_main);
             this.Controls.Add(this.panel_side);
             this.Controls.Add(this.panel_top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.panel_top.ResumeLayout(false);
             this.panel_side.ResumeLayout(false);
             this.panel_manage_side.ResumeLayout(false);
-            this.panel_manage_employee.ResumeLayout(false);
-            this.panel_holiday_requests.ResumeLayout(false);
             this.panel_calendar_view.ResumeLayout(false);
+            this.panel_holiday_requests.ResumeLayout(false);
+            this.panel_manage_employee.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

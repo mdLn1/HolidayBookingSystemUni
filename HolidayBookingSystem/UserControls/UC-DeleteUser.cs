@@ -46,7 +46,7 @@ namespace HolidayBookingSystem
                 using (HBSModel _entity = new HBSModel())
                 {
                     var _users = _entity.Users.ToList();
-                    _users.RemoveAll(u => u.Role.RoleName == Utils.ADMIN_ROLE);
+                    _users.RemoveAll(u => u.Role.RoleName.Equals(GeneralUtils.ADMIN_ROLE));
                     foreach (User usr in _users)
                     {
                         string[] arr = new string[7];
@@ -64,7 +64,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception err)
             {
-                Utils.popDefaultErrorMessageBox("Could not retrieve Item from DB \n" + err.Message);
+                DesktopAppUtils.popDefaultErrorMessageBox("Could not retrieve Item from DB \n" + err.Message);
             }
         }
 
@@ -91,7 +91,7 @@ namespace HolidayBookingSystem
             }
             catch (Exception ex)
             {
-                Utils.popDefaultErrorMessageBox("Could not complete delete operation. Ensure to select a user.\n" + ex.Message);
+                DesktopAppUtils.popDefaultErrorMessageBox("Could not complete delete operation. Ensure to select a user.\n" + ex.Message);
             }
             
             

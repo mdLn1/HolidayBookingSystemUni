@@ -61,3 +61,5 @@ D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HBSDesktop.cs
 D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HBSDesktop.csproj.CopyComplete
 D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.exe
 D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.pdb
+D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\SolutionUtils.dll
+D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\SolutionUtils.pdb

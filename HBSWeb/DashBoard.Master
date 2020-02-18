@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - HBS</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -14,7 +14,19 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    
+    <style>
+        ul li a {
+            font-size:1.8rem;
+        }
+        #userWelcomeBox {
+            display:block;
+            color: white;
+            padding-left: 10px;
+            padding-right: 20px;
+            padding-top: 12px;
+            font-size:2rem;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -49,11 +61,12 @@
                     <a class="navbar-brand" runat="server" href="~/Dashboard">HBS</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav right">
                         <li><a runat="server" href="~/SubmitRequest">Submit Request</a></li>
                         <li><a runat="server" href="~/RequestsHistory">Requests History</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><span ID="userWelcomeBox">Welcome, <%: Session["username"] %>!</span></li>
 	                  <li>
 	          	        <a href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
 	                  </li>
@@ -66,7 +79,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Gabriel Ciortea Pop</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Madalin Preda Solutions</p>
             </footer>
         </div>
 

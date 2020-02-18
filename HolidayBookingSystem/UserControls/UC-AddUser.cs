@@ -51,7 +51,7 @@ namespace HolidayBookingSystem
                     throw new Exception("Passwords do not match");
                 }
 
-                if (!Validator.checkPasswordComplexity(tb_password.Text))
+                if (!GeneralUtils.checkPasswordComplexity(tb_password.Text))
                 {
                     throw new Exception("Password does not match the required complexity");
                 }
@@ -77,7 +77,7 @@ namespace HolidayBookingSystem
                     }
                     // hash the password
                     byte[] passwordHash, passwordSalt;
-                    Utils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
+                    GeneralUtils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
                     newUser.Pwd = passwordHash;
                     newUser.PwdSalt = passwordSalt;
 
@@ -91,7 +91,7 @@ namespace HolidayBookingSystem
                     }
                     catch (Exception ex)
                     {
-                        Utils.popDefaultErrorMessageBox("Please select valid role and department:\n" + ex.Message);
+                        DesktopAppUtils.popDefaultErrorMessageBox("Please select valid role and department:\n" + ex.Message);
                         return;
 
                     }
@@ -102,7 +102,7 @@ namespace HolidayBookingSystem
                     newUser.StartDate = dp_add_employee.Value.Date;
 
                     // calculate remaining days
-                    newUser.RemainingDays = Utils.CalculateHolidayAllowanceOnRegistration(dp_add_employee.Value.Date);
+                    newUser.RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(dp_add_employee.Value.Date);
 
                     try
                     {
@@ -119,13 +119,13 @@ namespace HolidayBookingSystem
                     }
                     catch
                     {
-                        Utils.popDefaultErrorMessageBox("Something went wrong");
+                        DesktopAppUtils.popDefaultErrorMessageBox("Something went wrong");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Utils.popDefaultErrorMessageBox("Registration Error: \n" + ex.Message);
+                DesktopAppUtils.popDefaultErrorMessageBox("Registration Error: \n" + ex.Message);
             }
 
         }
@@ -148,7 +148,7 @@ namespace HolidayBookingSystem
             }
             catch
             {
-                Utils.popDefaultErrorMessageBox("Could not connect to the database");
+                DesktopAppUtils.popDefaultErrorMessageBox("Could not connect to the database");
             }
 
         }
