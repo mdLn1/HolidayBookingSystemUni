@@ -5,6 +5,14 @@ create table Departments
 )
 go
 
+create table Departments
+(
+    ID             int identity
+        primary key,
+    DepartmentName varchar(255) not null
+)
+go
+
 create unique index Departments_Department_uindex
     on Departments (DepartmentName)
 go
@@ -13,8 +21,8 @@ create table PeakTimes
 (
     ID        int identity
         primary key,
-    StartDate datetime2 not null,
-    EndDate   datetime2 not null
+    StartDate date not null,
+    EndDate   date not null
 )
 go
 
@@ -30,35 +38,49 @@ create unique index Roles_Role_uindex
     on Roles (RoleName)
 go
 
+create table StatusRequests
+(
+    ID     int identity
+        constraint RequestStatus_pk
+            primary key nonclustered,
+    Status varchar(32) not null
+        unique
+)
+go
+
 create table Users
 (
-    id          int identity
-        	constraint table_name_pk
-            	primary key nonclustered,
+    id            int identity
+        constraint table_name_pk
+            primary key nonclustered,
     Username      varchar(64)    not null,
-    StartDate     datetime2,
+    StartDate     date,
     RemainingDays int,
     RoleID        int
         references Roles,
     DepartmentID  int
         references Departments,
     Pwd           varbinary(max) not null,
-    PwdSalt       varbinary(max) not null
+    PwdSalt       varbinary(max) not null,
+    PhoneNumber   varchar(32)
 )
 go
 
 create table HolidayRequests
 (
-    ID        	int identity
-        	primary key,
-    StartDate datetime2 not null,
-    EndDate   datetime2 not null,
-    Feasible  bit,
-    UserID    int       not null
-        references Users
+    ID              int identity
+        primary key,
+    StartDate       date not null,
+    EndDate         date not null,
+    Feasible        bit,
+    UserID          int  not null
+        references Users,
+    RequestStatusID int  not null
+        references StatusRequests
 )
 go
 
 create unique index table_name_username_uindex
     on Users (Username)
 go
+
