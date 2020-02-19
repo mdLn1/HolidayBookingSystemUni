@@ -33,13 +33,13 @@ namespace HBSWeb
         protected global::System.Web.UI.WebControls.Calendar endDateCalendar;
 
         /// <summary>
-        /// lbl_summary control.
+        /// holidaRequestMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_summary;
+        protected global::System.Web.UI.WebControls.Label holidaRequestMessage;
 
         /// <summary>
         /// submitButton control.

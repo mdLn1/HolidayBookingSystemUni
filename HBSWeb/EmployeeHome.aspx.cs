@@ -12,6 +12,11 @@ namespace HBSWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["HolidayRequest"] == "Success")
+            {
+                HolidayRequestAlert.Visible = true;
+            }
+
             using (HBSModel _entity = new HBSModel())
             {
                 int userId = (int) Session["userId"];
@@ -20,27 +25,26 @@ namespace HBSWeb
                 foreach (var holidayRequest in userHolidayRequests)
                 {
                     TableRow tableRow = new TableRow();
+
                     var requestStatus = holidayRequest.StatusRequest.Status;
-                    TableCell startDate = new TableCell
+
+                    tableRow.Cells.Add(new TableCell
                     {
                         Text = holidayRequest.StartDate.ToShortDateString()
-                    };
-                    TableCell endDate = new TableCell
+                    });
+
+                    tableRow.Cells.Add(new TableCell
                     {
                         Text = holidayRequest.EndDate.ToShortDateString()
-                    };
-                    TableCell duration = new TableCell
+                    });
+                    tableRow.Cells.Add(new TableCell
                     {
-                        Text = (holidayRequest.EndDate - holidayRequest.StartDate).Days.ToString()
-                    };
-                    TableCell status = new TableCell
+                        Text = holidayRequest.NumberOfDays.ToString()
+                    });
+                    tableRow.Cells.Add(new TableCell
                     {
-                        Text = requestStatus
-                    };
-                    tableRow.Cells.Add(startDate);
-                    tableRow.Cells.Add(endDate);
-                    tableRow.Cells.Add(duration);
-                    tableRow.Cells.Add(status);
+                        Text = requestStatus.ToUpper()
+                    });
                     
                     if (requestStatus == GeneralUtils.PENDING)
                     {
@@ -53,7 +57,7 @@ namespace HBSWeb
                     else { 
                         tableRow.CssClass = "danger";
                     }
-                    RequestHistoryTable.Rows.Add(tableRow);
+                    requestsTable.Rows.Add(tableRow);
                 }
             }
         }

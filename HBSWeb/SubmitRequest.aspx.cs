@@ -13,7 +13,7 @@ namespace HBSWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbl_summary.Visible = false;
+            holidaRequestMessage.Visible = false;
             submitButton.Enabled = false;
         }
 
@@ -23,54 +23,82 @@ namespace HBSWeb
             DateTime endDate = endDateCalendar.SelectedDate;
             using (HBSModel _entity = new HBSModel())
             {
+                
                 HolidayRequest holidayRequest = new HolidayRequest()
                 {
                     StartDate = startDate,
                     EndDate = endDate,
-                    UserID = (int)Session["userId"]
+                    UserID = (int)Session["userId"],
+                    NumberOfDays = GeneralUtils.CalculateWorkingDays(endDate, startDate)
                 };
-                holidayRequest.RequestStatusID = _entity.StatusRequests.FirstOrDefault(status => status.Status == "Pending").ID;
+                holidayRequest.RequestStatusID = _entity.StatusRequests.FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
                 _entity.HolidayRequests.Add(holidayRequest);
                 _entity.SaveChanges();
-                Response.Redirect("/Dashboard?HolidayRequest=Success");
+                Response.Redirect("/EmployeeHome?HolidayRequest=Success");
             }
         }
 
         protected void displayHolidaySummary(string text, string color)
         {
-            lbl_summary.Visible = true;
-            lbl_summary.BackColor = ColorTranslator.FromHtml(color);
-            lbl_summary.ForeColor = Color.Beige;
-            lbl_summary.Text = text;
+            holidaRequestMessage.Visible = true;
+            holidaRequestMessage.BackColor = ColorTranslator.FromHtml(color);
+            holidaRequestMessage.ForeColor = Color.Beige;
+            holidaRequestMessage.Text = text;
         }
 
         protected void verifySelectedDate(object sender, EventArgs e)
         {
             Calendar calendar = (Calendar)sender;
-            if(calendar.ID == startDateCalendar.ID)
+            if (calendar.ID == startDateCalendar.ID)
             {
-                if(startDateCalendar.SelectedDate < DateTime.Today)
+                if (startDateCalendar.SelectedDate < DateTime.Today)
                 {
+                    startDateCalendar.SelectedDates.Clear();
                     displayHolidaySummary("Please select a start date in the future.", GeneralUtils.DANGER_COLOR);
                 }
-            } else
+                endDateCalendar.SelectedDates.Clear();
+                submitButton.BackColor = ColorTranslator.FromHtml(GeneralUtils.DANGER_COLOR);
+                submitButton.BorderColor = ColorTranslator.FromHtml(GeneralUtils.DANGER_COLOR);
+                submitButton.Enabled = false;
+            }
+            else
             {
-                if(endDateCalendar.SelectedDate < startDateCalendar.SelectedDate)
+                if (startDateCalendar.SelectedDate < DateTime.Today)
                 {
-                    displayHolidaySummary("Start date must be before end date", GeneralUtils.DANGER_COLOR);
+                    endDateCalendar.SelectedDates.Clear();
+                    displayHolidaySummary("Please select a start date first.", GeneralUtils.DANGER_COLOR);
+                    return;
+                }
 
-                } else
+                if (endDateCalendar.SelectedDate < startDateCalendar.SelectedDate)
+                {
+                    endDateCalendar.SelectedDates.Clear();
+                    displayHolidaySummary("End date must come after start date", GeneralUtils.DANGER_COLOR);
+                }
+                else
                 {
                     DateTime startDate = startDateCalendar.SelectedDate;
                     DateTime endDate = endDateCalendar.SelectedDate;
-                    int daysRequested = endDate.DayOfYear - startDate.DayOfYear == 0 ? 1 : endDate.DayOfYear - startDate.DayOfYear + 1;
-                    displayHolidaySummary("You have selected to submit a request for a total of: " + daysRequested + " day(s). From " +
+                    int workingDays = GeneralUtils.CalculateWorkingDays(startDate, endDate);
+                    if (workingDays == 0)
+                    {
+                        displayHolidaySummary("You selected weekend days, no need for holiday allowance", GeneralUtils.WARNING_COLOR);
+                    }
+                    else if (workingDays > 35)
+                    {
+                        displayHolidaySummary("Too many days selected, it exceeds the maximum allowance", GeneralUtils.DANGER_COLOR);
+                    }
+                    else
+                    {
+                        displayHolidaySummary("You requested " + workingDays + " day(s) of holiday allowance from " +
                                             startDate.ToShortDateString() + " to " +
-                                                endDate.ToShortDateString(), GeneralUtils.SUCCESS_COLOR);
-                    submitButton.BackColor = ColorTranslator.FromHtml(GeneralUtils.SUCCESS_COLOR);
-                    submitButton.BorderColor = ColorTranslator.FromHtml(GeneralUtils.SUCCESS_COLOR);
-                    submitButton.Enabled = true;
-                    
+                                                endDate.ToShortDateString() + ". Please submit if you are satisfied with your selection", GeneralUtils.SUCCESS_COLOR);
+                        submitButton.BackColor = ColorTranslator.FromHtml(GeneralUtils.SUCCESS_COLOR);
+                        submitButton.BorderColor = ColorTranslator.FromHtml(GeneralUtils.SUCCESS_COLOR);
+                        submitButton.Enabled = true;
+                    }
+
+
                 }
             }
         }

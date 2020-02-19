@@ -116,8 +116,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="DashBoard.aspx" />
-    <Content Include="Default.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -130,7 +129,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="DashBoard.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="RequestsHistory.aspx" />
+    <Content Include="EmployeeHome.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -167,13 +166,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="DashBoard.aspx.cs">
-      <DependentUpon>DashBoard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DashBoard.aspx.designer.cs">
-      <DependentUpon>DashBoard.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DashBoard.Master.cs">
       <DependentUpon>DashBoard.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,23 +173,23 @@
     <Compile Include="DashBoard.Master.designer.cs">
       <DependentUpon>DashBoard.Master</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestsHistory.aspx.cs">
-      <DependentUpon>RequestsHistory.aspx</DependentUpon>
+    <Compile Include="EmployeeHome.aspx.cs">
+      <DependentUpon>EmployeeHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RequestsHistory.aspx.designer.cs">
-      <DependentUpon>RequestsHistory.aspx</DependentUpon>
+    <Compile Include="EmployeeHome.aspx.designer.cs">
+      <DependentUpon>EmployeeHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubmitRequest.aspx.cs">
       <DependentUpon>SubmitRequest.aspx</DependentUpon>

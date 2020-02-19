@@ -7,14 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace HBSWeb
 {
-    public partial class DashBoard : System.Web.UI.MasterPage
+    public partial class DashBoard : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] == null)
+            if (Session["userId"] == null)
             {
                 Response.Redirect("~/");
             }
         }
+
+
     }
 }

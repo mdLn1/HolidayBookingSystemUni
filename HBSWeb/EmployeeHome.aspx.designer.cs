@@ -15,12 +15,21 @@ namespace HBSWeb
     {
 
         /// <summary>
-        /// RequestHistoryTable control.
+        /// HolidayRequestAlert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table RequestHistoryTable;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HolidayRequestAlert;
+
+        /// <summary>
+        /// requestsTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table requestsTable;
     }
 }

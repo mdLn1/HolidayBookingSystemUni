@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HBSWeb.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="HBSWeb.Default" %>
 
 <!DOCTYPE html>
 
@@ -52,13 +52,14 @@
         <div class="container body-content">
             <div class="wrapper">
                 <div class="login-form">
+                    <div id="LogoutMessageAlert" class="alert alert-success" role="alert" runat="server" visible="false">You have successfully logged out.</div>
                     <h2 class="form-signin-heading">Login</h2>
                     <asp:TextBox ID="usernameTextBox" runat="server" placeholder="Username" CssClass="form-control" required="true"></asp:TextBox>
                     <br />
                     <asp:TextBox ID="passwordTextBox" runat="server" placeholder="Password" TextMode="Password" CssClass="form-control" required="true"></asp:TextBox>
                     <br />
                     <p>
-                        <asp:Button ID="loginButton" runat="server" CssClass="btn btn-lg btn-success btn-block" Text="Login" OnClick="btn_login_Click" />
+                        <asp:Button ID="loginButton" runat="server" CssClass="btn btn-lg btn-success btn-block" Text="Login" OnClick="loginRequest" />
                     </p>
                     <p>
                         <asp:Label ID="errorMessageLabel" runat="server" CssClass="label-danger form-control"></asp:Label>

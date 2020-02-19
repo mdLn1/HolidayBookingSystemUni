@@ -8,17 +8,28 @@ using System.Web.UI.WebControls;
 
 namespace HBSWeb
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Request.QueryString["logout"] == "Success")
+            {
+                Session.Clear();
+                LogoutMessageAlert.Visible = true;
+            }
+            if(Session["userId"] != null)
+            {
+                Response.Redirect("EmployeeHome");
+            }
             errorMessageLabel.Visible = false;
         }
 
-        protected void btn_login_Click(object sender, EventArgs e)
+        protected void loginRequest(object sender, EventArgs e)
         {
             try
             {
+                LogoutMessageAlert.Visible = false;
+
                 string username = usernameTextBox.Text.Trim();
                 string password = passwordTextBox.Text.Trim();
                 using (HBSModel _entity = new HBSModel())
@@ -32,12 +43,8 @@ namespace HBSWeb
                             {
                                 Session["username"] = _user.Username;
                                 Session["userId"] = _user.id;
-                                Response.Redirect("Dashboard");
+                                Response.Redirect("EmployeeHome");
                                 return;
-                            } else
-                            {
-                                errorMessageLabel.Visible = true;
-                                errorMessageLabel.Text = "Admins cannot login through this website";
                             }
                         }
                     }

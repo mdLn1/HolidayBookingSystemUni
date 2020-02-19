@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -32,6 +33,20 @@ public static class GeneralUtils
             passwordSalt = hashgen.Key;
         }
 
+    }
+    public static int CalculateWorkingDays(DateTime from, DateTime to)
+    {
+        int workingDays = 0;
+        while(from < to.AddDays(1))
+        {
+            if(!(from.DayOfWeek == DayOfWeek.Saturday || from.DayOfWeek == DayOfWeek.Sunday))
+            {
+                workingDays++;
+            }
+            from = from.AddDays(1);
+
+        }
+        return workingDays;
     }
 
     public static bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
