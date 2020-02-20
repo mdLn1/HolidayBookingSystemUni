@@ -184,9 +184,12 @@ namespace HolidayBookingSystem
                 using (HBSModel _entity = new HBSModel())
                 {
                     var _users = _entity.Users.ToList();
-                    _users.RemoveAll(u => u.Role.RoleName == GeneralUtils.ADMIN_ROLE);
                     foreach (User usr in _users)
                     {
+                        if (usr.Role.RoleName == GeneralUtils.ADMIN_ROLE)
+                        {
+                            continue;
+                        }
                         string[] arr = new string[5];
                         arr[0] = usr.id.ToString();
                         arr[1] = usr.Username.ToString();

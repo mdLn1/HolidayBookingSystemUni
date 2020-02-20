@@ -20,7 +20,10 @@
                 <h4>Select Start Date</h4>
             </div>
             <div class="col-md-3">
-                <asp:Calendar ID="startDateCalendar" runat="server" FirstDayOfWeek="Monday" OnSelectionChanged="verifySelectedDate" SelectedDayStyle-BackColor="#33CC33" ShowGridLines="True"></asp:Calendar>
+                <asp:Calendar ID="startDateCalendar" runat="server" FirstDayOfWeek="Monday" OnSelectionChanged="verifySelectedDate" SelectedDayStyle-BackColor="#33CC33" ShowGridLines="True">
+<SelectedDayStyle BackColor="#33CC33"></SelectedDayStyle>
+                    <WeekendDayStyle BackColor="#FFCC00" />
+                </asp:Calendar>
             </div>
             <div class="col-md-3">
             </div>
@@ -34,7 +37,10 @@
                 <h4>Select End Date</h4>
             </div>
             <div class="col-md-3">
-                <asp:Calendar ID="endDateCalendar" runat="server" FirstDayOfWeek="Monday" OnSelectionChanged="verifySelectedDate" SelectedDayStyle-BackColor="#33CC33" ShowGridLines="True"></asp:Calendar>
+                <asp:Calendar ID="endDateCalendar" runat="server" FirstDayOfWeek="Monday" OnSelectionChanged="verifySelectedDate" SelectedDayStyle-BackColor="#33CC33" ShowGridLines="True">
+<SelectedDayStyle BackColor="#33CC33"></SelectedDayStyle>
+                    <WeekendDayStyle BackColor="#FFCC00" />
+                </asp:Calendar>
             </div>
             <div class="col-md-3">
             </div>

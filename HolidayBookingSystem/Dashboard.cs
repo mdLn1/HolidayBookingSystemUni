@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HBSDatabase;
+using HolidayBookingSystem.UserControls;
 
 namespace HolidayBookingSystem
 {
@@ -93,6 +94,56 @@ namespace HolidayBookingSystem
             {
                 UC_EditUser.Instance.BringToFront();
                 UC_EditUser.Instance.initializeUserList();
+            }
+        }
+
+        private void btn_pending_requests_Click(object sender, EventArgs e)
+        {
+            if (!panel_main.Controls.Contains(UC_OutstandingHolidays.Instance))
+            {
+                panel_main.Controls.Add(UC_OutstandingHolidays.Instance);
+                UC_OutstandingHolidays.Instance.Dock = DockStyle.Fill;
+                UC_OutstandingHolidays.Instance.BringToFront();
+                UC_OutstandingHolidays.Instance.initializeRequestsList();
+            }
+            else
+            {
+                UC_OutstandingHolidays.Instance.BringToFront();
+                UC_OutstandingHolidays.Instance.initializeRequestsList();
+            }
+        }
+
+        private void btn_holiday_bookings_Click(object sender, EventArgs e)
+        {
+            if (!panel_main.Controls.Contains(UC_HolidayBookings.Instance))
+            {
+                panel_main.Controls.Add(UC_HolidayBookings.Instance);
+                UC_HolidayBookings.Instance.Dock = DockStyle.Fill;
+                UC_HolidayBookings.Instance.BringToFront();
+                UC_HolidayBookings.Instance.initializeHolidayBookingsList();
+                UC_HolidayBookings.Instance.populateEmployeesDropdown();
+            }
+            else
+            {
+                UC_HolidayBookings.Instance.BringToFront();
+                UC_HolidayBookings.Instance.initializeHolidayBookingsList();
+                UC_HolidayBookings.Instance.populateEmployeesDropdown();
+            }
+        }
+
+        private void btn_day_view_Click(object sender, EventArgs e)
+        {
+            if (!panel_main.Controls.Contains(UC_EmployeesPresent.Instance))
+            {
+                panel_main.Controls.Add(UC_EmployeesPresent.Instance);
+                UC_EmployeesPresent.Instance.Dock = DockStyle.Fill;
+                UC_EmployeesPresent.Instance.BringToFront();
+                UC_EmployeesPresent.Instance.initialiseEmployeesLists();
+            }
+            else
+            {
+                UC_EmployeesPresent.Instance.BringToFront();
+                UC_EmployeesPresent.Instance.initialiseEmployeesLists();
             }
         }
     }

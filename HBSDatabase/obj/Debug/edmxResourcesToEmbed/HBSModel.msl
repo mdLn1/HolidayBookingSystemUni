@@ -12,6 +12,7 @@
     <EntitySetMapping Name="HolidayRequests">
       <EntityTypeMapping TypeName="bookingsystemModel.HolidayRequest">
         <MappingFragment StoreEntitySet="HolidayRequests">
+          <ScalarProperty Name="NumberOfDays" ColumnName="NumberOfDays" />
           <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />

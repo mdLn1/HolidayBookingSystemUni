@@ -94,6 +94,24 @@
       <DependentUpon>UC-EditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="DesktopAppUtils.cs" />
+    <Compile Include="UserControls\UC-EmployeesPresent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC-EmployeesPresent.Designer.cs">
+      <DependentUpon>UC-EmployeesPresent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC-HolidayBookings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC-HolidayBookings.Designer.cs">
+      <DependentUpon>UC-HolidayBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC-OutstandingHolidays.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC-OutstandingHolidays.Designer.cs">
+      <DependentUpon>UC-OutstandingHolidays.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +135,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC-EditUser.resx">
       <DependentUpon>UC-EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC-EmployeesPresent.resx">
+      <DependentUpon>UC-EmployeesPresent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC-HolidayBookings.resx">
+      <DependentUpon>UC-HolidayBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC-OutstandingHolidays.resx">
+      <DependentUpon>UC-OutstandingHolidays.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

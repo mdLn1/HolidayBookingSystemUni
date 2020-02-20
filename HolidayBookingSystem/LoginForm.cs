@@ -21,9 +21,13 @@ namespace HolidayBookingSystem
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            tb_username.Text = "Username";
-            tb_password.PasswordChar = '\0';
-            tb_password.Text = "Password";
+            // uncomment to allow login
+            //tb_username.Text = "Username";
+            //tb_password.PasswordChar = '\0';
+            //tb_password.Text = "Password";
+
+            tb_username.Text = "admin";
+            tb_password.Text = "Test123!";
         }
 
         public void formValuesChanged(object sender, EventArgs e)

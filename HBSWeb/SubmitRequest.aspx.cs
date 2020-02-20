@@ -84,7 +84,7 @@ namespace HBSWeb
                     {
                         displayHolidaySummary("You selected weekend days, no need for holiday allowance", GeneralUtils.WARNING_COLOR);
                     }
-                    else if (workingDays > 35)
+                    else if (workingDays > GeneralUtils.MAX_POSSIBLE_HOLIDAY)
                     {
                         displayHolidaySummary("Too many days selected, it exceeds the maximum allowance", GeneralUtils.DANGER_COLOR);
                     }

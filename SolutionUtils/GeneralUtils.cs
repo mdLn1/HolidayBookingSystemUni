@@ -8,8 +8,9 @@ public static class GeneralUtils
 {
     public const string ADMIN_ROLE = "Admin";
     public const string PENDING = "pending";
-    public const string APPROVED = "approved";
+    public const string APPROVED = "accepted";
     public const string DECLINED = "declined";
+    public const int MAX_POSSIBLE_HOLIDAY = 35;
 
     public const string WARNING_COLOR = "#8a6d3b";
     public const string DANGER_COLOR = "#a94442";
