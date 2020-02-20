@@ -23,9 +23,9 @@ namespace HBSDatabase
         public int id { get; set; }
         public string Username { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<int> RemainingDays { get; set; }
-        public Nullable<int> RoleID { get; set; }
-        public Nullable<int> DepartmentID { get; set; }
+        public int RemainingDays { get; set; }
+        public int RoleID { get; set; }
+        public int DepartmentID { get; set; }
         public byte[] Pwd { get; set; }
         public byte[] PwdSalt { get; set; }
         public string PhoneNumber { get; set; }

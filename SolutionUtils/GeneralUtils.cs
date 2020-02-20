@@ -6,15 +6,33 @@ using System.Text.RegularExpressions;
 
 public static class GeneralUtils
 {
+    // Roles
     public const string ADMIN_ROLE = "Admin";
+    public const string HEAD_ROLE = "head";
+    public const string DEPUTY_HEAD_ROLE = "deputy";
+    public const string MANAGER_ROLE = "manager";
+    public const string SENIOR_ROLE = "senior";
+
+    // Holiday Request Status
     public const string PENDING = "pending";
     public const string APPROVED = "accepted";
     public const string DECLINED = "declined";
-    public const int MAX_POSSIBLE_HOLIDAY = 35;
 
+    // Percentage of department on duty
+    public const double REQUIRED_PERCENTAGE_AT_LEAST_MAX = 60;
+    public const double REQUIRED_PERCENTAGE_AT_LEAST_MIN = 40;
+    
+    public const int MAX_POSSIBLE_HOLIDAY = 40;
+
+    // Months
+    public const int AUGUST = 8;
+
+    // HTML Colors
     public const string WARNING_COLOR = "#8a6d3b";
     public const string DANGER_COLOR = "#a94442";
     public const string SUCCESS_COLOR = "#3c763d";
+
+    public const int MINIMUM_NUMBER_MANAGERS_OR_SENIORS = 1;
 
     public static int CalculateHolidayAllowanceOnRegistration(DateTime startDate)
     {
@@ -77,6 +95,29 @@ public static class GeneralUtils
             }
         }
         return true;
+    }
+
+    // https://stackoverflow.com/questions/2510383/how-can-i-calculate-what-date-good-friday-falls-on-given-a-year
+    public static DateTime EasterSunday(int year)
+    {
+        int day = 0;
+        int month = 0;
+
+        int g = year % 19;
+        int c = year / 100;
+        int h = (c - (int)(c / 4) - (int)((8 * c + 13) / 25) + 19 * g + 15) % 30;
+        int i = h - (int)(h / 28) * (1 - (int)(h / 28) * (int)(29 / (h + 1)) * (int)((21 - g) / 11));
+
+        day = i - ((year + (int)(year / 4) + i + 2 - c + (int)(c / 4)) % 7) + 28;
+        month = 3;
+
+        if (day > 31)
+        {
+            month++;
+            day -= 31;
+        }
+
+        return new DateTime(year, month, day);
     }
 
 }

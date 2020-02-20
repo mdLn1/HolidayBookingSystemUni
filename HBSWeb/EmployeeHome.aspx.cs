@@ -19,6 +19,7 @@ namespace HBSWeb
 
             using (HBSModel _entity = new HBSModel())
             {
+                
                 int userId = (int) Session["userId"];
                 var userHolidayRequests = _entity.HolidayRequests.Where(request => request.UserID == userId)
                     .OrderByDescending(x => x.StartDate).ToList();

@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstraintChecking.cs" />
+    <Compile Include="CustomControls\PhoneTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomControls\ThemedButton.cs">
       <SubType>Component</SubType>
     </Compile>

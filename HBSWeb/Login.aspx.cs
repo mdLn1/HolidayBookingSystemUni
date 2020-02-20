@@ -12,12 +12,12 @@ namespace HBSWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString["logout"] == "Success")
+            if (Request.QueryString["logout"] == "Success")
             {
                 Session.Clear();
                 LogoutMessageAlert.Visible = true;
             }
-            if(Session["userId"] != null)
+            if (Session["userId"] != null)
             {
                 Response.Redirect("EmployeeHome");
             }

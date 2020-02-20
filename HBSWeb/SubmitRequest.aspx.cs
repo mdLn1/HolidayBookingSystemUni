@@ -21,17 +21,19 @@ namespace HBSWeb
         {
             DateTime startDate = startDateCalendar.SelectedDate;
             DateTime endDate = endDateCalendar.SelectedDate;
+            int workingDays = GeneralUtils.CalculateWorkingDays(endDate, startDate);
             using (HBSModel _entity = new HBSModel())
             {
-                
+
                 HolidayRequest holidayRequest = new HolidayRequest()
                 {
                     StartDate = startDate,
                     EndDate = endDate,
                     UserID = (int)Session["userId"],
-                    NumberOfDays = GeneralUtils.CalculateWorkingDays(endDate, startDate)
+                    NumberOfDays = workingDays
                 };
-                holidayRequest.RequestStatusID = _entity.StatusRequests.FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
+                holidayRequest.RequestStatusID = _entity.StatusRequests
+                    .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
                 _entity.HolidayRequests.Add(holidayRequest);
                 _entity.SaveChanges();
                 Response.Redirect("/EmployeeHome?HolidayRequest=Success");
@@ -51,10 +53,10 @@ namespace HBSWeb
             Calendar calendar = (Calendar)sender;
             if (calendar.ID == startDateCalendar.ID)
             {
-                if (startDateCalendar.SelectedDate < DateTime.Today)
+                if (startDateCalendar.SelectedDate < DateTime.Today.AddDays(5))
                 {
                     startDateCalendar.SelectedDates.Clear();
-                    displayHolidaySummary("Please select a start date in the future.", GeneralUtils.DANGER_COLOR);
+                    displayHolidaySummary("Please select a start date for at least 5 days in future.", GeneralUtils.DANGER_COLOR);
                 }
                 endDateCalendar.SelectedDates.Clear();
                 submitButton.BackColor = ColorTranslator.FromHtml(GeneralUtils.DANGER_COLOR);

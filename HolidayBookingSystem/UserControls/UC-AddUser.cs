@@ -96,7 +96,7 @@ namespace HolidayBookingSystem
 
                     }
 
-                    newUser.PhoneNumber = tb_phone_number.Text;
+                    newUser.PhoneNumber = tb_phoneNumber.Text;
 
                     // get date and make it to datetime2
                     newUser.StartDate = dp_add_employee.Value.Date;
