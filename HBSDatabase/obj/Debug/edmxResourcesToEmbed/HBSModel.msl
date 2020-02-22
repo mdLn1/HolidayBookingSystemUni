@@ -25,6 +25,7 @@
     <EntitySetMapping Name="PeakTimes">
       <EntityTypeMapping TypeName="bookingsystemModel.PeakTime">
         <MappingFragment StoreEntitySet="PeakTimes">
+          <ScalarProperty Name="NoConstraintsApply" ColumnName="NoConstraintsApply" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />

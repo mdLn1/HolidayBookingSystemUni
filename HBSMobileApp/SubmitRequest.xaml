@@ -1,0 +1,53 @@
+﻿<Window x:Class="HBSMobileApp.SubmitRequest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HBSMobileApp"
+        mc:Ignorable="d"
+        Title="HBS - Holiday Request" Height="600" Width="400">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FF054949"/>
+            <GradientStop Color="#FF0B8989" Offset="0.77"/>
+            <GradientStop Color="#FF076464" Offset="0.4"/>
+            <GradientStop Color="#FF076464" Offset="0.557"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Name="myGrid" Height="450" Opacity="0.7" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Name="txt1" Grid.ColumnSpan="3" Margin="5" FontSize="30" FontFamily="Segoe UI Semibold" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FFF8F9F2" FontWeight="Bold" FontStretch="Expanded">Request Holiday</TextBlock>
+        <TextBlock Name="txt2" FontSize="20" FontFamily="Segoe UI Semibold" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF8F9F2" FontWeight="Bold" FontStretch="Expanded">Start Date</TextBlock>
+        <TextBlock Name="txt3" FontSize="20" FontFamily="Segoe UI Semibold" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF8F9F2" FontWeight="Bold" FontStretch="Expanded">End Date</TextBlock>
+        <TextBlock Name="errorBlock" FontSize="24" FontFamily="Segoe UI Semibold" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFC53C13" FontWeight="Bold" FontStretch="Expanded" Background="#FFEEE8E8" Padding="10,0">Error</TextBlock>
+        <Button Name="resetButton" Grid.Column="0" Grid.Row="5" BorderBrush="#FF9E871B" FontWeight="Bold" FontSize="28" Foreground="#FF265353" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" Padding="10,1" Click="resetButton_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD66D31" Offset="0.1"/>
+                    <GradientStop Color="#FFE1EA2A" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background> Reset
+        </Button>
+        <Button Name="submitButton" Grid.Column="1" Grid.Row="5" BorderBrush="#FF9E871B" FontWeight="Bold" FontSize="28" Foreground="#FF265353" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="35,1" Cursor="Hand" Margin="23,10,10,13" Click="Button_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD66D31" Offset="0.1"/>
+                    <GradientStop Color="#FFE1EA2A" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background> Submit
+        </Button>
+        <DatePicker x:Name="startDateCalendar" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Background="{x:Null}" FontSize="20" FontWeight="Bold" Cursor="Hand"/>
+        <DatePicker x:Name="endDateCalendar" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Background="{x:Null}" FontSize="20" FontWeight="Bold" Cursor="Hand"/>
+    </Grid>
+</Window>

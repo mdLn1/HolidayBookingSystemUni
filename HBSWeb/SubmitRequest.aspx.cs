@@ -59,6 +59,10 @@ namespace HBSWeb
                     displayHolidaySummary("Please select a start date for at least 5 days in future.", GeneralUtils.DANGER_COLOR);
                 }
                 endDateCalendar.SelectedDates.Clear();
+                if(startDateCalendar.SelectedDate.Month > DateTime.Now.Month)
+                {
+                    endDateCalendar.TodaysDate = startDateCalendar.SelectedDate.AddDays(1);
+                }
                 submitButton.BackColor = ColorTranslator.FromHtml(GeneralUtils.DANGER_COLOR);
                 submitButton.BorderColor = ColorTranslator.FromHtml(GeneralUtils.DANGER_COLOR);
                 submitButton.Enabled = false;

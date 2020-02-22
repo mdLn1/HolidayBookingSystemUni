@@ -166,6 +166,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ConstraintChecking.cs" />
     <Compile Include="DashBoard.Master.cs">
       <DependentUpon>DashBoard.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
