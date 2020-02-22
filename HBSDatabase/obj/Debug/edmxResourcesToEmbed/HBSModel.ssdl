@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="bookingsystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ConstraintsBroken">
+    <Key>
+      <PropertyRef Name="HolidayRequestId" />
+    </Key>
+    <Property Name="HolidayRequestId" Type="int" Nullable="false" />
+    <Property Name="ExceedsHolidayEntitlement" Type="bit" Nullable="false" />
+    <Property Name="HeadOrDeputy" Type="bit" Nullable="false" />
+    <Property Name="ManagerOrSenior" Type="bit" Nullable="false" />
+    <Property Name="AtLeastPercentage" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="Departments">
     <Key>
       <PropertyRef Name="ID" />
@@ -56,6 +66,18 @@
     <Property Name="PwdSalt" Type="varbinary(max)" Nullable="false" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="32" />
   </EntityType>
+  <Association Name="FK__Constrain__Holid__6D0D32F4">
+    <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="1" />
+    <End Role="ConstraintsBroken" Type="Self.ConstraintsBroken" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="HolidayRequests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ConstraintsBroken">
+        <PropertyRef Name="HolidayRequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__HolidayRe__Reque__656C112C">
     <End Role="StatusRequests" Type="Self.StatusRequests" Multiplicity="1" />
     <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="*" />
@@ -105,12 +127,17 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="bookingsystemModelStoreContainer">
+    <EntitySet Name="ConstraintsBroken" EntityType="Self.ConstraintsBroken" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HolidayRequests" EntityType="Self.HolidayRequests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PeakTimes" EntityType="Self.PeakTimes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StatusRequests" EntityType="Self.StatusRequests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Constrain__Holid__6D0D32F4" Association="Self.FK__Constrain__Holid__6D0D32F4">
+      <End Role="HolidayRequests" EntitySet="HolidayRequests" />
+      <End Role="ConstraintsBroken" EntitySet="ConstraintsBroken" />
+    </AssociationSet>
     <AssociationSet Name="FK__HolidayRe__Reque__656C112C" Association="Self.FK__HolidayRe__Reque__656C112C">
       <End Role="StatusRequests" EntitySet="StatusRequests" />
       <End Role="HolidayRequests" EntitySet="HolidayRequests" />

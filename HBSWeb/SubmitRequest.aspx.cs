@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SolutionUtils;
 
 namespace HBSWeb
 {
@@ -24,16 +25,18 @@ namespace HBSWeb
             int workingDays = GeneralUtils.CalculateWorkingDays(endDate, startDate);
             using (HBSModel _entity = new HBSModel())
             {
-
+                int userId = (int)Session["userId"];
                 HolidayRequest holidayRequest = new HolidayRequest()
                 {
                     StartDate = startDate,
                     EndDate = endDate,
-                    UserID = (int)Session["userId"],
+                    UserID = userId,
                     NumberOfDays = workingDays
                 };
+                var usr = _entity.Users.Find(userId);
                 holidayRequest.RequestStatusID = _entity.StatusRequests
                     .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
+                holidayRequest.ConstraintsBroken = new ConstraintChecking(usr, holidayRequest).getBrokenConstraints();
                 _entity.HolidayRequests.Add(holidayRequest);
                 _entity.SaveChanges();
                 Response.Redirect("/EmployeeHome?HolidayRequest=Success");

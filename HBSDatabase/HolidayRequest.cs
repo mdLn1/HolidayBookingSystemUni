@@ -24,5 +24,6 @@ namespace HBSDatabase
     
         public virtual User User { get; set; }
         public virtual StatusRequest StatusRequest { get; set; }
+        public virtual ConstraintsBroken ConstraintsBroken { get; set; }
     }
 }

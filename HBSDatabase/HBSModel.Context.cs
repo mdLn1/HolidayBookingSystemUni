@@ -31,5 +31,6 @@ namespace HBSDatabase
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<StatusRequest> StatusRequests { get; set; }
+        public virtual DbSet<ConstraintsBroken> ConstraintsBrokens { get; set; }
     }
 }

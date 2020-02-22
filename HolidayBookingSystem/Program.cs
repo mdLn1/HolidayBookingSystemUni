@@ -21,6 +21,7 @@ namespace HolidayBookingSystem
             DesktopAppUtils.AddDepartments();
             DesktopAppUtils.AddRoles();
             DesktopAppUtils.CreateUsers();
+            DesktopAppUtils.AddHolidayRequests();
             Application.Run(new LoginForm());
         }
     }

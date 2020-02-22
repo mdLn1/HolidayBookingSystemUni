@@ -37,10 +37,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.messageLabel = new System.Windows.Forms.Label();
+            this.clearFilterButton = new HolidayBookingSystem.CustomControls.ThemedButton();
             this.employeesComboBox = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.clearFilterButton = new HolidayBookingSystem.CustomControls.ThemedButton();
-            this.phoneTextBox1 = new SolutionUtils.PhoneTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -97,7 +96,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.phoneTextBox1);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox2.Location = new System.Drawing.Point(515, 0);
@@ -133,16 +131,6 @@
             this.messageLabel.Text = "No results found";
             this.messageLabel.Visible = false;
             // 
-            // employeesComboBox
-            // 
-            this.employeesComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeesComboBox.FormattingEnabled = true;
-            this.employeesComboBox.Location = new System.Drawing.Point(21, 40);
-            this.employeesComboBox.Name = "employeesComboBox";
-            this.employeesComboBox.Size = new System.Drawing.Size(163, 24);
-            this.employeesComboBox.TabIndex = 0;
-            this.employeesComboBox.SelectedIndexChanged += new System.EventHandler(this.employeesComboBox_SelectedIndexChanged);
-            // 
             // clearFilterButton
             // 
             this.clearFilterButton.BackColor = System.Drawing.Color.IndianRed;
@@ -158,13 +146,15 @@
             this.clearFilterButton.Text = "Clear Filter";
             this.clearFilterButton.UseVisualStyleBackColor = false;
             // 
-            // phoneTextBox1
+            // employeesComboBox
             // 
-            this.phoneTextBox1.ForeColor = System.Drawing.Color.Red;
-            this.phoneTextBox1.Location = new System.Drawing.Point(58, 276);
-            this.phoneTextBox1.Name = "phoneTextBox1";
-            this.phoneTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.phoneTextBox1.TabIndex = 1;
+            this.employeesComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeesComboBox.FormattingEnabled = true;
+            this.employeesComboBox.Location = new System.Drawing.Point(21, 40);
+            this.employeesComboBox.Name = "employeesComboBox";
+            this.employeesComboBox.Size = new System.Drawing.Size(163, 24);
+            this.employeesComboBox.TabIndex = 0;
+            this.employeesComboBox.SelectedIndexChanged += new System.EventHandler(this.employeesComboBox_SelectedIndexChanged);
             // 
             // UC_HolidayBookings
             // 
@@ -176,7 +166,6 @@
             this.Size = new System.Drawing.Size(755, 392);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -197,6 +186,5 @@
         private System.Windows.Forms.ComboBox employeesComboBox;
         private CustomControls.ThemedButton clearFilterButton;
         private System.Windows.Forms.Label messageLabel;
-        private SolutionUtils.PhoneTextBox phoneTextBox1;
     }
 }

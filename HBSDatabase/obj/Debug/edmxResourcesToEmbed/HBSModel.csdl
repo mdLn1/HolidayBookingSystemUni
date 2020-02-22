@@ -21,6 +21,7 @@
     <Property Name="RequestStatusID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="StatusRequest" Relationship="bookingsystemModel.FK__HolidayRe__Reque__04E4BC85" FromRole="HolidayRequest" ToRole="StatusRequest" />
     <Property Name="NumberOfDays" Type="Int32" />
+    <NavigationProperty Name="ConstraintsBroken" Relationship="bookingsystemModel.FK__Constrain__Holid__6D0D32F4" FromRole="HolidayRequest" ToRole="ConstraintsBroken" />
   </EntityType>
   <EntityType Name="PeakTime">
     <Key>
@@ -115,6 +116,11 @@
       <End Role="StatusRequest" EntitySet="StatusRequests" />
       <End Role="HolidayRequest" EntitySet="HolidayRequests" />
     </AssociationSet>
+    <EntitySet Name="ConstraintsBrokens" EntityType="bookingsystemModel.ConstraintsBroken" />
+    <AssociationSet Name="FK__Constrain__Holid__6D0D32F4" Association="bookingsystemModel.FK__Constrain__Holid__6D0D32F4">
+      <End Role="HolidayRequest" EntitySet="HolidayRequests" />
+      <End Role="ConstraintsBroken" EntitySet="ConstraintsBrokens" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="StatusRequest">
     <Key>
@@ -133,6 +139,29 @@
       </Principal>
       <Dependent Role="HolidayRequest">
         <PropertyRef Name="RequestStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ConstraintsBroken">
+    <Key>
+      <PropertyRef Name="HolidayRequestId" />
+    </Key>
+    <Property Name="HolidayRequestId" Type="Int32" Nullable="false" />
+    <Property Name="ExceedsHolidayEntitlement" Type="Boolean" Nullable="false" />
+    <Property Name="HeadOrDeputy" Type="Boolean" Nullable="false" />
+    <Property Name="ManagerOrSenior" Type="Boolean" Nullable="false" />
+    <Property Name="AtLeastPercentage" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="HolidayRequest" Relationship="bookingsystemModel.FK__Constrain__Holid__6D0D32F4" FromRole="ConstraintsBroken" ToRole="HolidayRequest" />
+  </EntityType>
+  <Association Name="FK__Constrain__Holid__6D0D32F4">
+    <End Type="bookingsystemModel.HolidayRequest" Role="HolidayRequest" Multiplicity="1" />
+    <End Type="bookingsystemModel.ConstraintsBroken" Role="ConstraintsBroken" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="HolidayRequest">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ConstraintsBroken">
+        <PropertyRef Name="HolidayRequestId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

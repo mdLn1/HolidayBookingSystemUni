@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstraintsBroken.cs">
+      <DependentUpon>HBSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Department.cs">
       <DependentUpon>HBSModel.tt</DependentUpon>
     </Compile>

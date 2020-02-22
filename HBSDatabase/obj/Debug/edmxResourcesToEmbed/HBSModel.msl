@@ -63,5 +63,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ConstraintsBrokens">
+      <EntityTypeMapping TypeName="bookingsystemModel.ConstraintsBroken">
+        <MappingFragment StoreEntitySet="ConstraintsBroken">
+          <ScalarProperty Name="AtLeastPercentage" ColumnName="AtLeastPercentage" />
+          <ScalarProperty Name="ManagerOrSenior" ColumnName="ManagerOrSenior" />
+          <ScalarProperty Name="HeadOrDeputy" ColumnName="HeadOrDeputy" />
+          <ScalarProperty Name="ExceedsHolidayEntitlement" ColumnName="ExceedsHolidayEntitlement" />
+          <ScalarProperty Name="HolidayRequestId" ColumnName="HolidayRequestId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -14,6 +14,7 @@ namespace HolidayBookingSystem.UserControls
     public partial class UC_OutstandingHolidays : UserControl
     {
         private static UC_OutstandingHolidays _instance;
+        private bool isBreakingConstraints = false;
 
         public static UC_OutstandingHolidays Instance
         {
@@ -63,37 +64,117 @@ namespace HolidayBookingSystem.UserControls
         {
             if (outstandingHolidaysListView.SelectedIndices.Count > 0)
             {
-                int selIndex = outstandingHolidaysListView.SelectedIndices[0];
-                ListViewItem item = outstandingHolidaysListView.Items[selIndex];
-                using (HBSModel entity = new HBSModel())
+                if (isBreakingConstraints)
                 {
-                    var request = entity.HolidayRequests.Find(Convert.ToInt32(item.SubItems[0].Text));
-                    request.RequestStatusID = entity.StatusRequests.FirstOrDefault(x => x.Status == GeneralUtils.APPROVED).ID;
-                    entity.SaveChanges();
+                    if (MessageBox.Show("This holiday request is breaking constraints. Are you sure you want to approve it?", "Confirm Approval", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        approveHolidayRequest();
+                    }
                 }
-                messageLabel.Visible = true;
-                messageLabel.Text = "Request " + item.SubItems[0].Text + " Approved";
-                messageLabel.BackColor = Color.Green;
-                outstandingHolidaysListView.Items.RemoveAt(selIndex);
+                else
+                {
+                    approveHolidayRequest();
+                }
             }
+        }
+
+        public void approveHolidayRequest()
+        {
+            int selIndex = outstandingHolidaysListView.SelectedIndices[0];
+            ListViewItem item = outstandingHolidaysListView.Items[selIndex];
+            using (HBSModel entity = new HBSModel())
+            {
+                var request = entity.HolidayRequests.Find(Convert.ToInt32(item.SubItems[0].Text));
+                request.RequestStatusID = entity.StatusRequests.FirstOrDefault(x => x.Status == GeneralUtils.APPROVED).ID;
+                entity.SaveChanges();
+            }
+            messageLabel.Visible = true;
+            messageLabel.Text = "Request " + item.SubItems[0].Text + " Approved";
+            messageLabel.BackColor = Color.Green;
+            outstandingHolidaysListView.Items.RemoveAt(selIndex);
+        }
+        public void declineHolidayRequest()
+        {
+            int selIndex = outstandingHolidaysListView.SelectedIndices[0];
+            ListViewItem item = outstandingHolidaysListView.Items[selIndex];
+            using (HBSModel entity = new HBSModel())
+            {
+                var request = entity.HolidayRequests.Find(Convert.ToInt32(item.SubItems[0].Text));
+                request.RequestStatusID = entity.StatusRequests.FirstOrDefault(x => x.Status == GeneralUtils.DECLINED).ID;
+                entity.SaveChanges();
+            }
+            messageLabel.Visible = true;
+            messageLabel.Text = "Request " + item.SubItems[0].Text + " Declined";
+            messageLabel.BackColor = Color.DarkRed;
+            outstandingHolidaysListView.Items.RemoveAt(selIndex);
         }
 
         private void declineButton_Click(object sender, EventArgs e)
         {
             if (outstandingHolidaysListView.SelectedIndices.Count > 0)
             {
+
+                if (!isBreakingConstraints)
+                {
+                    if (MessageBox.Show("This holiday request is not breaking constraints. Are you sure you want to decline it?", "Confirm Decline", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        declineHolidayRequest();
+                    }
+                }
+                else
+                {
+                    declineHolidayRequest();
+                }
+            }
+        }
+
+        private void outstandingHolidaysListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (outstandingHolidaysListView.SelectedIndices.Count > 0)
+            {
+                isBreakingConstraints = false;
                 int selIndex = outstandingHolidaysListView.SelectedIndices[0];
                 ListViewItem item = outstandingHolidaysListView.Items[selIndex];
                 using (HBSModel entity = new HBSModel())
                 {
                     var request = entity.HolidayRequests.Find(Convert.ToInt32(item.SubItems[0].Text));
-                    request.RequestStatusID = entity.StatusRequests.FirstOrDefault(x => x.Status == GeneralUtils.DECLINED).ID;
-                    entity.SaveChanges();
+                    if (request.ConstraintsBroken.ExceedsHolidayEntitlement)
+                    {
+                        firstLabel.ForeColor = Color.Red;
+                        isBreakingConstraints = true;
+                    }
+                    else
+                    {
+                        firstLabel.ForeColor = Color.Green;
+                    }
+                    if (request.ConstraintsBroken.HeadOrDeputy)
+                    {
+                        secondLabel.ForeColor = Color.Red;
+                        isBreakingConstraints = true;
+                    }
+                    else
+                    {
+                        secondLabel.ForeColor = Color.Green;
+                    }
+                    if (request.ConstraintsBroken.ManagerOrSenior)
+                    {
+                        thirdLabel.ForeColor = Color.Red;
+                        isBreakingConstraints = true;
+                    }
+                    else
+                    {
+                        thirdLabel.ForeColor = Color.Green;
+                    }
+                    if (request.ConstraintsBroken.AtLeastPercentage)
+                    {
+                        fourthLabel.ForeColor = Color.Red;
+                        isBreakingConstraints = true;
+                    }
+                    else
+                    {
+                        fourthLabel.ForeColor = Color.Green;
+                    }
                 }
-                messageLabel.Visible = true;
-                messageLabel.Text = "Request " + item.SubItems[0].Text + " Declined";
-                messageLabel.BackColor = Color.DarkRed;
-                outstandingHolidaysListView.Items.RemoveAt(selIndex);
             }
         }
     }

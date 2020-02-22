@@ -19,27 +19,31 @@ namespace SolutionUtils
             brokenConstraints = new List<string>();
         }
 
-        public List<string> getBrokenConstraints()
+        public ConstraintsBroken getBrokenConstraints()
         {
             var peakTimes = entity.PeakTimes.ToList();
+            ConstraintsBroken constraintsBroken = new ConstraintsBroken();
             if (peakTimes.Where(x => x.NoConstraintsApply).Any(x => holidayRequest.StartDate >= x.StartDate
                  && holidayRequest.EndDate <= x.EndDate))
             {
-                return new List<string>();
+                return constraintsBroken;
             }
             string userRole = user.Role.RoleName;
             if (isHolidayAllowanceExceeded())
-                brokenConstraints.Add("Exceeds the number of days of holiday entitlement");
+                constraintsBroken.ExceedsHolidayEntitlement = true;
+                //brokenConstraints.Add("Exceeds the number of days of holiday entitlement");
             if (userRole == GeneralUtils.HEAD_ROLE || userRole == GeneralUtils.DEPUTY_HEAD_ROLE)
             {
                 if (isDeputyOrHeadOnHolidayAlready(userRole == GeneralUtils.HEAD_ROLE
                     ? GeneralUtils.HEAD_ROLE : GeneralUtils.DEPUTY_HEAD_ROLE))
-                    brokenConstraints.Add("Either the head or the deputy head of the department must be on duty");
+                    constraintsBroken.HeadOrDeputy = true;
+                    //brokenConstraints.Add("Either the head or the deputy head of the department must be on duty");
             }
             if (userRole == GeneralUtils.SENIOR_ROLE || userRole == GeneralUtils.MANAGER_ROLE)
             {
                 if (isNotMinimumNumberOfManagersOrSeniors(GeneralUtils.MINIMUM_NUMBER_MANAGERS_OR_SENIORS))
                 {
+                    constraintsBroken.ManagerOrSenior = true;
                     brokenConstraints.Add("At least one manager and one senior staff member must be on duty");
                 }
             }
@@ -51,9 +55,10 @@ namespace SolutionUtils
             }
             if (areThereNotEnoughEmployeesWorking(requiredPercentage))
             {
+                constraintsBroken.AtLeastPercentage = true;
                 brokenConstraints.Add("At least" + requiredPercentage + "% of a department must be on duty");
             }
-            return brokenConstraints;
+            return constraintsBroken;
         }
 
         private bool isHolidayAllowanceExceeded()

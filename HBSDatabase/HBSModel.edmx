@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="bookingsystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ConstraintsBroken">
+          <Key>
+            <PropertyRef Name="HolidayRequestId" />
+          </Key>
+          <Property Name="HolidayRequestId" Type="int" Nullable="false" />
+          <Property Name="ExceedsHolidayEntitlement" Type="bit" Nullable="false" />
+          <Property Name="HeadOrDeputy" Type="bit" Nullable="false" />
+          <Property Name="ManagerOrSenior" Type="bit" Nullable="false" />
+          <Property Name="AtLeastPercentage" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="ID" />
@@ -61,6 +71,18 @@
           <Property Name="PwdSalt" Type="varbinary(max)" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="32" />
         </EntityType>
+        <Association Name="FK__Constrain__Holid__6D0D32F4">
+          <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="1" />
+          <End Role="ConstraintsBroken" Type="Self.ConstraintsBroken" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HolidayRequests">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConstraintsBroken">
+              <PropertyRef Name="HolidayRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__HolidayRe__Reque__656C112C">
           <End Role="StatusRequests" Type="Self.StatusRequests" Multiplicity="1" />
           <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="*" />
@@ -110,12 +132,17 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="bookingsystemModelStoreContainer">
+          <EntitySet Name="ConstraintsBroken" EntityType="Self.ConstraintsBroken" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HolidayRequests" EntityType="Self.HolidayRequests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PeakTimes" EntityType="Self.PeakTimes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusRequests" EntityType="Self.StatusRequests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Constrain__Holid__6D0D32F4" Association="Self.FK__Constrain__Holid__6D0D32F4">
+            <End Role="HolidayRequests" EntitySet="HolidayRequests" />
+            <End Role="ConstraintsBroken" EntitySet="ConstraintsBroken" />
+          </AssociationSet>
           <AssociationSet Name="FK__HolidayRe__Reque__656C112C" Association="Self.FK__HolidayRe__Reque__656C112C">
             <End Role="StatusRequests" EntitySet="StatusRequests" />
             <End Role="HolidayRequests" EntitySet="HolidayRequests" />
@@ -158,6 +185,7 @@
           <Property Name="RequestStatusID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="StatusRequest" Relationship="bookingsystemModel.FK__HolidayRe__Reque__04E4BC85" FromRole="HolidayRequest" ToRole="StatusRequest" />
           <Property Name="NumberOfDays" Type="Int32" />
+          <NavigationProperty Name="ConstraintsBroken" Relationship="bookingsystemModel.FK__Constrain__Holid__6D0D32F4" FromRole="HolidayRequest" ToRole="ConstraintsBroken" />
         </EntityType>
         <EntityType Name="PeakTime">
           <Key>
@@ -252,6 +280,11 @@
             <End Role="StatusRequest" EntitySet="StatusRequests" />
             <End Role="HolidayRequest" EntitySet="HolidayRequests" />
           </AssociationSet>
+          <EntitySet Name="ConstraintsBrokens" EntityType="bookingsystemModel.ConstraintsBroken" />
+          <AssociationSet Name="FK__Constrain__Holid__6D0D32F4" Association="bookingsystemModel.FK__Constrain__Holid__6D0D32F4">
+            <End Role="HolidayRequest" EntitySet="HolidayRequests" />
+            <End Role="ConstraintsBroken" EntitySet="ConstraintsBrokens" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="StatusRequest">
           <Key>
@@ -270,6 +303,29 @@
             </Principal>
             <Dependent Role="HolidayRequest">
               <PropertyRef Name="RequestStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ConstraintsBroken">
+          <Key>
+            <PropertyRef Name="HolidayRequestId" />
+          </Key>
+          <Property Name="HolidayRequestId" Type="Int32" Nullable="false" />
+          <Property Name="ExceedsHolidayEntitlement" Type="Boolean" Nullable="false" />
+          <Property Name="HeadOrDeputy" Type="Boolean" Nullable="false" />
+          <Property Name="ManagerOrSenior" Type="Boolean" Nullable="false" />
+          <Property Name="AtLeastPercentage" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="HolidayRequest" Relationship="bookingsystemModel.FK__Constrain__Holid__6D0D32F4" FromRole="ConstraintsBroken" ToRole="HolidayRequest" />
+        </EntityType>
+        <Association Name="FK__Constrain__Holid__6D0D32F4">
+          <End Type="bookingsystemModel.HolidayRequest" Role="HolidayRequest" Multiplicity="1" />
+          <End Type="bookingsystemModel.ConstraintsBroken" Role="ConstraintsBroken" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HolidayRequest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ConstraintsBroken">
+              <PropertyRef Name="HolidayRequestId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -338,6 +394,17 @@
               <MappingFragment StoreEntitySet="StatusRequests">
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConstraintsBrokens">
+            <EntityTypeMapping TypeName="bookingsystemModel.ConstraintsBroken">
+              <MappingFragment StoreEntitySet="ConstraintsBroken">
+                <ScalarProperty Name="AtLeastPercentage" ColumnName="AtLeastPercentage" />
+                <ScalarProperty Name="ManagerOrSenior" ColumnName="ManagerOrSenior" />
+                <ScalarProperty Name="HeadOrDeputy" ColumnName="HeadOrDeputy" />
+                <ScalarProperty Name="ExceedsHolidayEntitlement" ColumnName="ExceedsHolidayEntitlement" />
+                <ScalarProperty Name="HolidayRequestId" ColumnName="HolidayRequestId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

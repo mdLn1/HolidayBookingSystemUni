@@ -65,3 +65,4 @@ D:\github_reps\HolidayBookingSystem\HBSWebService\obj\Debug\HBSWebService.csproj
 D:\github_reps\HolidayBookingSystem\HBSWebService\obj\Debug\HBSWebService.csproj.CopyComplete
 D:\github_reps\HolidayBookingSystem\HBSWebService\obj\Debug\HBSWebService.dll
 D:\github_reps\HolidayBookingSystem\HBSWebService\obj\Debug\HBSWebService.pdb
+D:\github_reps\HolidayBookingSystem\HBSWebService\bin\SolutionUtils.dll.config

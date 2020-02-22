@@ -220,6 +220,89 @@ namespace HolidayBookingSystem
             }
         }
 
+        public static void AddHolidayRequests()
+        {
+            using (HBSModel _entity = new HBSModel())
+            {
+                if (_entity.HolidayRequests.Count() < 2)
+                {
+                    _entity.HolidayRequests.Add(new HolidayRequest()
+                    {
+                        StartDate = new DateTime(2020, 8, 7),
+                        EndDate = new DateTime(2020, 8, 21),
+                        NumberOfDays = GeneralUtils.CalculateWorkingDays(new DateTime(2020, 8, 7), new DateTime(2020, 8, 21)),
+                        RequestStatusID = 1,
+                        UserID = 5,
+                        ConstraintsBroken = new ConstraintsBroken()
+                    });
+                    _entity.HolidayRequests.Add(new HolidayRequest()
+                    {
+                        StartDate = new DateTime(2020, 4, 6),
+                        EndDate = new DateTime(2020, 4, 15),
+                        NumberOfDays = GeneralUtils.CalculateWorkingDays(new DateTime(2020, 4, 6), new DateTime(2020, 4, 15)),
+                        RequestStatusID = 1,
+                        UserID = 7,
+                        ConstraintsBroken = new ConstraintsBroken()
+                    });
+                    _entity.HolidayRequests.Add(new HolidayRequest()
+                    {
+                        StartDate = new DateTime(2020, 8, 7),
+                        EndDate = new DateTime(2020, 8, 21),
+                        NumberOfDays = GeneralUtils.CalculateWorkingDays(new DateTime(2020, 8, 7), new DateTime(2020, 8, 21)),
+                        RequestStatusID = 1,
+                        UserID = 8,
+                        ConstraintsBroken = new ConstraintsBroken()
+                    });
+                    _entity.HolidayRequests.Add(new HolidayRequest()
+                    {
+                        StartDate = new DateTime(2020, 8, 7),
+                        EndDate = new DateTime(2020, 8, 21),
+                        NumberOfDays = GeneralUtils.CalculateWorkingDays(new DateTime(2020, 8, 7), new DateTime(2020, 8, 21)),
+                        RequestStatusID = 1,
+                        UserID = 11,
+                        ConstraintsBroken = new ConstraintsBroken()
+                    });
+                    _entity.HolidayRequests.Add(new HolidayRequest()
+                    {
+                        StartDate = new DateTime(2020, 7, 7),
+                        EndDate = new DateTime(2020, 7, 17),
+                        NumberOfDays = GeneralUtils.CalculateWorkingDays(new DateTime(2020, 7, 7), new DateTime(2020, 7, 17)),
+                        RequestStatusID = 1,
+                        UserID = 12,
+                        ConstraintsBroken = new ConstraintsBroken()
+                    });
+                    _entity.HolidayRequests.Add(new HolidayRequest()
+                    {
+                        StartDate = new DateTime(2020, 8, 2),
+                        EndDate = new DateTime(2020, 8, 13),
+                        NumberOfDays = GeneralUtils.CalculateWorkingDays(new DateTime(2020, 8, 2), new DateTime(2020, 8, 13)),
+                        RequestStatusID = 1,
+                        UserID = 13,
+                        ConstraintsBroken = new ConstraintsBroken()
+                    });
+                    _entity.HolidayRequests.Add(new HolidayRequest()
+                    {
+                        StartDate = new DateTime(2020, 9, 7),
+                        EndDate = new DateTime(2020, 9, 11),
+                        NumberOfDays = GeneralUtils.CalculateWorkingDays(new DateTime(2020, 9, 7), new DateTime(2020, 9, 11)),
+                        RequestStatusID = 1,
+                        UserID = 6,
+                        ConstraintsBroken = new ConstraintsBroken()
+                    });
+                    _entity.HolidayRequests.Add(new HolidayRequest()
+                    {
+                        StartDate = new DateTime(2020, 10, 12),
+                        EndDate = new DateTime(2020, 10, 21),
+                        NumberOfDays = GeneralUtils.CalculateWorkingDays(new DateTime(2020, 10, 12), new DateTime(2020, 10, 21)),
+                        RequestStatusID = 1,
+                        UserID = 9,
+                        ConstraintsBroken = new ConstraintsBroken()
+                    });
+                    _entity.SaveChanges();
+                }
+            }
+        }
+
 
         public static void AddPeakTimes()
         {

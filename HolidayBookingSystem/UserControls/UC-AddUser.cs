@@ -68,16 +68,17 @@ namespace HolidayBookingSystem
 
                 using (HBSModel _entity = new HBSModel())
                 {
-                    User newUser = new User();
-                    newUser.Username = tb_username.Text;
+                    User newUser = new User
+                    {
+                        Username = tb_username.Text
+                    };
                     var isAlreadyRegistered = _entity.Users.FirstOrDefault(x => x.Username == newUser.Username);
                     if (isAlreadyRegistered != null)
                     {
                         throw new Exception("Username already registered");
                     }
                     // hash the password
-                    byte[] passwordHash, passwordSalt;
-                    GeneralUtils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
+                    GeneralUtils.CreatePasswordHash(tb_password.Text, out byte[] passwordHash, out byte[] passwordSalt);
                     newUser.Pwd = passwordHash;
                     newUser.PwdSalt = passwordSalt;
 
