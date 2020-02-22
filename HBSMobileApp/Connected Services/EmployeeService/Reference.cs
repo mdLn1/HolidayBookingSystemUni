@@ -22,11 +22,11 @@ namespace HBSMobileApp.EmployeeService {
         [System.ServiceModel.OperationContractAttribute(Action="http://holidaybookingsystem.org/EmployeeLogin", ReplyAction="*")]
         System.Threading.Tasks.Task<HBSMobileApp.EmployeeService.EmployeeLoginResponse> EmployeeLoginAsync(HBSMobileApp.EmployeeService.EmployeeLoginRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://holidaybookingsystem.org/SubmitRequest", ReplyAction="*")]
-        bool SubmitRequest(System.DateTime startDate, System.DateTime endDate, int workingDays);
+        [System.ServiceModel.OperationContractAttribute(Action="http://holidaybookingsystem.org/HolidayRequest", ReplyAction="*")]
+        bool HolidayRequest(System.DateTime startDate, System.DateTime endDate, int workingDays);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://holidaybookingsystem.org/SubmitRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> SubmitRequestAsync(System.DateTime startDate, System.DateTime endDate, int workingDays);
+        [System.ServiceModel.OperationContractAttribute(Action="http://holidaybookingsystem.org/HolidayRequest", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> HolidayRequestAsync(System.DateTime startDate, System.DateTime endDate, int workingDays);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -155,12 +155,12 @@ namespace HBSMobileApp.EmployeeService {
             return ((HBSMobileApp.EmployeeService.EmployeeServiceSoap)(this)).EmployeeLoginAsync(inValue);
         }
         
-        public bool SubmitRequest(System.DateTime startDate, System.DateTime endDate, int workingDays) {
-            return base.Channel.SubmitRequest(startDate, endDate, workingDays);
+        public bool HolidayRequest(System.DateTime startDate, System.DateTime endDate, int workingDays) {
+            return base.Channel.HolidayRequest(startDate, endDate, workingDays);
         }
         
-        public System.Threading.Tasks.Task<bool> SubmitRequestAsync(System.DateTime startDate, System.DateTime endDate, int workingDays) {
-            return base.Channel.SubmitRequestAsync(startDate, endDate, workingDays);
+        public System.Threading.Tasks.Task<bool> HolidayRequestAsync(System.DateTime startDate, System.DateTime endDate, int workingDays) {
+            return base.Channel.HolidayRequestAsync(startDate, endDate, workingDays);
         }
     }
 }

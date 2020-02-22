@@ -136,6 +136,7 @@ namespace HolidayBookingSystem
             {
                 using (HBSModel _entity = new HBSModel())
                 {
+                    var roles = _entity.Roles.ToHashSet();
                     foreach (Role role in _entity.Roles.ToList())
                     {
                         cb_roles.Items.Add(role.RoleName);

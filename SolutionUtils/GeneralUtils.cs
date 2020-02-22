@@ -8,10 +8,21 @@ public static class GeneralUtils
 {
     // Roles
     public const string ADMIN_ROLE = "Admin";
-    public const string HEAD_ROLE = "head";
-    public const string DEPUTY_HEAD_ROLE = "deputy";
-    public const string MANAGER_ROLE = "manager";
-    public const string SENIOR_ROLE = "senior";
+    public const string HEAD_ROLE = "Head";
+    public const string DEPUTY_HEAD_ROLE = "Deputy Head";
+    public const string MANAGER_ROLE = "Manager";
+    public const string SENIOR_ROLE = "Senior";
+    public const string APPRENTICE_ROLE = "Apprentice";
+    public const string JUNIOR_ROLE = "Junior";
+
+    // Departments
+    public const string ENGINEERING_DEPARTMENT = "Engineering";
+    public const string OFFICE_DEPARTMENT = "Office";
+    public const string PLUMBING_DEPARTMENT = "Plumbing";
+    public const string ROOFING_DEPARTMENT = "Roofing";
+    public const string CARPENTRY_DEPARTMENT = "Carpentry";
+    public const string BRICKLAYING_DEPARTMENT = "Bricklaying";
+    public const string MANAGEMENT_DEPARTMENT = "Management";
 
     // Holiday Request Status
     public const string PENDING = "pending";

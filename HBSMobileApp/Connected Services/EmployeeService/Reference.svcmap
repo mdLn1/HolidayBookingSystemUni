@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a58fd65d-c771-4e42-97c8-363152b8a980" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d0ac4e64-9952-484e-b57a-be5844dd9835" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="https://localhost:44357/EmployeeService.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="EmployeeService.disco" MetadataType="Disco" ID="fdc83c4a-2554-43a7-8015-141f39ceda4f" SourceId="1" SourceUrl="https://localhost:44357/EmployeeService.asmx?disco" />
-    <MetadataFile FileName="EmployeeService.wsdl" MetadataType="Wsdl" ID="4bc54ff6-0c2b-47e8-b4b6-f6358daf0e0e" SourceId="1" SourceUrl="https://localhost:44357/EmployeeService.asmx?wsdl" />
+    <MetadataFile FileName="EmployeeService.disco" MetadataType="Disco" ID="aafd01ca-34cf-4c96-a07f-91fa2a0ce594" SourceId="1" SourceUrl="https://localhost:44357/EmployeeService.asmx?disco" />
+    <MetadataFile FileName="EmployeeService.wsdl" MetadataType="Wsdl" ID="9d87d4d4-06ed-4705-9f97-483275d86e02" SourceId="1" SourceUrl="https://localhost:44357/EmployeeService.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

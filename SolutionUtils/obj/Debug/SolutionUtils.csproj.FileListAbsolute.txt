@@ -3,3 +3,12 @@ D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\SolutionUtils.pdb
 D:\github_reps\HolidayBookingSystem\SolutionUtils\obj\Debug\SolutionUtils.csprojAssemblyReference.cache
 D:\github_reps\HolidayBookingSystem\SolutionUtils\obj\Debug\SolutionUtils.dll
 D:\github_reps\HolidayBookingSystem\SolutionUtils\obj\Debug\SolutionUtils.pdb
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\SolutionUtils.dll.config
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\EntityFramework.dll
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\EntityFramework.SqlServer.dll
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\HBSDatabase.dll
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\HBSDatabase.pdb
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\HBSDatabase.dll.config
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\EntityFramework.xml
+D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\EntityFramework.SqlServer.xml
+D:\github_reps\HolidayBookingSystem\SolutionUtils\obj\Debug\SolutionUtils.csproj.CopyComplete

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SolutionUtils;
 using HBSMobileApp.EmployeeService;
-
+using System.Threading;
 
 namespace HBSMobileApp
 {
@@ -23,7 +23,7 @@ namespace HBSMobileApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public EmployeeServiceSoapClient client;
+        private EmployeeServiceSoapClient client;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,19 +31,28 @@ namespace HBSMobileApp
             client = new EmployeeServiceSoapClient();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             string username = usernameBox.Text.Trim();
             string password = passwordBox.Password.Trim();
+            errorBlock.Visibility = Visibility.Hidden;
             if (username.Length > 0 && password.Length > 0)
             {
-                bool response = client.EmployeeLogin(username, password);
-                if (!response)
+                this.Cursor = Cursors.Wait;
+                Button button = (Button)sender;
+                button.Cursor = Cursors.Wait;
+                EmployeeLoginResponse response = await client.EmployeeLoginAsync(username, password);
+                this.Cursor = Cursors.Arrow;
+                button.Cursor = Cursors.Hand;
+                if (!response.Body.EmployeeLoginResult)
                 {
                     errorBlock.Visibility = Visibility.Visible;
                     errorBlock.Text = "Invalid login attempt";
+                    usernameBox.Text = "";
+                    passwordBox.Password = "";
                 } else
                 {
+
                     Application.Current.Resources["username"] = username;
                     SubmitRequest submitRequest = new SubmitRequest();
                     submitRequest.Show();
@@ -55,5 +64,6 @@ namespace HBSMobileApp
                 errorBlock.Text = "Please enter credentials";
             }
         }
+
     }
 }

@@ -30,7 +30,7 @@ namespace HBSWebService
                     //return new ErrorResponse("User not found");
                     return false;
                 }
-                if (!GeneralUtils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt) || _user.Role.RoleName != GeneralUtils.ADMIN_ROLE)
+                if (!GeneralUtils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt) || _user.Role.RoleName == GeneralUtils.ADMIN_ROLE)
                 {
                     //return new ErrorResponse("Invalid login attempt");
                     return false;
@@ -42,7 +42,7 @@ namespace HBSWebService
         }
 
         [WebMethod(EnableSession = true)]
-        public bool SubmitRequest(DateTime startDate, DateTime endDate, int workingDays)
+        public bool HolidayRequest(DateTime startDate, DateTime endDate, int workingDays)
         {
             try
             {

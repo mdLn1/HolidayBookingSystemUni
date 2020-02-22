@@ -17,7 +17,10 @@ namespace HolidayBookingSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DesktopAppUtils.RegisterAdmin();
-            //Utils.RegisterUsers();
+            DesktopAppUtils.AddPeakTimes();
+            DesktopAppUtils.AddDepartments();
+            DesktopAppUtils.AddRoles();
+            DesktopAppUtils.CreateUsers();
             Application.Run(new LoginForm());
         }
     }

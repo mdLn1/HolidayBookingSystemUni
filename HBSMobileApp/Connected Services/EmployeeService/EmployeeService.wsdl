@@ -17,7 +17,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SubmitRequest">
+      <s:element name="HolidayRequest">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
@@ -26,10 +26,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SubmitRequestResponse">
+      <s:element name="HolidayRequestResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SubmitRequestResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="HolidayRequestResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -41,20 +41,20 @@
   <wsdl:message name="EmployeeLoginSoapOut">
     <wsdl:part name="parameters" element="tns:EmployeeLoginResponse" />
   </wsdl:message>
-  <wsdl:message name="SubmitRequestSoapIn">
-    <wsdl:part name="parameters" element="tns:SubmitRequest" />
+  <wsdl:message name="HolidayRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:HolidayRequest" />
   </wsdl:message>
-  <wsdl:message name="SubmitRequestSoapOut">
-    <wsdl:part name="parameters" element="tns:SubmitRequestResponse" />
+  <wsdl:message name="HolidayRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:HolidayRequestResponse" />
   </wsdl:message>
   <wsdl:portType name="EmployeeServiceSoap">
     <wsdl:operation name="EmployeeLogin">
       <wsdl:input message="tns:EmployeeLoginSoapIn" />
       <wsdl:output message="tns:EmployeeLoginSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SubmitRequest">
-      <wsdl:input message="tns:SubmitRequestSoapIn" />
-      <wsdl:output message="tns:SubmitRequestSoapOut" />
+    <wsdl:operation name="HolidayRequest">
+      <wsdl:input message="tns:HolidayRequestSoapIn" />
+      <wsdl:output message="tns:HolidayRequestSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="EmployeeServiceSoap" type="tns:EmployeeServiceSoap">
@@ -68,8 +68,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SubmitRequest">
-      <soap:operation soapAction="http://holidaybookingsystem.org/SubmitRequest" style="document" />
+    <wsdl:operation name="HolidayRequest">
+      <soap:operation soapAction="http://holidaybookingsystem.org/HolidayRequest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -89,8 +89,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SubmitRequest">
-      <soap12:operation soapAction="http://holidaybookingsystem.org/SubmitRequest" style="document" />
+    <wsdl:operation name="HolidayRequest">
+      <soap12:operation soapAction="http://holidaybookingsystem.org/HolidayRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

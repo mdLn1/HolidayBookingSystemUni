@@ -44,6 +44,212 @@ namespace HolidayBookingSystem
             }
         }
 
+        public static void AddDepartments()
+        {
+            using(HBSModel entity = new HBSModel())
+            {
+                if(entity.Departments.Count() <  2)
+                {
+                    entity.Departments.Add(new Department()
+                    {
+                        DepartmentName = "Engineering"
+                    });
+                    entity.Departments.Add(new Department()
+                    {
+                        DepartmentName = "Plumbing"
+                    });
+                    entity.Departments.Add(new Department()
+                    {
+                        DepartmentName = "Roofing"
+                    });
+                    entity.Departments.Add(new Department()
+                    {
+                        DepartmentName = "Carpentry"
+                    });
+                    entity.Departments.Add(new Department()
+                    {
+                        DepartmentName = "Bricklaying"
+                    });
+                    entity.Departments.Add(new Department()
+                    {
+                        DepartmentName = "Office"
+                    });
+                    entity.SaveChanges();
+                }
+            }
+        }
+
+        public static void AddRoles()
+        {
+            using (HBSModel _entity = new HBSModel())
+            {
+                if (_entity.Roles.Count() < 2)
+                {
+                    _entity.Roles.Add(new Role()
+                    {
+                        RoleName = "Head"
+                    });
+                    _entity.Roles.Add(new Role()
+                    {
+                        RoleName = "Deputy Head"
+                    });
+                    _entity.Roles.Add(new Role()
+                    {
+                        RoleName = "Manager"
+                    });
+                    _entity.Roles.Add(new Role()
+                    {
+                        RoleName = "Apprentice"
+                    });
+                    _entity.Roles.Add(new Role()
+                    {
+                        RoleName = "Senior"
+                    });
+                    _entity.Roles.Add(new Role()
+                    {
+                        RoleName = "Junior"
+                    });
+                    _entity.SaveChanges();
+                }
+            }
+        }
+
+        public static void CreateUsers()
+        {
+            using (HBSModel _entity = new HBSModel())
+            {
+
+                if (_entity.Users.Count() < 2)
+                {
+                    
+                    byte[] passwordHash, passwordSalt;
+                    GeneralUtils.CreatePasswordHash("password", out passwordHash, out passwordSalt);
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "madalin",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2020, 1, 1),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2020, 1, 1)),
+                        RoleID = 3,
+                        DepartmentID = 3
+                    });
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "gabriel",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2010, 1, 1),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2010, 1, 1)),
+                        RoleID = 4,
+                        DepartmentID = 3
+                    });
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "alex",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2019, 1, 1),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2019, 1, 1)),
+                        RoleID = 6,
+                        DepartmentID = 3
+                    });
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "chris",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2018, 5, 5),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2018, 5, 5)),
+                        RoleID = 7,
+                        DepartmentID = 3
+                    });
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "bianca",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2019, 6, 6),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2019, 6, 6)),
+                        RoleID = 8,
+                        DepartmentID = 3
+                    });
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "carla",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2019, 2, 2),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2019, 2, 2)),
+                        RoleID = 5,
+                        DepartmentID = 3
+                    });
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "anna",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2017, 3, 3),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2017, 3, 3)),
+                        RoleID = 7,
+                        DepartmentID = 3
+                    });
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "roxanne",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2019, 9, 9),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2019, 9, 9)),
+                        RoleID = 6,
+                        DepartmentID = 3
+                    });
+                    _entity.Users.Add(new User()
+                    {
+                        Username = "kate",
+                        Pwd = passwordHash,
+                        PwdSalt = passwordSalt,
+                        StartDate = new DateTime(2012, 6, 6),
+                        RemainingDays = GeneralUtils.CalculateHolidayAllowanceOnRegistration(new DateTime(2012, 6, 6)),
+                        RoleID = 5,
+                        DepartmentID = 3
+                    });
+
+                    _entity.SaveChanges();
+                }
+            }
+        }
+
+
+        public static void AddPeakTimes()
+        {
+            using (HBSModel _entity = new HBSModel())
+            {
+                if(_entity.PeakTimes.Count() == 0)
+                {
+                    _entity.PeakTimes.Add(new PeakTime()
+                    {
+                        StartDate = new DateTime(2020, 12, 23),
+                        EndDate = new DateTime(2021, 1, 3),
+                        NoConstraintsApply = true
+                    });
+                    _entity.PeakTimes.Add(new PeakTime()
+                    {
+                        StartDate = new DateTime(2020, 7, 15),
+                        EndDate = new DateTime(2020, 8, 31),
+                        NoConstraintsApply = false
+                    });
+                    _entity.PeakTimes.Add(new PeakTime()
+                    {
+                        StartDate = new DateTime(2020, 12, 15),
+                        EndDate = new DateTime(2020, 12, 23),
+                        NoConstraintsApply = false
+                    });
+                    _entity.SaveChanges();
+                }
+            }
+
+        }
         public static void RegisterUsers()
         {
             using (HBSModel _entity = new HBSModel())
