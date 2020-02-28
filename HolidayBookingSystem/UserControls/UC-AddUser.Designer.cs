@@ -41,8 +41,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.tb_repeat_password = new HolidayBookingSystem.TextBox_Password();
-            this.tb_password = new HolidayBookingSystem.TextBox_Password();
             this.tb_username = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,6 +53,8 @@
             this.btn_register_employee = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tb_phoneNumber = new SolutionUtils.PhoneTextBox();
+            this.tb_repeat_password = new HolidayBookingSystem.TextBox_Password();
+            this.tb_password = new HolidayBookingSystem.TextBox_Password();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -87,9 +87,9 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(725, 348);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
@@ -115,7 +115,7 @@
             this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clear.ForeColor = System.Drawing.Color.White;
             this.btn_clear.Location = new System.Drawing.Point(356, 274);
-            this.btn_clear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_clear.Margin = new System.Windows.Forms.Padding(2);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(80, 27);
             this.btn_clear.TabIndex = 19;
@@ -142,7 +142,7 @@
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.panel8);
             this.panel5.Location = new System.Drawing.Point(214, 141);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(325, 1);
             this.panel5.TabIndex = 17;
@@ -153,7 +153,7 @@
             this.panel6.BackColor = System.Drawing.Color.Black;
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Location = new System.Drawing.Point(0, 82);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(325, 1);
             this.panel6.TabIndex = 16;
@@ -162,7 +162,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.Black;
             this.panel7.Location = new System.Drawing.Point(0, 73);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(225, 1);
             this.panel7.TabIndex = 2;
@@ -171,7 +171,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.Black;
             this.panel8.Location = new System.Drawing.Point(0, 73);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(225, 1);
             this.panel8.TabIndex = 2;
@@ -183,7 +183,7 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(211, 61);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(325, 1);
             this.panel2.TabIndex = 15;
@@ -194,7 +194,7 @@
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(0, 82);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(325, 1);
             this.panel1.TabIndex = 16;
@@ -203,7 +203,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(0, 73);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(225, 1);
             this.panel4.TabIndex = 2;
@@ -212,7 +212,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Location = new System.Drawing.Point(0, 73);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(225, 1);
             this.panel3.TabIndex = 2;
@@ -229,33 +229,11 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "* must be above 6 characters and below 32";
             // 
-            // tb_repeat_password
-            // 
-            this.tb_repeat_password.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tb_repeat_password.Location = new System.Drawing.Point(292, 103);
-            this.tb_repeat_password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tb_repeat_password.MaxLength = 32;
-            this.tb_repeat_password.Name = "tb_repeat_password";
-            this.tb_repeat_password.PasswordChar = '*';
-            this.tb_repeat_password.Size = new System.Drawing.Size(114, 20);
-            this.tb_repeat_password.TabIndex = 6;
-            // 
-            // tb_password
-            // 
-            this.tb_password.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tb_password.Location = new System.Drawing.Point(292, 74);
-            this.tb_password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tb_password.MaxLength = 32;
-            this.tb_password.Name = "tb_password";
-            this.tb_password.PasswordChar = '*';
-            this.tb_password.Size = new System.Drawing.Size(114, 20);
-            this.tb_password.TabIndex = 4;
-            // 
             // tb_username
             // 
             this.tb_username.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tb_username.Location = new System.Drawing.Point(292, 26);
-            this.tb_username.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_username.Margin = new System.Windows.Forms.Padding(2);
             this.tb_username.MaxLength = 32;
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(114, 20);
@@ -303,7 +281,7 @@
             this.cb_roles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_roles.FormattingEnabled = true;
             this.cb_roles.Location = new System.Drawing.Point(292, 208);
-            this.cb_roles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_roles.Margin = new System.Windows.Forms.Padding(2);
             this.cb_roles.Name = "cb_roles";
             this.cb_roles.Size = new System.Drawing.Size(114, 21);
             this.cb_roles.TabIndex = 12;
@@ -314,7 +292,7 @@
             this.cb_departments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_departments.FormattingEnabled = true;
             this.cb_departments.Location = new System.Drawing.Point(292, 179);
-            this.cb_departments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_departments.Margin = new System.Windows.Forms.Padding(2);
             this.cb_departments.Name = "cb_departments";
             this.cb_departments.Size = new System.Drawing.Size(114, 21);
             this.cb_departments.TabIndex = 10;
@@ -323,7 +301,7 @@
             // 
             this.dp_add_employee.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dp_add_employee.Location = new System.Drawing.Point(292, 234);
-            this.dp_add_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dp_add_employee.Margin = new System.Windows.Forms.Padding(2);
             this.dp_add_employee.Name = "dp_add_employee";
             this.dp_add_employee.Size = new System.Drawing.Size(114, 20);
             this.dp_add_employee.TabIndex = 14;
@@ -360,7 +338,7 @@
             this.btn_register_employee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_register_employee.ForeColor = System.Drawing.Color.White;
             this.btn_register_employee.Location = new System.Drawing.Point(270, 274);
-            this.btn_register_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_register_employee.Margin = new System.Windows.Forms.Padding(2);
             this.btn_register_employee.Name = "btn_register_employee";
             this.btn_register_employee.Size = new System.Drawing.Size(80, 27);
             this.btn_register_employee.TabIndex = 1;
@@ -382,18 +360,41 @@
             // 
             // tb_phoneNumber
             // 
+            this.tb_phoneNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tb_phoneNumber.ForeColor = System.Drawing.Color.Black;
             this.tb_phoneNumber.Location = new System.Drawing.Point(292, 151);
             this.tb_phoneNumber.Name = "tb_phoneNumber";
             this.tb_phoneNumber.Size = new System.Drawing.Size(114, 20);
             this.tb_phoneNumber.TabIndex = 22;
             // 
+            // tb_repeat_password
+            // 
+            this.tb_repeat_password.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tb_repeat_password.Location = new System.Drawing.Point(292, 103);
+            this.tb_repeat_password.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_repeat_password.MaxLength = 32;
+            this.tb_repeat_password.Name = "tb_repeat_password";
+            this.tb_repeat_password.PasswordChar = '*';
+            this.tb_repeat_password.Size = new System.Drawing.Size(114, 20);
+            this.tb_repeat_password.TabIndex = 6;
+            // 
+            // tb_password
+            // 
+            this.tb_password.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tb_password.Location = new System.Drawing.Point(292, 74);
+            this.tb_password.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_password.MaxLength = 32;
+            this.tb_password.Name = "tb_password";
+            this.tb_password.PasswordChar = '*';
+            this.tb_password.Size = new System.Drawing.Size(114, 20);
+            this.tb_password.TabIndex = 4;
+            // 
             // UC_AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UC_AddUser";
             this.Size = new System.Drawing.Size(725, 348);
             this.groupBox1.ResumeLayout(false);

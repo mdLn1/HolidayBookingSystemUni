@@ -67,3 +67,4 @@ D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookin
 D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.UserControls.UC_HolidayBookings.resources
 D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.UserControls.UC_EmployeesPresent.resources
 D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\bin\Debug\SolutionUtils.dll.config
+D:\github_reps\HolidayBookingSystem\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.UserControls.EmployeeCalendar.resources

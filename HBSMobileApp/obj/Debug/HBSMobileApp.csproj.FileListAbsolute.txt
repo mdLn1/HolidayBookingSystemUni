@@ -25,3 +25,4 @@ D:\github_reps\HolidayBookingSystem\HBSMobileApp\bin\Debug\EntityFramework.xml
 D:\github_reps\HolidayBookingSystem\HBSMobileApp\obj\Debug\HBSMobileApp.csproj.CopyComplete
 D:\github_reps\HolidayBookingSystem\HBSMobileApp\obj\Debug\SubmitRequest.g.cs
 D:\github_reps\HolidayBookingSystem\HBSMobileApp\obj\Debug\SubmitRequest.baml
+D:\github_reps\HolidayBookingSystem\HBSMobileApp\bin\Debug\SolutionUtils.dll.config

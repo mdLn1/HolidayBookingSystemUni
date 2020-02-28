@@ -179,6 +179,7 @@
             this.btn_1.TabIndex = 2;
             this.btn_1.Text = "Button1";
             this.btn_1.UseVisualStyleBackColor = true;
+            this.btn_1.Click += new System.EventHandler(this.btn_1_Click);
             // 
             // panel_holiday_requests
             // 

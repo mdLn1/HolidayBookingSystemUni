@@ -146,5 +146,19 @@ namespace HolidayBookingSystem
                 UC_EmployeesPresent.Instance.initialiseEmployeesLists();
             }
         }
+
+        private void btn_1_Click(object sender, EventArgs e)
+        {
+            if (!panel_main.Controls.Contains(EmployeeCalendar.Instance))
+            {
+                panel_main.Controls.Add(EmployeeCalendar.Instance);
+                EmployeeCalendar.Instance.Dock = DockStyle.Fill;
+                EmployeeCalendar.Instance.BringToFront();
+            }
+            else
+            {
+                EmployeeCalendar.Instance.BringToFront();
+            }
+        }
     }
 }

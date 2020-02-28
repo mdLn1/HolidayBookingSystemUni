@@ -108,6 +108,37 @@ public static class GeneralUtils
         return true;
     }
 
+    public static string getMonthName(int month)
+    {
+        switch (month)
+        {
+            case 2:
+                return "February";
+            case 3:
+                return "March";
+            case 4:
+                return "April";
+            case 5:
+                return "May";
+            case 6:
+                return "June";
+            case 7:
+                return "July";
+            case 8:
+                return "August";
+            case 9:
+                return "September";
+            case 10:
+                return "October";
+            case 11:
+                return "November";
+            case 12:
+                return "December";
+            default:
+                return "January";
+        }
+    }
+
     // https://stackoverflow.com/questions/2510383/how-can-i-calculate-what-date-good-friday-falls-on-given-a-year
     public static DateTime EasterSunday(int year)
     {

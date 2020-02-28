@@ -160,3 +160,4 @@ D:\github_reps\HolidayBookingSystem\HBSWeb\bin\Antlr3.Runtime.pdb
 D:\github_reps\HolidayBookingSystem\HBSWeb\bin\Microsoft.AspNet.FriendlyUrls.xml
 D:\github_reps\HolidayBookingSystem\HBSWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\github_reps\HolidayBookingSystem\HBSWeb\obj\Debug\HBSWeb.csproj.CopyComplete
+D:\github_reps\HolidayBookingSystem\HBSWeb\bin\SolutionUtils.dll.config
