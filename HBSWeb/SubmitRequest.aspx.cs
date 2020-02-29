@@ -23,6 +23,19 @@ namespace HBSWeb
             DateTime startDate = startDateCalendar.SelectedDate;
             DateTime endDate = endDateCalendar.SelectedDate;
             int workingDays = GeneralUtils.CalculateWorkingDays(startDate, endDate);
+            startDate = GeneralUtils.simplifyStartDate(startDate);
+            endDate = GeneralUtils.simplifyEndDate(endDate);
+            if (workingDays == 0)
+            {
+
+                displayHolidaySummary("You selected weekend days, no need for holiday allowance", GeneralUtils.DANGER_COLOR);
+                return;
+            }
+            else if (workingDays > GeneralUtils.MAX_POSSIBLE_HOLIDAY)
+            {
+                displayHolidaySummary("Too many days selected, it exceeds the maximum allowance", GeneralUtils.DANGER_COLOR);
+                return;
+            }
             using (HBSModel _entity = new HBSModel())
             {
                 int userId = (int)Session["userId"];
@@ -49,6 +62,7 @@ namespace HBSWeb
                 holidayRequest.RequestStatusID = _entity.StatusRequests
                     .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
                 holidayRequest.ConstraintsBroken = new ConstraintChecking(usr, holidayRequest).getBrokenConstraints();
+                holidayRequest.DaysPeakTime = PrioritiseRequests.daysFallPeakTimes(holidayRequest);
                 _entity.HolidayRequests.Add(holidayRequest);
                 _entity.SaveChanges();
                 Response.Redirect("/EmployeeHome?HolidayRequest=Success");

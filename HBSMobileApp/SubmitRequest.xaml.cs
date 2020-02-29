@@ -91,7 +91,8 @@ namespace HBSMobileApp
                 else
                 {
                     this.Cursor = Cursors.Wait;
-                    
+                    startDate = GeneralUtils.simplifyStartDate(startDate);
+                    endDate = GeneralUtils.simplifyEndDate(endDate);
                     bool res = await client.HolidayRequestAsync(startDate, endDate, workingDays);
                     this.Cursor = Cursors.Arrow;
                     if(res)

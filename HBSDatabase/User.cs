@@ -22,7 +22,7 @@ namespace HBSDatabase
     
         public int id { get; set; }
         public string Username { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
+        public System.DateTime StartDate { get; set; }
         public int RemainingDays { get; set; }
         public int RoleID { get; set; }
         public int DepartmentID { get; set; }

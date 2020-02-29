@@ -18,7 +18,7 @@ public static class GeneralUtils
     public const string JUNIOR_ROLE = "Junior";
 
     // Broken constraints
-    public const string CONSTRAINT_DEPUTY_OR_MANAGER = "Either the head or the deputy head of the department must be on duty";
+    public const string CONSTRAINT_DEPUTY_OR_HEAD = "Either the head or the deputy head of the department must be on duty";
     public const string CONSTRAINT_AT_LEAST_60_PERCENT = "At least 60% of a department must be on duty";
     public const string CONSTRAINT_AT_LEAST_40_PERCENT = "At least 40% of a department must be on duty";
     public const string CONSTRAINT_MINIMUM_SENIOR_OR_MANAGERS = "At least one manager and one senior staff member must be on duty";
@@ -64,12 +64,37 @@ public static class GeneralUtils
         new DateRange(new DateTime(2020, 08, 1), new DateTime(2020, 08, 31))
     };
 
+    public static DateTime simplifyStartDate(DateTime date)
+    {
+        if(date.DayOfWeek == DayOfWeek.Saturday)
+        {
+            date.AddDays(2);
+        } else if(date.DayOfWeek == DayOfWeek.Sunday)
+        {
+            date.AddDays(1);
+        }
+        return date;
+    }
 
-    public static List<DateRange> getPeakTimes()
+    public static DateTime simplifyEndDate(DateTime date)
+    {
+        if (date.DayOfWeek == DayOfWeek.Saturday)
+        {
+            date.Subtract(new TimeSpan(1,0,0,0));
+        }
+        else if (date.DayOfWeek == DayOfWeek.Sunday)
+        {
+            date.Subtract(new TimeSpan(2, 0, 0, 0));
+        }
+        return date;
+    }
+
+
+    public static List<DateRange> getPeakTimes(int yearsInAdvance = 1)
     {
         List<DateRange> dateRanges = new List<DateRange>();
         int currentYear = DateTime.Now.Year;
-        for(int i = 0; i < 2; i++)
+        for (int i = 0; i < yearsInAdvance; i++)
         {
             // 15th of July till 31st of August
             dateRanges.Add(new DateRange(new DateTime(currentYear + i, 7, 15)
@@ -82,6 +107,24 @@ public static class GeneralUtils
             TimeSpan onewWeek = new TimeSpan(7, 0, 0, 0);
             dateRanges.Add(new DateRange(easter.Subtract(onewWeek), easter.Add(onewWeek)));
         }
+        return dateRanges;
+    }
+
+    public static List<DateRange> getPeakTimesForCurrentYear()
+    {
+        List<DateRange> dateRanges = new List<DateRange>();
+        int currentYear = DateTime.Now.Year;
+        // 15th of July till 31st of August
+        dateRanges.Add(new DateRange(new DateTime(currentYear, 7, 15)
+                , new DateTime(currentYear, 8, 31)));
+        // 15th of December to 22nd of December
+        dateRanges.Add(new DateRange(new DateTime(currentYear, 12, 15)
+                , new DateTime(currentYear, 12, 22)));
+        // week before and after Easter
+        DateTime easter = EasterSunday(currentYear);
+        TimeSpan onewWeek = new TimeSpan(7, 0, 0, 0);
+        dateRanges.Add(new DateRange(easter.Subtract(onewWeek), easter.Add(onewWeek)));
+
         return dateRanges;
     }
 

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HBSDatabase;
+using SolutionUtils;
+using static SolutionUtils.PriorityRequest;
 
 namespace HolidayBookingSystem.UserControls
 {
@@ -31,7 +33,7 @@ namespace HolidayBookingSystem.UserControls
         {
             InitializeComponent();
             firstConstraintLabel.Text = GeneralUtils.CONSTRAINT_HOLIDAY_ENTITLEMENT_EXCEEDED;
-            secondConstraintLabel.Text = GeneralUtils.CONSTRAINT_HOLIDAY_ENTITLEMENT_EXCEEDED;
+            secondConstraintLabel.Text = GeneralUtils.CONSTRAINT_DEPUTY_OR_HEAD;
             thirdConstraintLabel.Text = GeneralUtils.CONSTRAINT_MINIMUM_SENIOR_OR_MANAGERS;
             fourthConstraintLabel.Text = GeneralUtils.CONSTRAINT_AT_LEAST_60_PERCENT;
             messageLabel.Visible = false;
@@ -45,24 +47,44 @@ namespace HolidayBookingSystem.UserControls
                 messageLabel.Visible = false;
                 using (HBSModel _entity = new HBSModel())
                 {
-                    var requests = _entity.HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.PENDING)
-                            .OrderBy(x => x.ConstraintsBroken.AtLeastPercentage
-                        || x.ConstraintsBroken.ExceedsHolidayEntitlement || x.ConstraintsBroken.ManagerOrSenior
-                            || x.ConstraintsBroken.HeadOrDeputy).ToList();
-                    foreach (var request in requests)
+
+                    //var requests = _entity.HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.PENDING)
+                    //        .OrderBy(x => x.ConstraintsBroken.AtLeastPercentage
+                    //    || x.ConstraintsBroken.ExceedsHolidayEntitlement || x.ConstraintsBroken.ManagerOrSenior
+                    //        || x.ConstraintsBroken.HeadOrDeputy).ToList();
+                    var prioritiseReqs = (from el in _entity.HolidayRequests
+                                          where el.StatusRequest.Status == GeneralUtils.PENDING
+                                          select new PriorityRequest()
+                                          {
+                                              Constraints = new BreakingConstraints()
+                                              {
+                                                  AtLeastPercentage = el.ConstraintsBroken.AtLeastPercentage,
+                                                  ExceedsHolidayEntitlement = el.ConstraintsBroken.ExceedsHolidayEntitlement,
+                                                  HeadOrDeputy = el.ConstraintsBroken.HeadOrDeputy,
+                                                  ManagerOrSenior = el.ConstraintsBroken.ManagerOrSenior
+                                              },
+                                              WorkingDays = el.NumberOfDays,
+                                              DaysPeakTime = el.DaysPeakTime,
+                                              EndDate = el.EndDate,
+                                              ID = el.ID,
+                                              RemainingDays = el.User.RemainingDays,
+                                              StartDate = el.StartDate
+                                          }).ToList();
+                    var ordered = new PrioritiseRequests(prioritiseReqs).getPrioritisedRequests();
+                    foreach (var request in ordered)
                     {
                         string[] arr = new string[4];
                         arr[0] = request.ID.ToString();
                         arr[1] = request.StartDate.ToShortDateString();
                         arr[2] = request.EndDate.ToShortDateString();
-                        arr[3] = request.NumberOfDays.ToString();
+                        arr[3] = request.WorkingDays.ToString();
                         ListViewItem item = new ListViewItem(arr);
-                        if (breaksConstraint(request.ConstraintsBroken))
+                        if (breaksConstraint(request.Constraints))
                             item.BackColor = Color.SandyBrown;
                         else
                             item.BackColor = Color.Lime;
 
-                         outstandingHolidaysListView.Items.Add(item);
+                        outstandingHolidaysListView.Items.Add(item);
                     }
                 }
             }
@@ -72,7 +94,7 @@ namespace HolidayBookingSystem.UserControls
             }
         }
 
-        public bool breaksConstraint(ConstraintsBroken constraint)
+        public bool breaksConstraint(BreakingConstraints constraint)
         {
             if (constraint.AtLeastPercentage
                         || constraint.ExceedsHolidayEntitlement || constraint.ManagerOrSenior

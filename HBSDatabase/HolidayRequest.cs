@@ -17,10 +17,10 @@ namespace HBSDatabase
         public int ID { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
-        public Nullable<bool> Feasible { get; set; }
         public int UserID { get; set; }
         public int RequestStatusID { get; set; }
         public int NumberOfDays { get; set; }
+        public int DaysPeakTime { get; set; }
     
         public virtual User User { get; set; }
         public virtual StatusRequest StatusRequest { get; set; }

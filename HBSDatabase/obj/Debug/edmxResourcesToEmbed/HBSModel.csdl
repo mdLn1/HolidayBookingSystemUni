@@ -15,13 +15,13 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Feasible" Type="Boolean" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="User" Relationship="Self.FK__HolidayRe__UserI__7B5B524B" FromRole="HolidayRequests" ToRole="Users" />
     <Property Name="RequestStatusID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="StatusRequest" Relationship="bookingsystemModel.FK__HolidayRe__Reque__04E4BC85" FromRole="HolidayRequest" ToRole="StatusRequest" />
     <Property Name="NumberOfDays" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ConstraintsBroken" Relationship="bookingsystemModel.FK__Constrain__Holid__6D0D32F4" FromRole="HolidayRequest" ToRole="ConstraintsBroken" />
+    <Property Name="DaysPeakTime" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="PeakTime">
     <Key>
@@ -46,7 +46,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Username" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" Nullable="false" />
     <Property Name="RemainingDays" Type="Int32" Nullable="false" />
     <Property Name="RoleID" Type="Int32" Nullable="false" />
     <Property Name="DepartmentID" Type="Int32" Nullable="false" />

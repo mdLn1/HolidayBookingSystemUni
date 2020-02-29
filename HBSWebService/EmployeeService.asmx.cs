@@ -60,6 +60,7 @@ namespace HBSWebService
                     holidayRequest.RequestStatusID = _entity.StatusRequests
                         .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
                     holidayRequest.ConstraintsBroken = new ConstraintChecking(usr, holidayRequest).getBrokenConstraints();
+                    holidayRequest.DaysPeakTime = PrioritiseRequests.daysFallPeakTimes(holidayRequest);
                     _entity.HolidayRequests.Add(holidayRequest);
                     _entity.SaveChanges();
                 }
