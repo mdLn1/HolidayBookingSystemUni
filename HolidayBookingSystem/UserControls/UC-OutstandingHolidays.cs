@@ -30,6 +30,10 @@ namespace HolidayBookingSystem.UserControls
         public UC_OutstandingHolidays()
         {
             InitializeComponent();
+            firstConstraintLabel.Text = GeneralUtils.CONSTRAINT_HOLIDAY_ENTITLEMENT_EXCEEDED;
+            secondConstraintLabel.Text = GeneralUtils.CONSTRAINT_HOLIDAY_ENTITLEMENT_EXCEEDED;
+            thirdConstraintLabel.Text = GeneralUtils.CONSTRAINT_MINIMUM_SENIOR_OR_MANAGERS;
+            fourthConstraintLabel.Text = GeneralUtils.CONSTRAINT_AT_LEAST_60_PERCENT;
             messageLabel.Visible = false;
         }
 
@@ -41,7 +45,10 @@ namespace HolidayBookingSystem.UserControls
                 messageLabel.Visible = false;
                 using (HBSModel _entity = new HBSModel())
                 {
-                    var requests = _entity.HolidayRequests.ToList();
+                    var requests = _entity.HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.PENDING)
+                            .OrderBy(x => x.ConstraintsBroken.AtLeastPercentage
+                        || x.ConstraintsBroken.ExceedsHolidayEntitlement || x.ConstraintsBroken.ManagerOrSenior
+                            || x.ConstraintsBroken.HeadOrDeputy).ToList();
                     foreach (var request in requests)
                     {
                         string[] arr = new string[4];
@@ -50,7 +57,12 @@ namespace HolidayBookingSystem.UserControls
                         arr[2] = request.EndDate.ToShortDateString();
                         arr[3] = request.NumberOfDays.ToString();
                         ListViewItem item = new ListViewItem(arr);
-                        outstandingHolidaysListView.Items.Add(item);
+                        if (breaksConstraint(request.ConstraintsBroken))
+                            item.BackColor = Color.SandyBrown;
+                        else
+                            item.BackColor = Color.Lime;
+
+                         outstandingHolidaysListView.Items.Add(item);
                     }
                 }
             }
@@ -58,6 +70,15 @@ namespace HolidayBookingSystem.UserControls
             {
                 DesktopAppUtils.popDefaultErrorMessageBox("Could not retrieve Item from DB \n" + err.Message);
             }
+        }
+
+        public bool breaksConstraint(ConstraintsBroken constraint)
+        {
+            if (constraint.AtLeastPercentage
+                        || constraint.ExceedsHolidayEntitlement || constraint.ManagerOrSenior
+                            || constraint.HeadOrDeputy)
+                return true;
+            return false;
         }
 
         private void approveButton_Click(object sender, EventArgs e)
@@ -85,6 +106,7 @@ namespace HolidayBookingSystem.UserControls
             using (HBSModel entity = new HBSModel())
             {
                 var request = entity.HolidayRequests.Find(Convert.ToInt32(item.SubItems[0].Text));
+                request.User.RemainingDays = request.User.RemainingDays - request.NumberOfDays;
                 request.RequestStatusID = entity.StatusRequests.FirstOrDefault(x => x.Status == GeneralUtils.APPROVED).ID;
                 entity.SaveChanges();
             }
@@ -140,39 +162,43 @@ namespace HolidayBookingSystem.UserControls
                     var request = entity.HolidayRequests.Find(Convert.ToInt32(item.SubItems[0].Text));
                     if (request.ConstraintsBroken.ExceedsHolidayEntitlement)
                     {
-                        firstLabel.ForeColor = Color.Red;
+                        firstConstraintLabel.ForeColor = Color.Red;
                         isBreakingConstraints = true;
                     }
                     else
                     {
-                        firstLabel.ForeColor = Color.Green;
+                        firstConstraintLabel.ForeColor = Color.Green;
                     }
                     if (request.ConstraintsBroken.HeadOrDeputy)
                     {
-                        secondLabel.ForeColor = Color.Red;
+                        secondConstraintLabel.ForeColor = Color.Red;
                         isBreakingConstraints = true;
                     }
                     else
                     {
-                        secondLabel.ForeColor = Color.Green;
+                        secondConstraintLabel.ForeColor = Color.Green;
                     }
                     if (request.ConstraintsBroken.ManagerOrSenior)
                     {
-                        thirdLabel.ForeColor = Color.Red;
+                        thirdConstraintLabel.ForeColor = Color.Red;
                         isBreakingConstraints = true;
                     }
                     else
                     {
-                        thirdLabel.ForeColor = Color.Green;
+                        thirdConstraintLabel.ForeColor = Color.Green;
                     }
                     if (request.ConstraintsBroken.AtLeastPercentage)
                     {
-                        fourthLabel.ForeColor = Color.Red;
+                        if (request.StartDate.Month == 8 || request.EndDate.Month == 8)
+                            fourthConstraintLabel.Text = GeneralUtils.CONSTRAINT_AT_LEAST_40_PERCENT;
+                        else
+                            fourthConstraintLabel.Text = GeneralUtils.CONSTRAINT_AT_LEAST_60_PERCENT;
+                        fourthConstraintLabel.ForeColor = Color.Red;
                         isBreakingConstraints = true;
                     }
                     else
                     {
-                        fourthLabel.ForeColor = Color.Green;
+                        fourthConstraintLabel.ForeColor = Color.Green;
                     }
                 }
             }

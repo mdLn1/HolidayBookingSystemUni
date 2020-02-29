@@ -22,10 +22,11 @@ namespace HBSWeb
         {
             DateTime startDate = startDateCalendar.SelectedDate;
             DateTime endDate = endDateCalendar.SelectedDate;
-            int workingDays = GeneralUtils.CalculateWorkingDays(endDate, startDate);
+            int workingDays = GeneralUtils.CalculateWorkingDays(startDate, endDate);
             using (HBSModel _entity = new HBSModel())
             {
                 int userId = (int)Session["userId"];
+
                 HolidayRequest holidayRequest = new HolidayRequest()
                 {
                     StartDate = startDate,
@@ -34,6 +35,17 @@ namespace HBSWeb
                     NumberOfDays = workingDays
                 };
                 var usr = _entity.Users.Find(userId);
+
+                if (usr.HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.APPROVED
+                    || x.StatusRequest.Status == GeneralUtils.PENDING)
+                    .Any(x => x.EndDate > DateTime.Now 
+                  && ((x.EndDate >= holidayRequest.StartDate && x.EndDate <= holidayRequest.EndDate)
+                  || (x.StartDate <= holidayRequest.EndDate && x.StartDate >= holidayRequest.StartDate)
+                  || (x.StartDate <= holidayRequest.StartDate && x.EndDate >= holidayRequest.EndDate))))
+                {
+                    displayHolidaySummary("There is an overlap with your current pending or approved requests", GeneralUtils.DANGER_COLOR);
+                    return;
+                }
                 holidayRequest.RequestStatusID = _entity.StatusRequests
                     .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
                 holidayRequest.ConstraintsBroken = new ConstraintChecking(usr, holidayRequest).getBrokenConstraints();
@@ -62,7 +74,7 @@ namespace HBSWeb
                     displayHolidaySummary("Please select a start date for at least 5 days in future.", GeneralUtils.DANGER_COLOR);
                 }
                 endDateCalendar.SelectedDates.Clear();
-                if(startDateCalendar.SelectedDate.Month > DateTime.Now.Month)
+                if (startDateCalendar.SelectedDate.Month > DateTime.Now.Month)
                 {
                     endDateCalendar.TodaysDate = startDateCalendar.SelectedDate.AddDays(1);
                 }

@@ -33,7 +33,7 @@ namespace HolidayBookingSystem.UserControls
         {
             InitializeComponent();
             selectedMonthLabel.Text = "Selected Month: " + GeneralUtils.getMonthName(DateTime.Now.Month) + " " + DateTime.Now.Year;
-
+            GeneralUtils.getPeakTimes();
             InitializeDropdowns();
         }
 

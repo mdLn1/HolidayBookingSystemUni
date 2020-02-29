@@ -33,7 +33,7 @@ namespace SolutionUtils
                 //brokenConstraints.Add("Exceeds the number of days of holiday entitlement");
             if (userRole == GeneralUtils.HEAD_ROLE || userRole == GeneralUtils.DEPUTY_HEAD_ROLE)
             {
-                if (isDeputyOrHeadOnHolidayAlready(userRole == GeneralUtils.HEAD_ROLE
+                if (isDeputyOrHeadOnHolidayAlready(userRole == GeneralUtils.DEPUTY_HEAD_ROLE
                     ? GeneralUtils.HEAD_ROLE : GeneralUtils.DEPUTY_HEAD_ROLE))
                     constraintsBroken.HeadOrDeputy = true;
                     //brokenConstraints.Add("Either the head or the deputy head of the department must be on duty");
@@ -70,10 +70,9 @@ namespace SolutionUtils
             var roleId = entity.Roles.FirstOrDefault(x => x.RoleName == role).ID;
             var holidays = entity.Users
                 .FirstOrDefault(x => x.DepartmentID == user.DepartmentID && x.RoleID == roleId)
-                .HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.APPROVED && x.EndDate > DateTime.Now);
-            if (holidays.Any(x => x.EndDate > DateTime.Now && (x.EndDate > holidayRequest.StartDate && x.EndDate < holidayRequest.EndDate)
-                 || (x.StartDate < holidayRequest.EndDate && x.StartDate > holidayRequest.StartDate)
-                 || (x.StartDate < holidayRequest.StartDate && x.EndDate > holidayRequest.EndDate)))
+                .HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.APPROVED && x.EndDate > DateTime.Now)
+                .ToList();
+            if (holidays.Any(x => isOverlappingHoliday(x, holidayRequest)))
             {
                 return true;
             }
@@ -87,15 +86,22 @@ namespace SolutionUtils
             int numOfColleagues = colleagues.Count();
             foreach (var usr in colleagues)
             {
-                if (usr.HolidayRequests.Any(x => x.EndDate > DateTime.Now
-                    && (x.EndDate > holidayRequest.StartDate && x.EndDate < holidayRequest.EndDate)
-                  || (x.StartDate < holidayRequest.EndDate && x.StartDate > holidayRequest.StartDate)
-                  || (x.StartDate < holidayRequest.StartDate && x.EndDate > holidayRequest.EndDate)))
+                if (usr.HolidayRequests.Any(x => isOverlappingHoliday(x, holidayRequest)))
                 {
                     numOfColleagues--;
                 }
             }
             return numOfColleagues > 0;
+        }
+
+        public bool isOverlappingHoliday(HolidayRequest existing, HolidayRequest newAdded)
+        {
+            if(existing.EndDate > DateTime.Now
+                  && ((existing.EndDate >= newAdded.StartDate && existing.EndDate <= newAdded.EndDate)
+                  || (existing.StartDate <= newAdded.EndDate && existing.StartDate >= newAdded.StartDate)
+                  || (existing.StartDate <= newAdded.StartDate && existing.EndDate >= newAdded.EndDate)))
+                return true;
+            return false;
         }
 
         private bool areThereNotEnoughEmployeesWorking(double percentage)
@@ -105,10 +111,7 @@ namespace SolutionUtils
             double onHolidayEmployees = 0;
             foreach (var employee in employeesByDepartment)
             {
-                if (employee.HolidayRequests.Any(x => x.EndDate > DateTime.Now
-                     && (x.EndDate > holidayRequest.StartDate && x.EndDate < holidayRequest.EndDate)
-                   || (x.StartDate < holidayRequest.EndDate && x.StartDate > holidayRequest.StartDate)
-                   || (x.StartDate < holidayRequest.StartDate && x.EndDate > holidayRequest.EndDate)))
+                if (employee.HolidayRequests.Any(x => isOverlappingHoliday(x, holidayRequest)))
                 {
                     onHolidayEmployees++;
                 }

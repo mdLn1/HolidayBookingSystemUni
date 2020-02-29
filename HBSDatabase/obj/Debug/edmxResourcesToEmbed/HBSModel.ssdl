@@ -27,7 +27,7 @@
     <Property Name="Feasible" Type="bit" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="RequestStatusID" Type="int" Nullable="false" />
-    <Property Name="NumberOfDays" Type="int" />
+    <Property Name="NumberOfDays" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PeakTimes">
     <Key>

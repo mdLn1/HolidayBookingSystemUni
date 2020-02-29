@@ -34,10 +34,6 @@
             this.btn_manage = new System.Windows.Forms.Button();
             this.panel_side = new System.Windows.Forms.Panel();
             this.panel_manage_side = new System.Windows.Forms.Panel();
-            this.panel_calendar_view = new System.Windows.Forms.Panel();
-            this.btn_3 = new System.Windows.Forms.Button();
-            this.btn_2 = new System.Windows.Forms.Button();
-            this.btn_1 = new System.Windows.Forms.Button();
             this.panel_holiday_requests = new System.Windows.Forms.Panel();
             this.btn_day_view = new System.Windows.Forms.Button();
             this.btn_holiday_bookings = new System.Windows.Forms.Button();
@@ -50,7 +46,6 @@
             this.panel_top.SuspendLayout();
             this.panel_side.SuspendLayout();
             this.panel_manage_side.SuspendLayout();
-            this.panel_calendar_view.SuspendLayout();
             this.panel_holiday_requests.SuspendLayout();
             this.panel_manage_employee.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +118,6 @@
             // 
             // panel_manage_side
             // 
-            this.panel_manage_side.Controls.Add(this.panel_calendar_view);
             this.panel_manage_side.Controls.Add(this.panel_holiday_requests);
             this.panel_manage_side.Controls.Add(this.panel_manage_employee);
             this.panel_manage_side.Dock = System.Windows.Forms.DockStyle.Left;
@@ -132,54 +126,6 @@
             this.panel_manage_side.Name = "panel_manage_side";
             this.panel_manage_side.Size = new System.Drawing.Size(100, 383);
             this.panel_manage_side.TabIndex = 2;
-            // 
-            // panel_calendar_view
-            // 
-            this.panel_calendar_view.Controls.Add(this.btn_3);
-            this.panel_calendar_view.Controls.Add(this.btn_2);
-            this.panel_calendar_view.Controls.Add(this.btn_1);
-            this.panel_calendar_view.Location = new System.Drawing.Point(0, 166);
-            this.panel_calendar_view.Margin = new System.Windows.Forms.Padding(2);
-            this.panel_calendar_view.Name = "panel_calendar_view";
-            this.panel_calendar_view.Size = new System.Drawing.Size(100, 69);
-            this.panel_calendar_view.TabIndex = 6;
-            // 
-            // btn_3
-            // 
-            this.btn_3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_3.Location = new System.Drawing.Point(0, 44);
-            this.btn_3.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_3.Name = "btn_3";
-            this.btn_3.Size = new System.Drawing.Size(100, 22);
-            this.btn_3.TabIndex = 3;
-            this.btn_3.Text = "Button3";
-            this.btn_3.UseVisualStyleBackColor = true;
-            // 
-            // btn_2
-            // 
-            this.btn_2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_2.Location = new System.Drawing.Point(0, 22);
-            this.btn_2.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_2.Name = "btn_2";
-            this.btn_2.Size = new System.Drawing.Size(100, 22);
-            this.btn_2.TabIndex = 1;
-            this.btn_2.Text = "Button2";
-            this.btn_2.UseVisualStyleBackColor = true;
-            // 
-            // btn_1
-            // 
-            this.btn_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_1.Location = new System.Drawing.Point(0, 0);
-            this.btn_1.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_1.Name = "btn_1";
-            this.btn_1.Size = new System.Drawing.Size(100, 22);
-            this.btn_1.TabIndex = 2;
-            this.btn_1.Text = "Button1";
-            this.btn_1.UseVisualStyleBackColor = true;
-            this.btn_1.Click += new System.EventHandler(this.btn_1_Click);
             // 
             // panel_holiday_requests
             // 
@@ -307,7 +253,6 @@
             this.panel_top.ResumeLayout(false);
             this.panel_side.ResumeLayout(false);
             this.panel_manage_side.ResumeLayout(false);
-            this.panel_calendar_view.ResumeLayout(false);
             this.panel_holiday_requests.ResumeLayout(false);
             this.panel_manage_employee.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -331,9 +276,5 @@
         private System.Windows.Forms.Button btn_day_view;
         private System.Windows.Forms.Button btn_holiday_bookings;
         private System.Windows.Forms.Button btn_pending_requests;
-        private System.Windows.Forms.Panel panel_calendar_view;
-        private System.Windows.Forms.Button btn_3;
-        private System.Windows.Forms.Button btn_2;
-        private System.Windows.Forms.Button btn_1;
     }
 }

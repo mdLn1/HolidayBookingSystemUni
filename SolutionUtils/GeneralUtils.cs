@@ -17,6 +17,13 @@ public static class GeneralUtils
     public const string APPRENTICE_ROLE = "Apprentice";
     public const string JUNIOR_ROLE = "Junior";
 
+    // Broken constraints
+    public const string CONSTRAINT_DEPUTY_OR_MANAGER = "Either the head or the deputy head of the department must be on duty";
+    public const string CONSTRAINT_AT_LEAST_60_PERCENT = "At least 60% of a department must be on duty";
+    public const string CONSTRAINT_AT_LEAST_40_PERCENT = "At least 40% of a department must be on duty";
+    public const string CONSTRAINT_MINIMUM_SENIOR_OR_MANAGERS = "At least one manager and one senior staff member must be on duty";
+    public const string CONSTRAINT_HOLIDAY_ENTITLEMENT_EXCEEDED = "No employee can exceed the number of days of holiday entitlement";
+
     // Departments
     public const string ENGINEERING_DEPARTMENT = "Engineering";
     public const string OFFICE_DEPARTMENT = "Office";
@@ -49,13 +56,34 @@ public static class GeneralUtils
 
     public static List<DateRange> noConstraintsApply = new List<DateRange>()
     {
-        new DateRange(new DateTime(2020, 12, 23), new DateTime(3,1, 2021))
+        new DateRange(new DateTime(2020, 12, 23), new DateTime(2021,1,3))
     };
 
     public static List<DateRange> lessEmployeePercentageRequired = new List<DateRange>()
     {
         new DateRange(new DateTime(2020, 08, 1), new DateTime(2020, 08, 31))
     };
+
+
+    public static List<DateRange> getPeakTimes()
+    {
+        List<DateRange> dateRanges = new List<DateRange>();
+        int currentYear = DateTime.Now.Year;
+        for(int i = 0; i < 2; i++)
+        {
+            // 15th of July till 31st of August
+            dateRanges.Add(new DateRange(new DateTime(currentYear + i, 7, 15)
+                    , new DateTime(currentYear + i, 8, 31)));
+            // 15th of December to 22nd of December
+            dateRanges.Add(new DateRange(new DateTime(currentYear + i, 12, 15)
+                    , new DateTime(currentYear + i, 12, 22)));
+            // week before and after Easter
+            DateTime easter = EasterSunday(currentYear);
+            TimeSpan onewWeek = new TimeSpan(7, 0, 0, 0);
+            dateRanges.Add(new DateRange(easter.Subtract(onewWeek), easter.Add(onewWeek)));
+        }
+        return dateRanges;
+    }
 
     public static int CalculateHolidayAllowanceOnRegistration(DateTime startDate)
     {

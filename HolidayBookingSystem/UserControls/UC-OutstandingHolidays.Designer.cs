@@ -36,15 +36,15 @@
             this.WorkingDays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.fourthLabel = new System.Windows.Forms.Label();
-            this.thirdLabel = new System.Windows.Forms.Label();
-            this.secondLabel = new System.Windows.Forms.Label();
-            this.firstLabel = new System.Windows.Forms.Label();
+            this.firstConstraintLabel = new System.Windows.Forms.Label();
+            this.fourthConstraintLabel = new System.Windows.Forms.Label();
+            this.secondConstraintLabel = new System.Windows.Forms.Label();
+            this.thirdConstraintLabel = new System.Windows.Forms.Label();
             this.messageLabel = new System.Windows.Forms.Label();
-            this.declineButton = new HolidayBookingSystem.CustomControls.ThemedButton();
-            this.approveButton = new HolidayBookingSystem.CustomControls.ThemedButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.declineButton = new HolidayBookingSystem.CustomControls.ThemedButton();
+            this.approveButton = new HolidayBookingSystem.CustomControls.ThemedButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -69,14 +69,13 @@
             this.EndDate,
             this.WorkingDays});
             this.outstandingHolidaysListView.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.outstandingHolidaysListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.outstandingHolidaysListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outstandingHolidaysListView.FullRowSelect = true;
             this.outstandingHolidaysListView.GridLines = true;
             this.outstandingHolidaysListView.HideSelection = false;
-            this.outstandingHolidaysListView.Location = new System.Drawing.Point(3, 16);
+            this.outstandingHolidaysListView.Location = new System.Drawing.Point(3, 19);
             this.outstandingHolidaysListView.Name = "outstandingHolidaysListView";
-            this.outstandingHolidaysListView.Size = new System.Drawing.Size(725, 351);
+            this.outstandingHolidaysListView.Size = new System.Drawing.Size(364, 345);
             this.outstandingHolidaysListView.TabIndex = 0;
             this.outstandingHolidaysListView.UseCompatibleStateImageBehavior = false;
             this.outstandingHolidaysListView.View = System.Windows.Forms.View.Details;
@@ -120,10 +119,10 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.firstLabel);
-            this.groupBox3.Controls.Add(this.fourthLabel);
-            this.groupBox3.Controls.Add(this.secondLabel);
-            this.groupBox3.Controls.Add(this.thirdLabel);
+            this.groupBox3.Controls.Add(this.firstConstraintLabel);
+            this.groupBox3.Controls.Add(this.fourthConstraintLabel);
+            this.groupBox3.Controls.Add(this.secondConstraintLabel);
+            this.groupBox3.Controls.Add(this.thirdConstraintLabel);
             this.groupBox3.Location = new System.Drawing.Point(5, 82);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(352, 211);
@@ -131,41 +130,41 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Breaking Constraints";
             // 
-            // fourthLabel
+            // firstConstraintLabel
             // 
-            this.fourthLabel.AutoSize = true;
-            this.fourthLabel.Location = new System.Drawing.Point(6, 157);
-            this.fourthLabel.Name = "fourthLabel";
-            this.fourthLabel.Size = new System.Drawing.Size(220, 13);
-            this.fourthLabel.TabIndex = 14;
-            this.fourthLabel.Text = "At least 60% of a department must be on duty";
+            this.firstConstraintLabel.AutoSize = true;
+            this.firstConstraintLabel.Location = new System.Drawing.Point(6, 33);
+            this.firstConstraintLabel.Name = "firstConstraintLabel";
+            this.firstConstraintLabel.Size = new System.Drawing.Size(0, 13);
+            this.firstConstraintLabel.TabIndex = 11;
+            this.firstConstraintLabel.Text = "No employee can exceed the number of days of holiday entitlement";
             // 
-            // thirdLabel
+            // fourthConstraintLabel
             // 
-            this.thirdLabel.AutoSize = true;
-            this.thirdLabel.Location = new System.Drawing.Point(6, 114);
-            this.thirdLabel.Name = "thirdLabel";
-            this.thirdLabel.Size = new System.Drawing.Size(321, 13);
-            this.thirdLabel.TabIndex = 13;
-            this.thirdLabel.Text = "At least one manager and one senior staff member must be on duty";
+            this.fourthConstraintLabel.AutoSize = true;
+            this.fourthConstraintLabel.Location = new System.Drawing.Point(6, 157);
+            this.fourthConstraintLabel.Name = "fourthConstraintLabel";
+            this.fourthConstraintLabel.Size = new System.Drawing.Size(220, 13);
+            this.fourthConstraintLabel.TabIndex = 14;
+            this.fourthConstraintLabel.Text = "At least 60% of a department must be on duty";
             // 
-            // secondLabel
+            // secondConstraintLabel
             // 
-            this.secondLabel.AutoSize = true;
-            this.secondLabel.Location = new System.Drawing.Point(6, 71);
-            this.secondLabel.Name = "secondLabel";
-            this.secondLabel.Size = new System.Drawing.Size(335, 13);
-            this.secondLabel.TabIndex = 12;
-            this.secondLabel.Text = "Either the head or the deputy head of the department must be on duty";
+            this.secondConstraintLabel.AutoSize = true;
+            this.secondConstraintLabel.Location = new System.Drawing.Point(6, 71);
+            this.secondConstraintLabel.Name = "secondConstraintLabel";
+            this.secondConstraintLabel.Size = new System.Drawing.Size(335, 13);
+            this.secondConstraintLabel.TabIndex = 12;
+            this.secondConstraintLabel.Text = "Either the head or the deputy head of the department must be on duty";
             // 
-            // firstLabel
+            // thirdConstraintLabel
             // 
-            this.firstLabel.AutoSize = true;
-            this.firstLabel.Location = new System.Drawing.Point(6, 33);
-            this.firstLabel.Name = "firstLabel";
-            this.firstLabel.Size = new System.Drawing.Size(323, 13);
-            this.firstLabel.TabIndex = 11;
-            this.firstLabel.Text = "No employee can exceed the number of days of holiday entitlement";
+            this.thirdConstraintLabel.AutoSize = true;
+            this.thirdConstraintLabel.Location = new System.Drawing.Point(6, 114);
+            this.thirdConstraintLabel.Name = "thirdConstraintLabel";
+            this.thirdConstraintLabel.Size = new System.Drawing.Size(321, 13);
+            this.thirdConstraintLabel.TabIndex = 13;
+            this.thirdConstraintLabel.Text = "At least one manager and one senior staff member must be on duty";
             // 
             // messageLabel
             // 
@@ -242,10 +241,10 @@
         private CustomControls.ThemedButton approveButton;
         private System.Windows.Forms.Label messageLabel;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label fourthLabel;
-        private System.Windows.Forms.Label thirdLabel;
-        private System.Windows.Forms.Label secondLabel;
-        private System.Windows.Forms.Label firstLabel;
+        private System.Windows.Forms.Label fourthConstraintLabel;
+        private System.Windows.Forms.Label thirdConstraintLabel;
+        private System.Windows.Forms.Label secondConstraintLabel;
+        private System.Windows.Forms.Label firstConstraintLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }

@@ -24,7 +24,6 @@ namespace HolidayBookingSystem
         {
             panel_manage_side.Show();
             panel_holiday_requests.Hide();
-            panel_calendar_view.Hide();
             panel_manage_employee.Show();
             panel_manage_employee.Location = new Point(1,0);
             panel_main.Show();
@@ -34,7 +33,6 @@ namespace HolidayBookingSystem
         {
             panel_manage_side.Show();
             panel_manage_employee.Hide();
-            panel_calendar_view.Hide();
             panel_holiday_requests.Show();
             panel_holiday_requests.Location = new Point(1, 0);
             panel_main.Show();
@@ -45,9 +43,17 @@ namespace HolidayBookingSystem
             panel_manage_side.Show();
             panel_holiday_requests.Hide();
             panel_manage_employee.Hide();
-            panel_calendar_view.Show();
-            panel_calendar_view.Location = new Point(1, 0);
             panel_main.Show();
+            if (!panel_main.Controls.Contains(EmployeeCalendar.Instance))
+            {
+                panel_main.Controls.Add(EmployeeCalendar.Instance);
+                EmployeeCalendar.Instance.Dock = DockStyle.Fill;
+                EmployeeCalendar.Instance.BringToFront();
+            }
+            else
+            {
+                EmployeeCalendar.Instance.BringToFront();
+            }
         }
 
         private void btn_add_employee_Click(object sender, EventArgs e)
@@ -144,20 +150,6 @@ namespace HolidayBookingSystem
             {
                 UC_EmployeesPresent.Instance.BringToFront();
                 UC_EmployeesPresent.Instance.initialiseEmployeesLists();
-            }
-        }
-
-        private void btn_1_Click(object sender, EventArgs e)
-        {
-            if (!panel_main.Controls.Contains(EmployeeCalendar.Instance))
-            {
-                panel_main.Controls.Add(EmployeeCalendar.Instance);
-                EmployeeCalendar.Instance.Dock = DockStyle.Fill;
-                EmployeeCalendar.Instance.BringToFront();
-            }
-            else
-            {
-                EmployeeCalendar.Instance.BringToFront();
             }
         }
     }

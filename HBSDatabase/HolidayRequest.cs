@@ -20,7 +20,7 @@ namespace HBSDatabase
         public Nullable<bool> Feasible { get; set; }
         public int UserID { get; set; }
         public int RequestStatusID { get; set; }
-        public Nullable<int> NumberOfDays { get; set; }
+        public int NumberOfDays { get; set; }
     
         public virtual User User { get; set; }
         public virtual StatusRequest StatusRequest { get; set; }
