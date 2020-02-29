@@ -14,20 +14,6 @@ namespace HolidayBookingSystem.UserControls
     public partial class UC_HolidayBookings : UserControl
     {
         private static UC_HolidayBookings _instance;
-        private class ComboItem
-        {
-            public string Text;
-            public int ID;
-            public ComboItem(string text, int id)
-            {
-                Text = text;
-                ID = id;
-            }
-            public override string ToString()
-            {
-                return Text;
-            }
-        }
 
         public static UC_HolidayBookings Instance
         {
@@ -65,7 +51,7 @@ namespace HolidayBookingSystem.UserControls
             }
             else
             {
-                messageLabel.Visible = true;
+                messageLabel.Visible = false;
             }
             foreach (var booking in holidayBookings)
             {

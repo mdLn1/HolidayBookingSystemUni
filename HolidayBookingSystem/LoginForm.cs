@@ -117,23 +117,14 @@ namespace HolidayBookingSystem
                     {
                         throw new Exception("Only admins can login with this app");
                     }
-
-                    this.Hide();
-                    Dashboard dashboard = new Dashboard();
-                    dashboard.ShowDialog();
-                    this.Close();
                 }
             }
             catch (Exception ex)
             {
                 DesktopAppUtils.popDefaultErrorMessageBox(ex.Message);
+                return;
             }
 
-
-        }
-
-        private void btn_skip_Click(object sender, EventArgs e)
-        {
             this.Hide();
             Dashboard dashboard = new Dashboard();
             dashboard.ShowDialog();

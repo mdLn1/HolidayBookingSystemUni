@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SolutionUtils;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,7 +34,7 @@ public static class GeneralUtils
     // Percentage of department on duty
     public const double REQUIRED_PERCENTAGE_AT_LEAST_MAX = 60;
     public const double REQUIRED_PERCENTAGE_AT_LEAST_MIN = 40;
-    
+
     public const int MAX_POSSIBLE_HOLIDAY = 40;
 
     // Months
@@ -44,6 +46,16 @@ public static class GeneralUtils
     public const string SUCCESS_COLOR = "#3c763d";
 
     public const int MINIMUM_NUMBER_MANAGERS_OR_SENIORS = 1;
+
+    public static List<DateRange> noConstraintsApply = new List<DateRange>()
+    {
+        new DateRange(new DateTime(2020, 12, 23), new DateTime(3,1, 2021))
+    };
+
+    public static List<DateRange> lessEmployeePercentageRequired = new List<DateRange>()
+    {
+        new DateRange(new DateTime(2020, 08, 1), new DateTime(2020, 08, 31))
+    };
 
     public static int CalculateHolidayAllowanceOnRegistration(DateTime startDate)
     {
@@ -67,9 +79,9 @@ public static class GeneralUtils
     public static int CalculateWorkingDays(DateTime from, DateTime to)
     {
         int workingDays = 0;
-        while(from < to.AddDays(1))
+        while (from < to.AddDays(1))
         {
-            if(!(from.DayOfWeek == DayOfWeek.Saturday || from.DayOfWeek == DayOfWeek.Sunday))
+            if (!(from.DayOfWeek == DayOfWeek.Saturday || from.DayOfWeek == DayOfWeek.Sunday))
             {
                 workingDays++;
             }
@@ -136,6 +148,27 @@ public static class GeneralUtils
                 return "December";
             default:
                 return "January";
+        }
+    }
+
+    public static int getDayValue(string day)
+    {
+        switch (day)
+        {
+            case "Monday":
+                return 0;
+            case "Tuesday":
+                return 1;
+            case "Wednesday":
+                return 2;
+            case "Thursday":
+                return 3;
+            case "Friday":
+                return 4;
+            case "Saturday":
+                return 5;
+            default:
+                return 6;
         }
     }
 

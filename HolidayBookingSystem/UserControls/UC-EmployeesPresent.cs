@@ -50,8 +50,8 @@ namespace HolidayBookingSystem.UserControls
                     }
                     if (user.HolidayRequests != null && 
                         user.HolidayRequests.Any(x => x.StatusRequest.Status == GeneralUtils.APPROVED 
-                        && x.StartDate >= selectedDate 
-                        && x.EndDate > selectedDate))
+                        && x.StartDate <= selectedDate 
+                        && x.EndDate >= selectedDate))
                     {
                         string[] arr = new string[5];
                         arr[0] = user.id.ToString();

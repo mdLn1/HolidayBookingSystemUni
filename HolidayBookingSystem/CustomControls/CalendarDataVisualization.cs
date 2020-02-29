@@ -76,16 +76,21 @@ namespace HolidayBookingSystem.CustomControls
         public void AddDateRange(DateRange dateRange)
         {
             dateRanges.Add(dateRange);
+            dateRanges.OrderBy(x => x.EndDate);
+
         }
 
         public void AddDateRange(DateTime startDate, DateTime endDate)
         {
             dateRanges.Add(new DateRange(startDate, endDate));
+            dateRanges.OrderBy(x => x.EndDate);
+
         }
 
         public void AddDateRangesList(List<DateRange> dateRanges)
         {
             this.dateRanges.AddRange(dateRanges);
+            dateRanges.OrderBy(x => x.EndDate);
         }
 
         public void ChangeSelection(int month, int year)
@@ -105,7 +110,7 @@ namespace HolidayBookingSystem.CustomControls
             string firstDay = new DateTime(selectedYear, selectedMonth, 1).DayOfWeek.ToString();
             int lastDay = DateTime.DaysInMonth(selectedYear, selectedMonth);
             object[] data = new object[7];
-            int dayWeek = getDayValue(firstDay);
+            int dayWeek = GeneralUtils.getDayValue(firstDay);
             int k = 1;
             int i;
             if (dayWeek != 0)
@@ -132,7 +137,7 @@ namespace HolidayBookingSystem.CustomControls
             if (k < lastDay)
             {
                 data = new object[7];
-                for (i = 0; i < 6; i++)
+                for (i = 0; i < 7; i++)
                 {
                     if (k + i <= lastDay)
                     {
@@ -145,6 +150,43 @@ namespace HolidayBookingSystem.CustomControls
                 }
                 this.Rows.Add(data);
             }
+            UpdateTableColors();
+        }
+
+        public void UpdateTableColors()
+        {
+            if (dateRanges.Count == 0)
+            {
+                return;
+            }
+            DateTime firstDayOfMonth = new DateTime(selectedYear, selectedMonth, 1);
+            int lastDay = DateTime.DaysInMonth(selectedYear, selectedMonth);
+            DateTime lastDateMonth = new DateTime(selectedYear, selectedMonth, lastDay);
+
+            var currentDataRanges = dateRanges.Where(x => (firstDayOfMonth <= x.StartDate && lastDateMonth >= x.StartDate)
+                    || (x.EndDate >= firstDayOfMonth && x.EndDate <= lastDateMonth)).ToList();
+            if(currentDataRanges.Count == 0)
+            {
+                return;
+            }
+            int rows = this.RowCount;
+
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    string cellValue = this.Rows[i].Cells[j].Value.ToString();
+                    if (!String.IsNullOrEmpty(cellValue))
+                    {
+                        int val = int.Parse(cellValue) - 1;
+                        DateTime currentDate = firstDayOfMonth.AddDays(int.Parse(cellValue) - 1);
+                        if (dateRanges.Any(x => x.StartDate <= currentDate && x.EndDate >= currentDate))
+                            this.Rows[i].Cells[j].Style.BackColor = Color.SandyBrown;
+                    }
+                }
+            }
+            this.Refresh();
 
         }
 
@@ -154,48 +196,7 @@ namespace HolidayBookingSystem.CustomControls
             RefreshGrid();
         }
 
-        public int getDayValue(string day)
-        {
-            switch (day)
-            {
-                case "Monday":
-                    return 0;
-                case "Tuesday":
-                    return 1;
-                case "Wednesday":
-                    return 2;
-                case "Thursday":
-                    return 3;
-                case "Friday":
-                    return 4;
-                case "Saturday":
-                    return 5;
-                default:
-                    return 6;
-            }
-        }
 
-    }
 
-    class VerifyIfOnDutyTextBoxCell : DataGridViewTextBoxCell
-    {
-        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex,
-            DataGridViewElementStates cellState, object value, object formattedValue, string errorText,
-            DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
-        {
-            if (value != null)
-            {
-                if ((bool)value)
-                {
-                    cellStyle.BackColor = Color.LightGreen;
-                }
-                else
-                {
-                    cellStyle.BackColor = Color.OrangeRed;
-                }
-            }
-            base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value,
-                formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
-        }
     }
 }

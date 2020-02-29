@@ -10,20 +10,19 @@ namespace SolutionUtils
         private HolidayRequest holidayRequest;
         private User user;
         private HBSModel entity;
-        private List<string> brokenConstraints;
+        //private List<string> brokenConstraints;
         public ConstraintChecking(User user, HolidayRequest holidayRequest)
         {
             this.holidayRequest = holidayRequest;
             entity = new HBSModel();
             this.user = user;
-            brokenConstraints = new List<string>();
+            //brokenConstraints = new List<string>();
         }
 
         public ConstraintsBroken getBrokenConstraints()
         {
-            var peakTimes = entity.PeakTimes.ToList();
             ConstraintsBroken constraintsBroken = new ConstraintsBroken();
-            if (peakTimes.Where(x => x.NoConstraintsApply).Any(x => holidayRequest.StartDate >= x.StartDate
+            if (GeneralUtils.noConstraintsApply.Any(x => holidayRequest.StartDate >= x.StartDate
                  && holidayRequest.EndDate <= x.EndDate))
             {
                 return constraintsBroken;
@@ -44,11 +43,11 @@ namespace SolutionUtils
                 if (isNotMinimumNumberOfManagersOrSeniors(GeneralUtils.MINIMUM_NUMBER_MANAGERS_OR_SENIORS))
                 {
                     constraintsBroken.ManagerOrSenior = true;
-                    brokenConstraints.Add("At least one manager and one senior staff member must be on duty");
+                    //brokenConstraints.Add("At least one manager and one senior staff member must be on duty");
                 }
             }
             double requiredPercentage = GeneralUtils.REQUIRED_PERCENTAGE_AT_LEAST_MAX;
-            if (peakTimes.Where(x => !x.NoConstraintsApply).Any(x => holidayRequest.StartDate >= x.StartDate
+            if (GeneralUtils.lessEmployeePercentageRequired.Any(x => holidayRequest.StartDate >= x.StartDate
                  && holidayRequest.EndDate <= x.EndDate))
             { 
                 requiredPercentage = GeneralUtils.REQUIRED_PERCENTAGE_AT_LEAST_MIN;
@@ -56,7 +55,7 @@ namespace SolutionUtils
             if (areThereNotEnoughEmployeesWorking(requiredPercentage))
             {
                 constraintsBroken.AtLeastPercentage = true;
-                brokenConstraints.Add("At least" + requiredPercentage + "% of a department must be on duty");
+                //brokenConstraints.Add("At least" + requiredPercentage + "% of a department must be on duty");
             }
             return constraintsBroken;
         }

@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboItem.cs" />
     <Compile Include="CustomControls\CalendarDataVisualization.cs">
       <SubType>Component</SubType>
     </Compile>

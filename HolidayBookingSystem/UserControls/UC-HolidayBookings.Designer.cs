@@ -112,7 +112,7 @@
             this.groupBox3.Controls.Add(this.employeesComboBox);
             this.groupBox3.Location = new System.Drawing.Point(6, 28);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(214, 223);
+            this.groupBox3.Size = new System.Drawing.Size(217, 313);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "By Employee Name";
@@ -123,7 +123,7 @@
             this.messageLabel.BackColor = System.Drawing.Color.Firebrick;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.messageLabel.Location = new System.Drawing.Point(49, 94);
+            this.messageLabel.Location = new System.Drawing.Point(46, 134);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Padding = new System.Windows.Forms.Padding(3);
             this.messageLabel.Size = new System.Drawing.Size(110, 22);
@@ -138,7 +138,7 @@
             this.clearFilterButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearFilterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearFilterButton.ForeColor = System.Drawing.Color.White;
-            this.clearFilterButton.Location = new System.Drawing.Point(41, 160);
+            this.clearFilterButton.Location = new System.Drawing.Point(37, 180);
             this.clearFilterButton.Margin = new System.Windows.Forms.Padding(2);
             this.clearFilterButton.Name = "clearFilterButton";
             this.clearFilterButton.Size = new System.Drawing.Size(132, 43);
@@ -148,11 +148,13 @@
             // 
             // employeesComboBox
             // 
+            this.employeesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.employeesComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.employeesComboBox.FormattingEnabled = true;
-            this.employeesComboBox.Location = new System.Drawing.Point(21, 40);
+            this.employeesComboBox.Location = new System.Drawing.Point(37, 82);
+            this.employeesComboBox.MaxDropDownItems = 20;
             this.employeesComboBox.Name = "employeesComboBox";
-            this.employeesComboBox.Size = new System.Drawing.Size(163, 24);
+            this.employeesComboBox.Size = new System.Drawing.Size(132, 24);
             this.employeesComboBox.TabIndex = 0;
             this.employeesComboBox.SelectedIndexChanged += new System.EventHandler(this.employeesComboBox_SelectedIndexChanged);
             // 
