@@ -57,6 +57,7 @@
     <Compile Include="PrioritiseRequests.cs" />
     <Compile Include="PriorityRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuggestionsComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HBSDatabase\HBSDatabase.csproj">

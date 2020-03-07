@@ -10,13 +10,38 @@ namespace SolutionUtils
         private HolidayRequest holidayRequest;
         private User user;
         private HBSModel entity;
-        //private List<string> brokenConstraints;
+        private List<User> usersFromDepartment;
+        private List<HolidayRequest> filteredRequests;
         public ConstraintChecking(User user, HolidayRequest holidayRequest)
         {
             this.holidayRequest = holidayRequest;
             entity = new HBSModel();
             this.user = user;
-            //brokenConstraints = new List<string>();
+            usersFromDepartment = entity.Users.Where(x => x.DepartmentID == user.DepartmentID && x.id != user.id).ToList();
+        }
+
+        public ConstraintChecking(List<HolidayRequest> filteredRequests, User user, HolidayRequest holidayRequest)
+        {
+            this.holidayRequest = holidayRequest;
+            entity = new HBSModel();
+            this.user = user;
+            this.filteredRequests = filteredRequests;
+            usersFromDepartment = entity.Users.Where(x => x.DepartmentID == user.DepartmentID && x.id != user.id).ToList();
+        }
+
+        public void changeHolidayRequest(DateRange dateRange)
+        {
+            holidayRequest.StartDate = dateRange.StartDate;
+            holidayRequest.EndDate = dateRange.EndDate;
+        }
+
+        public static bool areAnyConstraintsBroken(ConstraintsBroken constraintsBroken)
+        {
+            if (constraintsBroken.AtLeastPercentage
+                        || constraintsBroken.ExceedsHolidayEntitlement || constraintsBroken.ManagerOrSenior
+                            || constraintsBroken.HeadOrDeputy)
+                return true;
+            return false;
         }
 
         public ConstraintsBroken getBrokenConstraints()
@@ -30,20 +55,17 @@ namespace SolutionUtils
             string userRole = user.Role.RoleName;
             if (isHolidayAllowanceExceeded())
                 constraintsBroken.ExceedsHolidayEntitlement = true;
-                //brokenConstraints.Add("Exceeds the number of days of holiday entitlement");
             if (userRole == GeneralUtils.HEAD_ROLE || userRole == GeneralUtils.DEPUTY_HEAD_ROLE)
             {
                 if (isDeputyOrHeadOnHolidayAlready(userRole == GeneralUtils.DEPUTY_HEAD_ROLE
                     ? GeneralUtils.HEAD_ROLE : GeneralUtils.DEPUTY_HEAD_ROLE))
                     constraintsBroken.HeadOrDeputy = true;
-                    //brokenConstraints.Add("Either the head or the deputy head of the department must be on duty");
             }
             if (userRole == GeneralUtils.SENIOR_ROLE || userRole == GeneralUtils.MANAGER_ROLE)
             {
                 if (isNotMinimumNumberOfManagersOrSeniors(GeneralUtils.MINIMUM_NUMBER_MANAGERS_OR_SENIORS))
                 {
                     constraintsBroken.ManagerOrSenior = true;
-                    //brokenConstraints.Add("At least one manager and one senior staff member must be on duty");
                 }
             }
             double requiredPercentage = GeneralUtils.REQUIRED_PERCENTAGE_AT_LEAST_MAX;
@@ -55,7 +77,6 @@ namespace SolutionUtils
             if (areThereNotEnoughEmployeesWorking(requiredPercentage))
             {
                 constraintsBroken.AtLeastPercentage = true;
-                //brokenConstraints.Add("At least" + requiredPercentage + "% of a department must be on duty");
             }
             return constraintsBroken;
         }
@@ -68,21 +89,32 @@ namespace SolutionUtils
         private bool isDeputyOrHeadOnHolidayAlready(string role)
         {
             var roleId = entity.Roles.FirstOrDefault(x => x.RoleName == role).ID;
-            var holidays = entity.Users
-                .FirstOrDefault(x => x.DepartmentID == user.DepartmentID && x.RoleID == roleId)
+            if(filteredRequests != null)
+            {
+                if (filteredRequests.Any(x => isOverlappingHoliday(x, holidayRequest)))
+                {
+                    return true;
+                }
+                return false;
+
+            } else
+            {
+                var holidays = usersFromDepartment
+                .FirstOrDefault(x => x.RoleID == roleId)
                 .HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.APPROVED && x.EndDate > DateTime.Now)
                 .ToList();
-            if (holidays.Any(x => isOverlappingHoliday(x, holidayRequest)))
-            {
-                return true;
+                if (holidays.Any(x => isOverlappingHoliday(x, holidayRequest)))
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            
         }
 
         private bool isNotMinimumNumberOfManagersOrSeniors(int min)
         {
-            var colleagues = entity.Users.Where(x => x.DepartmentID == user.DepartmentID
-                && x.RoleID == user.RoleID && x.id != user.id);
+            var colleagues = usersFromDepartment.Where(x => x.RoleID == user.RoleID);
             int numOfColleagues = colleagues.Count();
             foreach (var usr in colleagues)
             {
@@ -91,7 +123,7 @@ namespace SolutionUtils
                     numOfColleagues--;
                 }
             }
-            return numOfColleagues > 0;
+            return numOfColleagues >= min;
         }
 
         public bool isOverlappingHoliday(HolidayRequest existing, HolidayRequest newAdded)
@@ -106,10 +138,9 @@ namespace SolutionUtils
 
         private bool areThereNotEnoughEmployeesWorking(double percentage)
         {
-            var employeesByDepartment = entity.Users.Where(x => x.DepartmentID == user.DepartmentID);
-            double numEmployees = employeesByDepartment.Count();
+            double numEmployees = usersFromDepartment.Count();
             double onHolidayEmployees = 0;
-            foreach (var employee in employeesByDepartment)
+            foreach (var employee in usersFromDepartment)
             {
                 if (employee.HolidayRequests.Any(x => isOverlappingHoliday(x, holidayRequest)))
                 {

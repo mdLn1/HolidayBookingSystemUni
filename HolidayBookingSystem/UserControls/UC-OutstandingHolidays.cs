@@ -37,6 +37,7 @@ namespace HolidayBookingSystem.UserControls
             thirdConstraintLabel.Text = GeneralUtils.CONSTRAINT_MINIMUM_SENIOR_OR_MANAGERS;
             fourthConstraintLabel.Text = GeneralUtils.CONSTRAINT_AT_LEAST_60_PERCENT;
             messageLabel.Visible = false;
+            suggestionsButton.Visible = false;
         }
 
         public void initializeRequestsList()
@@ -47,11 +48,6 @@ namespace HolidayBookingSystem.UserControls
                 messageLabel.Visible = false;
                 using (HBSModel _entity = new HBSModel())
                 {
-
-                    //var requests = _entity.HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.PENDING)
-                    //        .OrderBy(x => x.ConstraintsBroken.AtLeastPercentage
-                    //    || x.ConstraintsBroken.ExceedsHolidayEntitlement || x.ConstraintsBroken.ManagerOrSenior
-                    //        || x.ConstraintsBroken.HeadOrDeputy).ToList();
                     var prioritiseReqs = (from el in _entity.HolidayRequests
                                           where el.StatusRequest.Status == GeneralUtils.PENDING
                                           select new PriorityRequest()
@@ -102,6 +98,7 @@ namespace HolidayBookingSystem.UserControls
                 return true;
             return false;
         }
+
 
         private void approveButton_Click(object sender, EventArgs e)
         {
@@ -176,12 +173,22 @@ namespace HolidayBookingSystem.UserControls
         {
             if (outstandingHolidaysListView.SelectedIndices.Count > 0)
             {
+                messageLabel.Visible = false;
                 isBreakingConstraints = false;
                 int selIndex = outstandingHolidaysListView.SelectedIndices[0];
                 ListViewItem item = outstandingHolidaysListView.Items[selIndex];
                 using (HBSModel entity = new HBSModel())
                 {
                     var request = entity.HolidayRequests.Find(Convert.ToInt32(item.SubItems[0].Text));
+                    
+                    if(ConstraintChecking.areAnyConstraintsBroken(request.ConstraintsBroken)
+                        && request.DaysPeakTime > 0 && request.DaysPeakTime < 16)
+                    {
+                        suggestionsButton.Visible = true;
+                    } else
+                    {
+                        suggestionsButton.Visible = false;
+                    }
                     if (request.ConstraintsBroken.ExceedsHolidayEntitlement)
                     {
                         firstConstraintLabel.ForeColor = Color.Red;

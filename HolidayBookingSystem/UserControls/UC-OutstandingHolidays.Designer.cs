@@ -41,10 +41,11 @@
             this.secondConstraintLabel = new System.Windows.Forms.Label();
             this.thirdConstraintLabel = new System.Windows.Forms.Label();
             this.messageLabel = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.declineButton = new HolidayBookingSystem.CustomControls.ThemedButton();
             this.approveButton = new HolidayBookingSystem.CustomControls.ThemedButton();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.suggestionsButton = new HolidayBookingSystem.CustomControls.ThemedButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -103,6 +104,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.suggestionsButton);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.messageLabel);
             this.groupBox2.Controls.Add(this.declineButton);
@@ -123,9 +125,9 @@
             this.groupBox3.Controls.Add(this.fourthConstraintLabel);
             this.groupBox3.Controls.Add(this.secondConstraintLabel);
             this.groupBox3.Controls.Add(this.thirdConstraintLabel);
-            this.groupBox3.Location = new System.Drawing.Point(5, 82);
+            this.groupBox3.Location = new System.Drawing.Point(5, 108);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(352, 211);
+            this.groupBox3.Size = new System.Drawing.Size(352, 185);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Breaking Constraints";
@@ -135,7 +137,7 @@
             this.firstConstraintLabel.AutoSize = true;
             this.firstConstraintLabel.Location = new System.Drawing.Point(6, 33);
             this.firstConstraintLabel.Name = "firstConstraintLabel";
-            this.firstConstraintLabel.Size = new System.Drawing.Size(0, 13);
+            this.firstConstraintLabel.Size = new System.Drawing.Size(323, 13);
             this.firstConstraintLabel.TabIndex = 11;
             this.firstConstraintLabel.Text = "No employee can exceed the number of days of holiday entitlement";
             // 
@@ -172,7 +174,7 @@
             this.messageLabel.BackColor = System.Drawing.Color.Green;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.messageLabel.Location = new System.Drawing.Point(35, 50);
+            this.messageLabel.Location = new System.Drawing.Point(35, 74);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Padding = new System.Windows.Forms.Padding(2);
             this.messageLabel.Size = new System.Drawing.Size(4, 20);
@@ -211,6 +213,21 @@
             this.approveButton.UseVisualStyleBackColor = false;
             this.approveButton.Click += new System.EventHandler(this.approveButton_Click);
             // 
+            // suggestionsButton
+            // 
+            this.suggestionsButton.BackColor = System.Drawing.Color.Teal;
+            this.suggestionsButton.CausesValidation = false;
+            this.suggestionsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.suggestionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suggestionsButton.ForeColor = System.Drawing.Color.White;
+            this.suggestionsButton.Location = new System.Drawing.Point(99, 19);
+            this.suggestionsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.suggestionsButton.Name = "suggestionsButton";
+            this.suggestionsButton.Size = new System.Drawing.Size(149, 43);
+            this.suggestionsButton.TabIndex = 9;
+            this.suggestionsButton.Text = "Check suggestions";
+            this.suggestionsButton.UseVisualStyleBackColor = false;
+            // 
             // UC_OutstandingHolidays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,5 +263,6 @@
         private System.Windows.Forms.Label secondConstraintLabel;
         private System.Windows.Forms.Label firstConstraintLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private CustomControls.ThemedButton suggestionsButton;
     }
 }

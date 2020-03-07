@@ -25,7 +25,6 @@ namespace HolidayBookingSystem
             //tb_username.Text = "Username";
             //tb_password.PasswordChar = '\0';
             //tb_password.Text = "Password";
-
             tb_username.Text = "admin";
             tb_password.Text = "Test123!";
         }

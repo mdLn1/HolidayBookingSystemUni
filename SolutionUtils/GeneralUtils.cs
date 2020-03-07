@@ -47,6 +47,9 @@ public static class GeneralUtils
     // Months
     public const int AUGUST = 8;
 
+    // Suggesstions
+    public const int SUGGESTIONS_MAX_DAYS_BOUNDARY = 7;
+
     // HTML Colors
     public const string WARNING_COLOR = "#8a6d3b";
     public const string DANGER_COLOR = "#a94442";
@@ -68,10 +71,10 @@ public static class GeneralUtils
     {
         if(date.DayOfWeek == DayOfWeek.Saturday)
         {
-            date.AddDays(2);
+           return date.AddDays(2);
         } else if(date.DayOfWeek == DayOfWeek.Sunday)
         {
-            date.AddDays(1);
+           return date.AddDays(1);
         }
         return date;
     }
@@ -80,11 +83,11 @@ public static class GeneralUtils
     {
         if (date.DayOfWeek == DayOfWeek.Saturday)
         {
-            date.Subtract(new TimeSpan(1,0,0,0));
+            return date.AddDays(-1);
         }
         else if (date.DayOfWeek == DayOfWeek.Sunday)
         {
-            date.Subtract(new TimeSpan(2, 0, 0, 0));
+            return date.AddDays(-2);
         }
         return date;
     }

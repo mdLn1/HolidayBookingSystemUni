@@ -57,39 +57,5 @@ namespace SolutionUtils
             return holidayRequests;
         }
 
-        //public List<string> getOrderedStrings()
-        //{
-        //    List<string> strings = new List<string>()
-        //    {
-        //        "hello",
-        //        "gello",
-        //        "gey",
-        //        "jaleyone"
-        //    };
-
-        //    return strings;
-        //}
-
-
-        //public static IComparer<string> sortTextLength()
-        //{
-        //    return (IComparer<string>)new TextLengthComparer();
-        //}
     }
-
-    //public class TextLengthComparer : IComparer<string>
-    //{
-    //    //when x should go first, return -1. When y should go first, return 1.
-    //    public int Compare(string x, string y)
-    //    {
-    //        if (x.Length > y.Length)
-    //            return 1;
-    //        if (x.Length == y.Length)
-    //            return 0;
-    //        return -1;
-    //    }
-
-
-    //}
-
 }

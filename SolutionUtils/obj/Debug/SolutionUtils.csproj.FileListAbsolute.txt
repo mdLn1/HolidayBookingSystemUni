@@ -12,3 +12,17 @@ D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\HBSDatabase.dll.conf
 D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\EntityFramework.xml
 D:\github_reps\HolidayBookingSystem\SolutionUtils\bin\Debug\EntityFramework.SqlServer.xml
 D:\github_reps\HolidayBookingSystem\SolutionUtils\obj\Debug\SolutionUtils.csproj.CopyComplete
+C:\private\HBS\SolutionUtils\bin\Debug\SolutionUtils.dll.config
+C:\private\HBS\SolutionUtils\bin\Debug\SolutionUtils.dll
+C:\private\HBS\SolutionUtils\bin\Debug\SolutionUtils.pdb
+C:\private\HBS\SolutionUtils\bin\Debug\EntityFramework.dll
+C:\private\HBS\SolutionUtils\bin\Debug\EntityFramework.SqlServer.dll
+C:\private\HBS\SolutionUtils\bin\Debug\HBSDatabase.dll
+C:\private\HBS\SolutionUtils\bin\Debug\HBSDatabase.pdb
+C:\private\HBS\SolutionUtils\bin\Debug\HBSDatabase.dll.config
+C:\private\HBS\SolutionUtils\bin\Debug\EntityFramework.xml
+C:\private\HBS\SolutionUtils\bin\Debug\EntityFramework.SqlServer.xml
+C:\private\HBS\SolutionUtils\obj\Debug\SolutionUtils.csprojAssemblyReference.cache
+C:\private\HBS\SolutionUtils\obj\Debug\SolutionUtils.csproj.CopyComplete
+C:\private\HBS\SolutionUtils\obj\Debug\SolutionUtils.dll
+C:\private\HBS\SolutionUtils\obj\Debug\SolutionUtils.pdb
