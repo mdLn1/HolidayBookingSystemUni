@@ -56,6 +56,8 @@
     <NavigationProperty Name="HolidayRequests" Relationship="Self.FK__HolidayRe__UserI__7B5B524B" FromRole="Users" ToRole="HolidayRequests" />
     <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleID__74AE54BC" FromRole="Users" ToRole="Roles" />
     <Property Name="PhoneNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="InitialHolidayEntitlement" Type="Int32" Nullable="false" />
+    <Property Name="TotalPeakDaysHoliday" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK__Users__Departmen__75A278F5">
     <End Role="Departments" Type="Self.Department" Multiplicity="1" />

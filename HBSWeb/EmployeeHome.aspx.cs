@@ -46,10 +46,26 @@ namespace HBSWeb
                     {
                         Text = requestStatus.ToUpper()
                     });
+                    if(requestStatus == GeneralUtils.CHANGED)
+                    {
+                        tableRow.Cells.Add(new TableCell
+                        {
+                            Text = "Requires Attention"
+                        });
+                    } else
+                    {
+                        tableRow.Cells.Add(new TableCell
+                        {
+                            Text = "No Extra"
+                        });
+                    }
                     
                     if (requestStatus == GeneralUtils.PENDING)
                     {
                         tableRow.CssClass = "warning";
+                    } else if(requestStatus == GeneralUtils.CHANGED)
+                    {
+                        tableRow.CssClass = "info";
                     }
                     else if (requestStatus == GeneralUtils.APPROVED)
                     {

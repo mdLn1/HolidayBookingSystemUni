@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.roleErrorLabel = new System.Windows.Forms.Label();
+            this.departmentErrorLabel = new System.Windows.Forms.Label();
+            this.phoneNumberErrorLabel = new System.Windows.Forms.Label();
+            this.confirmPasswordErrorLabel = new System.Windows.Forms.Label();
+            this.passwordErrorLabel = new System.Windows.Forms.Label();
+            this.usernameErrorLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btn_clear = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -64,7 +70,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.roleErrorLabel);
+            this.groupBox1.Controls.Add(this.departmentErrorLabel);
+            this.groupBox1.Controls.Add(this.phoneNumberErrorLabel);
+            this.groupBox1.Controls.Add(this.confirmPasswordErrorLabel);
+            this.groupBox1.Controls.Add(this.passwordErrorLabel);
+            this.groupBox1.Controls.Add(this.usernameErrorLabel);
             this.groupBox1.Controls.Add(this.tb_phoneNumber);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.btn_clear);
@@ -94,6 +105,72 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Employee";
+            // 
+            // roleErrorLabel
+            // 
+            this.roleErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.roleErrorLabel.AutoSize = true;
+            this.roleErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.roleErrorLabel.Location = new System.Drawing.Point(437, 216);
+            this.roleErrorLabel.Name = "roleErrorLabel";
+            this.roleErrorLabel.Size = new System.Drawing.Size(41, 13);
+            this.roleErrorLabel.TabIndex = 28;
+            this.roleErrorLabel.Text = "label15";
+            // 
+            // departmentErrorLabel
+            // 
+            this.departmentErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.departmentErrorLabel.AutoSize = true;
+            this.departmentErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.departmentErrorLabel.Location = new System.Drawing.Point(437, 187);
+            this.departmentErrorLabel.Name = "departmentErrorLabel";
+            this.departmentErrorLabel.Size = new System.Drawing.Size(41, 13);
+            this.departmentErrorLabel.TabIndex = 27;
+            this.departmentErrorLabel.Text = "label14";
+            // 
+            // phoneNumberErrorLabel
+            // 
+            this.phoneNumberErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.phoneNumberErrorLabel.AutoSize = true;
+            this.phoneNumberErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.phoneNumberErrorLabel.Location = new System.Drawing.Point(437, 158);
+            this.phoneNumberErrorLabel.Name = "phoneNumberErrorLabel";
+            this.phoneNumberErrorLabel.Size = new System.Drawing.Size(41, 13);
+            this.phoneNumberErrorLabel.TabIndex = 26;
+            this.phoneNumberErrorLabel.Text = "label13";
+            // 
+            // confirmPasswordErrorLabel
+            // 
+            this.confirmPasswordErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.confirmPasswordErrorLabel.AutoSize = true;
+            this.confirmPasswordErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.confirmPasswordErrorLabel.Location = new System.Drawing.Point(437, 106);
+            this.confirmPasswordErrorLabel.Name = "confirmPasswordErrorLabel";
+            this.confirmPasswordErrorLabel.Size = new System.Drawing.Size(41, 13);
+            this.confirmPasswordErrorLabel.TabIndex = 25;
+            this.confirmPasswordErrorLabel.Text = "label12";
+            // 
+            // passwordErrorLabel
+            // 
+            this.passwordErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.passwordErrorLabel.AutoSize = true;
+            this.passwordErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.passwordErrorLabel.Location = new System.Drawing.Point(437, 77);
+            this.passwordErrorLabel.Name = "passwordErrorLabel";
+            this.passwordErrorLabel.Size = new System.Drawing.Size(41, 13);
+            this.passwordErrorLabel.TabIndex = 24;
+            this.passwordErrorLabel.Text = "label11";
+            // 
+            // usernameErrorLabel
+            // 
+            this.usernameErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.usernameErrorLabel.AutoSize = true;
+            this.usernameErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.usernameErrorLabel.Location = new System.Drawing.Point(437, 28);
+            this.usernameErrorLabel.Name = "usernameErrorLabel";
+            this.usernameErrorLabel.Size = new System.Drawing.Size(41, 13);
+            this.usernameErrorLabel.TabIndex = 23;
+            this.usernameErrorLabel.Text = "label10";
             // 
             // label9
             // 
@@ -244,7 +321,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 26);
+            this.label1.Location = new System.Drawing.Point(196, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 17);
@@ -311,12 +388,12 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(152, 102);
+            this.label2.Location = new System.Drawing.Point(145, 102);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 17);
+            this.label2.Size = new System.Drawing.Size(142, 17);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Repeat Password:";
+            this.label2.Text = "Confirm Password:";
             // 
             // label4
             // 
@@ -404,7 +481,6 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -437,5 +513,11 @@
         private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Label label9;
         private SolutionUtils.PhoneTextBox tb_phoneNumber;
+        private System.Windows.Forms.Label roleErrorLabel;
+        private System.Windows.Forms.Label departmentErrorLabel;
+        private System.Windows.Forms.Label phoneNumberErrorLabel;
+        private System.Windows.Forms.Label confirmPasswordErrorLabel;
+        private System.Windows.Forms.Label passwordErrorLabel;
+        private System.Windows.Forms.Label usernameErrorLabel;
     }
 }

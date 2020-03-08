@@ -65,6 +65,8 @@
     <Property Name="Pwd" Type="varbinary(max)" Nullable="false" />
     <Property Name="PwdSalt" Type="varbinary(max)" Nullable="false" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="32" />
+    <Property Name="InitialHolidayEntitlement" Type="int" Nullable="false" />
+    <Property Name="TotalPeakDaysHoliday" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK__Constrain__Holid__6D0D32F4">
     <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="1" />

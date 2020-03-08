@@ -45,8 +45,8 @@ namespace HolidayBookingSystem
             {
                 using (HBSModel _entity = new HBSModel())
                 {
-                    var _users = _entity.Users.ToList();
-                    foreach (User usr in _users)
+                    var _users = _entity.Users.Where(x => x.Username != GeneralUtils.ADMIN_ROLE);
+                    foreach (User usr in _users.ToList())
                     {
                         if(usr.Role.RoleName == GeneralUtils.ADMIN_ROLE)
                         {
@@ -76,9 +76,6 @@ namespace HolidayBookingSystem
         private void btn_delete_Click(object sender, EventArgs e)
         {
             try {
-                
-                   
-                
                 int selIndex = lv_users.SelectedIndices[0];
                 ListViewItem item = lv_users.Items[selIndex];
                 if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)

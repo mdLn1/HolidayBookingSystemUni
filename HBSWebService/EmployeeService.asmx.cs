@@ -27,12 +27,10 @@ namespace HBSWebService
                 var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
                 if (_user == null)
                 {
-                    //return new ErrorResponse("User not found");
                     return false;
                 }
                 if (!GeneralUtils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt) || _user.Role.RoleName == GeneralUtils.ADMIN_ROLE)
                 {
-                    //return new ErrorResponse("Invalid login attempt");
                     return false;
                 }
 
@@ -44,6 +42,10 @@ namespace HBSWebService
         [WebMethod(EnableSession = true)]
         public bool HolidayRequest(DateTime startDate, DateTime endDate, int workingDays)
         {
+            if(startDate > endDate || startDate < DateTime.Now.AddDays(2) || workingDays == 0)
+            {
+                return false;
+            }
             try
             {
                 using (HBSModel _entity = new HBSModel())

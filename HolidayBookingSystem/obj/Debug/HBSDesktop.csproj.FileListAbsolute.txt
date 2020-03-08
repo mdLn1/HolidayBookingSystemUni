@@ -96,3 +96,4 @@ C:\private\HBS\HolidayBookingSystem\obj\Debug\HBSDesktop.csproj.GenerateResource
 C:\private\HBS\HolidayBookingSystem\obj\Debug\HBSDesktop.csproj.CopyComplete
 C:\private\HBS\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.exe
 C:\private\HBS\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.pdb
+C:\private\HBS\HolidayBookingSystem\obj\Debug\HolidayBookingSystem.UserControls.UC_Suggestions.resources

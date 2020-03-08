@@ -17,6 +17,8 @@ namespace HolidayBookingSystem.UserControls
     {
         private static UC_OutstandingHolidays _instance;
         private bool isBreakingConstraints = false;
+        private ListViewItem selectedItem;
+        private int currentlySelectedIndex;
 
         public static UC_OutstandingHolidays Instance
         {
@@ -38,7 +40,11 @@ namespace HolidayBookingSystem.UserControls
             fourthConstraintLabel.Text = GeneralUtils.CONSTRAINT_AT_LEAST_60_PERCENT;
             messageLabel.Visible = false;
             suggestionsButton.Visible = false;
+            suggestionsPanel.Controls.Add(UC_Suggestions.Instance);
+            UC_Suggestions.Instance.Dock = DockStyle.Fill;
+            UC_Suggestions.Instance.Hide();
         }
+
 
         public void initializeRequestsList()
         {
@@ -64,7 +70,9 @@ namespace HolidayBookingSystem.UserControls
                                               EndDate = el.EndDate,
                                               ID = el.ID,
                                               RemainingDays = el.User.RemainingDays,
-                                              StartDate = el.StartDate
+                                              StartDate = el.StartDate,
+                                              InitialHolidayEntitlement = el.User.InitialHolidayEntitlement,
+                                              TotalPeakDaysHoliday = el.User.TotalPeakDaysHoliday
                                           }).ToList();
                     var ordered = new PrioritiseRequests(prioritiseReqs).getPrioritisedRequests();
                     foreach (var request in ordered)
@@ -106,7 +114,8 @@ namespace HolidayBookingSystem.UserControls
             {
                 if (isBreakingConstraints)
                 {
-                    if (MessageBox.Show("This holiday request is breaking constraints. Are you sure you want to approve it?", "Confirm Approval", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("This holiday request is breaking constraints. Are you sure you want to approve it?",
+                        "Confirm Approval", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         approveHolidayRequest();
                     }
@@ -157,7 +166,8 @@ namespace HolidayBookingSystem.UserControls
 
                 if (!isBreakingConstraints)
                 {
-                    if (MessageBox.Show("This holiday request is not breaking constraints. Are you sure you want to decline it?", "Confirm Decline", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("This holiday request is not breaking constraints. Are you sure you want to decline it?",
+                        "Confirm Decline", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         declineHolidayRequest();
                     }
@@ -173,13 +183,15 @@ namespace HolidayBookingSystem.UserControls
         {
             if (outstandingHolidaysListView.SelectedIndices.Count > 0)
             {
+                groupBox3.BringToFront();
+                UC_Suggestions.Instance.Hide();
                 messageLabel.Visible = false;
                 isBreakingConstraints = false;
-                int selIndex = outstandingHolidaysListView.SelectedIndices[0];
-                ListViewItem item = outstandingHolidaysListView.Items[selIndex];
+                currentlySelectedIndex = outstandingHolidaysListView.SelectedIndices[0];
+                selectedItem = outstandingHolidaysListView.Items[currentlySelectedIndex];
                 using (HBSModel entity = new HBSModel())
                 {
-                    var request = entity.HolidayRequests.Find(Convert.ToInt32(item.SubItems[0].Text));
+                    var request = entity.HolidayRequests.Find(Convert.ToInt32(selectedItem.SubItems[0].Text));
                     
                     if(ConstraintChecking.areAnyConstraintsBroken(request.ConstraintsBroken)
                         && request.DaysPeakTime > 0 && request.DaysPeakTime < 16)
@@ -230,6 +242,49 @@ namespace HolidayBookingSystem.UserControls
                         fourthConstraintLabel.ForeColor = Color.Green;
                     }
                 }
+            }
+        }
+
+        public void ConfirmSuggestion(DateTime startDate, DateTime endDate)
+        {
+            messageLabel.Text = "Request ID " + selectedItem.SubItems[0].Text + " was sent back for approval";
+            messageLabel.BackColor = Color.DarkOrange;
+            messageLabel.Visible = true;
+            using (HBSModel entity = new HBSModel())
+            {
+                var request = entity.HolidayRequests.Find(Convert.ToInt32(selectedItem.SubItems[0].Text));
+                request.RequestStatusID = entity.StatusRequests.FirstOrDefault(x => x.Status == GeneralUtils.CHANGED).ID;
+                request.StartDate = startDate;
+                request.EndDate = endDate;
+                entity.SaveChanges();
+            }
+            selectedItem = null;
+            outstandingHolidaysListView.Items.RemoveAt(currentlySelectedIndex);
+            UC_Suggestions.Instance.Hide();
+            firstConstraintLabel.ForeColor = Color.Black;
+            secondConstraintLabel.ForeColor = Color.Black;
+            thirdConstraintLabel.ForeColor = Color.Black;
+            fourthConstraintLabel.ForeColor = Color.Black;
+            suggestionsButton.Visible = false;
+        }
+
+        private void suggestionsButton_Click(object sender, EventArgs e)
+        {
+            if (selectedItem != null)
+            {
+                if (suggestionsPanel.Contains(groupBox3))
+                {
+                    groupBox3.SendToBack();
+                    UC_Suggestions.Instance.Show();
+                    UC_Suggestions.Instance.BringToFront();
+                    UC_Suggestions.Instance.clearSuggestions();
+                    using (HBSModel entity = new HBSModel())
+                    {
+                        var request = entity.HolidayRequests.Find(Convert.ToInt32(selectedItem.SubItems[0].Text));
+                        UC_Suggestions.Instance.findSuggestions(request);
+                    }
+                }
+                
             }
         }
     }

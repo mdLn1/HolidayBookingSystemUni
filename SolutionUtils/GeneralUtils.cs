@@ -1,4 +1,5 @@
-﻿using SolutionUtils;
+﻿using HBSDatabase;
+using SolutionUtils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -35,6 +36,7 @@ public static class GeneralUtils
 
     // Holiday Request Status
     public const string PENDING = "pending";
+    public const string CHANGED = "changed";
     public const string APPROVED = "accepted";
     public const string DECLINED = "declined";
 
@@ -57,6 +59,8 @@ public static class GeneralUtils
 
     public const int MINIMUM_NUMBER_MANAGERS_OR_SENIORS = 1;
 
+    public static int MaxSuggestionsCount { get; set; } = 10;
+
     public static List<DateRange> noConstraintsApply = new List<DateRange>()
     {
         new DateRange(new DateTime(2020, 12, 23), new DateTime(2021,1,3))
@@ -67,18 +71,21 @@ public static class GeneralUtils
         new DateRange(new DateTime(2020, 08, 1), new DateTime(2020, 08, 31))
     };
 
+    // if date falls on weekend, set it as Monday
     public static DateTime simplifyStartDate(DateTime date)
     {
-        if(date.DayOfWeek == DayOfWeek.Saturday)
+        if (date.DayOfWeek == DayOfWeek.Saturday)
         {
-           return date.AddDays(2);
-        } else if(date.DayOfWeek == DayOfWeek.Sunday)
+            return date.AddDays(2);
+        }
+        else if (date.DayOfWeek == DayOfWeek.Sunday)
         {
-           return date.AddDays(1);
+            return date.AddDays(1);
         }
         return date;
     }
 
+    // if date falls on weekend, set it as Friday
     public static DateTime simplifyEndDate(DateTime date)
     {
         if (date.DayOfWeek == DayOfWeek.Saturday)
@@ -92,7 +99,7 @@ public static class GeneralUtils
         return date;
     }
 
-
+    // calculate Peak Times for a certain number of years ahead
     public static List<DateRange> getPeakTimes(int yearsInAdvance = 1)
     {
         List<DateRange> dateRanges = new List<DateRange>();
@@ -113,6 +120,7 @@ public static class GeneralUtils
         return dateRanges;
     }
 
+    // calculate Peak Times for current year
     public static List<DateRange> getPeakTimesForCurrentYear()
     {
         List<DateRange> dateRanges = new List<DateRange>();
@@ -139,6 +147,16 @@ public static class GeneralUtils
         }
         int years = DateTime.Now.Year - startDate.Year;
         return 30 + Convert.ToInt32(Math.Floor((double)years / 5));
+    }
+
+    public static bool isOverlappingHoliday(HolidayRequest existing, HolidayRequest newAdded)
+    {
+        if (existing.EndDate > DateTime.Now
+              && ((existing.EndDate >= newAdded.StartDate && existing.EndDate <= newAdded.EndDate)
+              || (existing.StartDate <= newAdded.EndDate && existing.StartDate >= newAdded.StartDate)
+              || (existing.StartDate <= newAdded.StartDate && existing.EndDate >= newAdded.EndDate)))
+            return true;
+        return false;
     }
 
     public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
@@ -244,6 +262,11 @@ public static class GeneralUtils
             default:
                 return 6;
         }
+    }
+
+    public static bool isWeekendDay(DateTime date)
+    {
+        return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
     }
 
     // https://stackoverflow.com/questions/2510383/how-can-i-calculate-what-date-good-friday-falls-on-given-a-year

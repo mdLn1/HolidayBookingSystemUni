@@ -43,6 +43,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="bookingsystemModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="TotalPeakDaysHoliday" ColumnName="TotalPeakDaysHoliday" />
+          <ScalarProperty Name="InitialHolidayEntitlement" ColumnName="InitialHolidayEntitlement" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Username" ColumnName="Username" />

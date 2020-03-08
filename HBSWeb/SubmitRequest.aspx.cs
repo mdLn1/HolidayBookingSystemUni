@@ -51,10 +51,7 @@ namespace HBSWeb
 
                 if (usr.HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.APPROVED
                     || x.StatusRequest.Status == GeneralUtils.PENDING)
-                    .Any(x => x.EndDate > DateTime.Now 
-                  && ((x.EndDate >= holidayRequest.StartDate && x.EndDate <= holidayRequest.EndDate)
-                  || (x.StartDate <= holidayRequest.EndDate && x.StartDate >= holidayRequest.StartDate)
-                  || (x.StartDate <= holidayRequest.StartDate && x.EndDate >= holidayRequest.EndDate))))
+                    .Any(x => GeneralUtils.isOverlappingHoliday(x, holidayRequest)))
                 {
                     displayHolidaySummary("There is an overlap with your current pending or approved requests", GeneralUtils.DANGER_COLOR);
                     return;

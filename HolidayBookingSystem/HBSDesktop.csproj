@@ -125,6 +125,12 @@
     <Compile Include="UserControls\UC-OutstandingHolidays.Designer.cs">
       <DependentUpon>UC-OutstandingHolidays.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC-Suggestions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC-Suggestions.Designer.cs">
+      <DependentUpon>UC-Suggestions.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC-OutstandingHolidays.resx">
       <DependentUpon>UC-OutstandingHolidays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC-Suggestions.resx">
+      <DependentUpon>UC-Suggestions.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

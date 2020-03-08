@@ -41,5 +41,14 @@ namespace SolutionUtils
             this.Text = s;
             this.SelectionStart = this.Text.Length;
         }
+
+        public bool ValidInput()
+        {
+            if(this.Text.Length  <= 11 && Regex.IsMatch(this.Text, @"\D"))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

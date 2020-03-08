@@ -70,6 +70,8 @@
           <Property Name="Pwd" Type="varbinary(max)" Nullable="false" />
           <Property Name="PwdSalt" Type="varbinary(max)" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="32" />
+          <Property Name="InitialHolidayEntitlement" Type="int" Nullable="false" />
+          <Property Name="TotalPeakDaysHoliday" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Constrain__Holid__6D0D32F4">
           <End Role="HolidayRequests" Type="Self.HolidayRequests" Multiplicity="1" />
@@ -220,6 +222,8 @@
           <NavigationProperty Name="HolidayRequests" Relationship="Self.FK__HolidayRe__UserI__7B5B524B" FromRole="Users" ToRole="HolidayRequests" />
           <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleID__74AE54BC" FromRole="Users" ToRole="Roles" />
           <Property Name="PhoneNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="InitialHolidayEntitlement" Type="Int32" Nullable="false" />
+          <Property Name="TotalPeakDaysHoliday" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK__Users__Departmen__75A278F5">
           <End Role="Departments" Type="Self.Department" Multiplicity="1" />
@@ -377,6 +381,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="bookingsystemModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="TotalPeakDaysHoliday" ColumnName="TotalPeakDaysHoliday" />
+                <ScalarProperty Name="InitialHolidayEntitlement" ColumnName="InitialHolidayEntitlement" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />

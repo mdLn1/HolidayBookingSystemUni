@@ -23,6 +23,8 @@ namespace SolutionUtils
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int RemainingDays { get; set; }
+        public int InitialHolidayEntitlement { get; set; }
+        public int TotalPeakDaysHoliday { get; set; }
         public int CompareTo(object obj)
         {
             PriorityRequest ob = (PriorityRequest)obj;
@@ -34,6 +36,10 @@ namespace SolutionUtils
             public int Compare(PriorityRequest x, PriorityRequest y)
             {
                 //when x should go first, return -1. When y should go first, return 1.
+                if(x.InitialHolidayEntitlement - x.RemainingDays > y.InitialHolidayEntitlement - y.RemainingDays)
+                    return 1;
+                if (x.TotalPeakDaysHoliday > y.TotalPeakDaysHoliday)
+                    return 1;
                 if (x.DaysPeakTime == 0 && y.DaysPeakTime == 0)
                     return 0;
                 if (x.DaysPeakTime == 0)

@@ -41,13 +41,9 @@ namespace HolidayBookingSystem.UserControls
             var selectedDate = datePickCalendar.SelectionRange.Start;
             using (HBSModel entity = new HBSModel())
             {
-                var users = entity.Users.ToList();
+                var users = entity.Users.Where(x => x.Username != GeneralUtils.ADMIN_ROLE).ToList();
                 foreach (var user in users)
                 {
-                    if(user.Role.RoleName == GeneralUtils.ADMIN_ROLE)
-                    {
-                        continue;
-                    }
                     if (user.HolidayRequests != null && 
                         user.HolidayRequests.Any(x => x.StatusRequest.Status == GeneralUtils.APPROVED 
                         && x.StartDate <= selectedDate 

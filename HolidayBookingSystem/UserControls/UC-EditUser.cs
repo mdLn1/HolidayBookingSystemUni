@@ -44,22 +44,20 @@ namespace HolidayBookingSystem
                 }
                 using (HBSModel _entity = new HBSModel())
                 {
-                    var _users = _entity.Users.Where(user => user.Username.Contains(tb_search.Text) && user.Username != GeneralUtils.ADMIN_ROLE).ToList();
-                    if (_users != null)
+                    lv_search.Items.Clear();
+                    var _users = _entity.Users.Where(user => user.Username.Contains(tb_search.Text)
+                        && user.Username != GeneralUtils.ADMIN_ROLE);
+
+                    foreach (User user in _users.ToList())
                     {
-                        lv_search.Items.Clear();
-                        
-                        foreach (User user in _users)
-                        {
-                            string[] arr = new string[5];
-                            arr[0] = user.id.ToString();
-                            arr[1] = user.Username.ToString();
-                            arr[2] = user.RemainingDays.ToString() == "" ? "N/A" : user.RemainingDays.ToString();
-                            arr[3] = user.Role.RoleName;
-                            arr[4] = user.Department.DepartmentName;
-                            ListViewItem item = new ListViewItem(arr);
-                            lv_search.Items.Add(item);
-                        }
+                        string[] arr = new string[5];
+                        arr[0] = user.id.ToString();
+                        arr[1] = user.Username.ToString();
+                        arr[2] = user.RemainingDays.ToString() == "" ? "N/A" : user.RemainingDays.ToString();
+                        arr[3] = user.Role.RoleName;
+                        arr[4] = user.Department.DepartmentName;
+                        ListViewItem item = new ListViewItem(arr);
+                        lv_search.Items.Add(item);
                     }
                 }
 
@@ -97,7 +95,7 @@ namespace HolidayBookingSystem
                     _user.PhoneNumber = tb_phone_number.Text;
                     _selectedUser = _user;
                     _entity.SaveChanges();
-                    
+
                 }
                 initializeUserList();
                 initializeUserBox();
@@ -127,7 +125,6 @@ namespace HolidayBookingSystem
                 using (HBSModel _entity = new HBSModel())
                 {
                     var _user = _entity.Users.FirstOrDefault(user => user.Username == _selectedUser.Username);
-                    // hash the password
                     byte[] passwordHash, passwordSalt;
                     GeneralUtils.CreatePasswordHash(tb_password.Text, out passwordHash, out passwordSalt);
                     _user.Pwd = passwordHash;
@@ -183,13 +180,9 @@ namespace HolidayBookingSystem
             {
                 using (HBSModel _entity = new HBSModel())
                 {
-                    var _users = _entity.Users.ToList();
-                    foreach (User usr in _users)
+                    var _users = _entity.Users.Where(x => x.Username != GeneralUtils.ADMIN_ROLE);
+                    foreach (User usr in _users.ToList())
                     {
-                        if (usr.Role.RoleName == GeneralUtils.ADMIN_ROLE)
-                        {
-                            continue;
-                        }
                         string[] arr = new string[5];
                         arr[0] = usr.id.ToString();
                         arr[1] = usr.Username.ToString();
@@ -247,7 +240,7 @@ namespace HolidayBookingSystem
                     DesktopAppUtils.popDefaultErrorMessageBox("Could not connect to DB \n" + err.Message);
                 }
             }
-            
+
         }
     }
 }

@@ -12,6 +12,7 @@
                     <asp:TableCell>End Date</asp:TableCell>
                     <asp:TableCell>Duration</asp:TableCell>
                     <asp:TableCell>Status</asp:TableCell>
+                    <asp:TableCell>Extra</asp:TableCell>
                 </asp:TableRow>
             </asp:Table>  
         </div>
