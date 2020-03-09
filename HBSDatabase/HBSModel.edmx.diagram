@@ -7,13 +7,12 @@
       <Diagram DiagramId="f7e0c2013112454089e585db3afebc06" Name="Diagram1">
         <EntityTypeShape EntityType="bookingsystemModel.Department" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bookingsystemModel.HolidayRequest" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="bookingsystemModel.PeakTime" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="bookingsystemModel.Role" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookingsystemModel.Role" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="bookingsystemModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="bookingsystemModel.FK__Users__Departmen__75A278F5" ManuallyRouted="false" />
         <AssociationConnector Association="bookingsystemModel.FK__HolidayRe__UserI__7B5B524B" ManuallyRouted="false" />
         <AssociationConnector Association="bookingsystemModel.FK__Users__RoleID__74AE54BC" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="bookingsystemModel.StatusRequest" Width="1.5" PointX="5.375" PointY="5.875" />
+        <EntityTypeShape EntityType="bookingsystemModel.StatusRequest" Width="1.5" PointX="5.5" PointY="5.25" />
         <AssociationConnector Association="bookingsystemModel.FK__HolidayRe__Reque__04E4BC85" />
         <EntityTypeShape EntityType="bookingsystemModel.ConstraintsBroken" Width="1.5" PointX="7.5" PointY="2" />
         <AssociationConnector Association="bookingsystemModel.FK__Constrain__Holid__6D0D32F4" />

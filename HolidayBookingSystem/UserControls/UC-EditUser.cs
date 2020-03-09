@@ -183,6 +183,8 @@ namespace HolidayBookingSystem
         {
             try
             {
+                cb_roles.Items.Clear();
+                cb_departments.Items.Clear();
                 using (HBSModel _entity = new HBSModel())
                 {
                     foreach (Role role in _entity.Roles.ToList())
@@ -222,7 +224,7 @@ namespace HolidayBookingSystem
                     }
                 }
             }
-            catch (Exception e)
+            catch
             {
                 DesktopAppUtils.popDefaultErrorMessageBox("Could not retrieve Item from DB");
             }

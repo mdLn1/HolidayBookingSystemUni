@@ -29,15 +29,6 @@
     <Property Name="NumberOfDays" Type="int" Nullable="false" />
     <Property Name="DaysPeakTime" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="PeakTimes">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StartDate" Type="date" Nullable="false" />
-    <Property Name="EndDate" Type="date" Nullable="false" />
-    <Property Name="NoConstraintsApply" Type="bit" Nullable="false" />
-  </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="ID" />
@@ -132,7 +123,6 @@
     <EntitySet Name="ConstraintsBroken" EntityType="Self.ConstraintsBroken" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HolidayRequests" EntityType="Self.HolidayRequests" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PeakTimes" EntityType="Self.PeakTimes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StatusRequests" EntityType="Self.StatusRequests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />

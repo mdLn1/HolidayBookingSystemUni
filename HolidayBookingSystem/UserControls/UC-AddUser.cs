@@ -31,6 +31,11 @@ namespace HolidayBookingSystem
         public UC_AddUser()
         {
             InitializeComponent();
+            hideErrors();
+        }
+
+        public void hideErrors()
+        {
             usernameErrorLabel.Visible = false;
             passwordErrorLabel.Visible = false;
             confirmPasswordErrorLabel.Visible = false;
@@ -43,6 +48,7 @@ namespace HolidayBookingSystem
         {
             try
             {
+                hideErrors();
                 bool noErrors = true;
                 if (String.IsNullOrEmpty(tb_username.Text) || (tb_username.Text.Length < 6))
                 {
@@ -142,14 +148,17 @@ namespace HolidayBookingSystem
                         {
                             _entity.Users.Add(newUser);
                             _entity.SaveChanges();
-                            tb_username.Text = "";
-                            tb_password.Text = "";
-                            tb_repeat_password.Text = "";
-                            cb_departments.SelectedIndex = -1;
-                            cb_roles.SelectedIndex = -1;
-                            dp_add_employee.Value = DateTime.Now;
-                            dp_add_employee.Format = DateTimePickerFormat.Custom;
-                            MessageBox.Show("Employee successfully registered", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
+                            if(MessageBox.Show("Employee successfully registered", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                            {
+                                tb_username.Text = "";
+                                tb_password.Text = "";
+                                tb_repeat_password.Text = "";
+                                cb_departments.SelectedIndex = -1;
+                                cb_roles.SelectedIndex = -1;
+                                dp_add_employee.Value = DateTime.Now;
+                                dp_add_employee.Format = DateTimePickerFormat.Custom;
+                            }
                         }
                         catch
                         {

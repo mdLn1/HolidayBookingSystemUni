@@ -304,35 +304,35 @@ namespace HolidayBookingSystem
         }
 
 
-        public static void AddPeakTimes()
-        {
-            using (HBSModel _entity = new HBSModel())
-            {
-                if(_entity.PeakTimes.Count() == 0)
-                {
-                    _entity.PeakTimes.Add(new PeakTime()
-                    {
-                        StartDate = new DateTime(2020, 12, 23),
-                        EndDate = new DateTime(2021, 1, 3),
-                        NoConstraintsApply = true
-                    });
-                    _entity.PeakTimes.Add(new PeakTime()
-                    {
-                        StartDate = new DateTime(2020, 7, 15),
-                        EndDate = new DateTime(2020, 8, 31),
-                        NoConstraintsApply = false
-                    });
-                    _entity.PeakTimes.Add(new PeakTime()
-                    {
-                        StartDate = new DateTime(2020, 12, 15),
-                        EndDate = new DateTime(2020, 12, 23),
-                        NoConstraintsApply = false
-                    });
-                    _entity.SaveChanges();
-                }
-            }
+        //public static void AddPeakTimes()
+        //{
+        //    using (HBSModel _entity = new HBSModel())
+        //    {
+        //        if(_entity.PeakTimes.Count() == 0)
+        //        {
+        //            _entity.PeakTimes.Add(new PeakTime()
+        //            {
+        //                StartDate = new DateTime(2020, 12, 23),
+        //                EndDate = new DateTime(2021, 1, 3),
+        //                NoConstraintsApply = true
+        //            });
+        //            _entity.PeakTimes.Add(new PeakTime()
+        //            {
+        //                StartDate = new DateTime(2020, 7, 15),
+        //                EndDate = new DateTime(2020, 8, 31),
+        //                NoConstraintsApply = false
+        //            });
+        //            _entity.PeakTimes.Add(new PeakTime()
+        //            {
+        //                StartDate = new DateTime(2020, 12, 15),
+        //                EndDate = new DateTime(2020, 12, 23),
+        //                NoConstraintsApply = false
+        //            });
+        //            _entity.SaveChanges();
+        //        }
+        //    }
 
-        }
+        //}
         public static void RegisterUsers()
         {
             using (HBSModel _entity = new HBSModel())

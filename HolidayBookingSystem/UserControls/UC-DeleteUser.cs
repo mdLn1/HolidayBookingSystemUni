@@ -59,7 +59,7 @@ namespace HolidayBookingSystem
                         arr[3] = usr.RemainingDays.ToString() == "" ? "N/A" : usr.RemainingDays.ToString();
                         arr[4] = usr.Role.RoleName;
                         arr[5] = usr.Department.DepartmentName;
-                        arr[6] = usr.PhoneNumber == null ? "N/A" : usr.PhoneNumber;
+                        arr[6] = String.IsNullOrEmpty(usr.PhoneNumber) ? "N/A" : usr.PhoneNumber;
                         ListViewItem item = new ListViewItem(arr);
                         lv_users.Items.Add(item);
                     }

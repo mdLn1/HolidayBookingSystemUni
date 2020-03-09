@@ -40,6 +40,8 @@
             this.Department = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.confirmPasswordErrorLabel = new System.Windows.Forms.Label();
+            this.passwordErrorLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_repeat_password = new HolidayBookingSystem.TextBox_Password();
             this.tb_password = new HolidayBookingSystem.TextBox_Password();
@@ -47,7 +49,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tb_phoneNumber = new System.Windows.Forms.TextBox();
+            this.phoneErrorLabel = new System.Windows.Forms.Label();
+            this.usernameErrorLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_details = new System.Windows.Forms.Button();
             this.tb_username = new System.Windows.Forms.TextBox();
@@ -59,10 +62,7 @@
             this.cb_departments = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.usernameErrorLabel = new System.Windows.Forms.Label();
-            this.phoneErrorLabel = new System.Windows.Forms.Label();
-            this.passwordErrorLabel = new System.Windows.Forms.Label();
-            this.confirmPasswordErrorLabel = new System.Windows.Forms.Label();
+            this.tb_phoneNumber = new SolutionUtils.PhoneTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -215,6 +215,26 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Update Password";
             // 
+            // confirmPasswordErrorLabel
+            // 
+            this.confirmPasswordErrorLabel.AutoSize = true;
+            this.confirmPasswordErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.confirmPasswordErrorLabel.Location = new System.Drawing.Point(257, 52);
+            this.confirmPasswordErrorLabel.Name = "confirmPasswordErrorLabel";
+            this.confirmPasswordErrorLabel.Size = new System.Drawing.Size(123, 13);
+            this.confirmPasswordErrorLabel.TabIndex = 28;
+            this.confirmPasswordErrorLabel.Text = "Passwords do not match";
+            // 
+            // passwordErrorLabel
+            // 
+            this.passwordErrorLabel.AutoSize = true;
+            this.passwordErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.passwordErrorLabel.Location = new System.Drawing.Point(257, 25);
+            this.passwordErrorLabel.Name = "passwordErrorLabel";
+            this.passwordErrorLabel.Size = new System.Drawing.Size(146, 13);
+            this.passwordErrorLabel.TabIndex = 27;
+            this.passwordErrorLabel.Text = "Not meeting password criteria";
+            // 
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -287,9 +307,9 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox3.Controls.Add(this.tb_phoneNumber);
             this.groupBox3.Controls.Add(this.phoneErrorLabel);
             this.groupBox3.Controls.Add(this.usernameErrorLabel);
-            this.groupBox3.Controls.Add(this.tb_phoneNumber);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.btn_details);
             this.groupBox3.Controls.Add(this.tb_username);
@@ -309,13 +329,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "User Details";
             // 
-            // tb_phoneNumber
+            // phoneErrorLabel
             // 
-            this.tb_phoneNumber.Location = new System.Drawing.Point(115, 136);
-            this.tb_phoneNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.tb_phoneNumber.Name = "tb_phoneNumber";
-            this.tb_phoneNumber.Size = new System.Drawing.Size(136, 20);
-            this.tb_phoneNumber.TabIndex = 23;
+            this.phoneErrorLabel.AutoSize = true;
+            this.phoneErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.phoneErrorLabel.Location = new System.Drawing.Point(257, 138);
+            this.phoneErrorLabel.Name = "phoneErrorLabel";
+            this.phoneErrorLabel.Size = new System.Drawing.Size(109, 13);
+            this.phoneErrorLabel.TabIndex = 26;
+            this.phoneErrorLabel.Text = "Invalid phone number";
+            // 
+            // usernameErrorLabel
+            // 
+            this.usernameErrorLabel.AutoSize = true;
+            this.usernameErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.usernameErrorLabel.Location = new System.Drawing.Point(257, 34);
+            this.usernameErrorLabel.Name = "usernameErrorLabel";
+            this.usernameErrorLabel.Size = new System.Drawing.Size(144, 13);
+            this.usernameErrorLabel.TabIndex = 25;
+            this.usernameErrorLabel.Text = "Must have least 6 characters";
             // 
             // label10
             // 
@@ -423,45 +455,13 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Department:";
             // 
-            // usernameErrorLabel
+            // tb_phoneNumber
             // 
-            this.usernameErrorLabel.AutoSize = true;
-            this.usernameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.usernameErrorLabel.Location = new System.Drawing.Point(257, 34);
-            this.usernameErrorLabel.Name = "usernameErrorLabel";
-            this.usernameErrorLabel.Size = new System.Drawing.Size(144, 13);
-            this.usernameErrorLabel.TabIndex = 25;
-            this.usernameErrorLabel.Text = "Must have least 6 characters";
-            // 
-            // phoneErrorLabel
-            // 
-            this.phoneErrorLabel.AutoSize = true;
-            this.phoneErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.phoneErrorLabel.Location = new System.Drawing.Point(257, 138);
-            this.phoneErrorLabel.Name = "phoneErrorLabel";
-            this.phoneErrorLabel.Size = new System.Drawing.Size(109, 13);
-            this.phoneErrorLabel.TabIndex = 26;
-            this.phoneErrorLabel.Text = "Invalid phone number";
-            // 
-            // passwordErrorLabel
-            // 
-            this.passwordErrorLabel.AutoSize = true;
-            this.passwordErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.passwordErrorLabel.Location = new System.Drawing.Point(257, 25);
-            this.passwordErrorLabel.Name = "passwordErrorLabel";
-            this.passwordErrorLabel.Size = new System.Drawing.Size(146, 13);
-            this.passwordErrorLabel.TabIndex = 27;
-            this.passwordErrorLabel.Text = "Not meeting password criteria";
-            // 
-            // confirmPasswordErrorLabel
-            // 
-            this.confirmPasswordErrorLabel.AutoSize = true;
-            this.confirmPasswordErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.confirmPasswordErrorLabel.Location = new System.Drawing.Point(257, 52);
-            this.confirmPasswordErrorLabel.Name = "confirmPasswordErrorLabel";
-            this.confirmPasswordErrorLabel.Size = new System.Drawing.Size(123, 13);
-            this.confirmPasswordErrorLabel.TabIndex = 28;
-            this.confirmPasswordErrorLabel.Text = "Passwords do not match";
+            this.tb_phoneNumber.ForeColor = System.Drawing.Color.Black;
+            this.tb_phoneNumber.Location = new System.Drawing.Point(115, 135);
+            this.tb_phoneNumber.Name = "tb_phoneNumber";
+            this.tb_phoneNumber.Size = new System.Drawing.Size(136, 20);
+            this.tb_phoneNumber.TabIndex = 27;
             // 
             // UC_EditUser
             // 
@@ -514,11 +514,11 @@
         private TextBox_Password tb_repeat_password;
         private TextBox_Password tb_password;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tb_phoneNumber;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label confirmPasswordErrorLabel;
         private System.Windows.Forms.Label passwordErrorLabel;
         private System.Windows.Forms.Label phoneErrorLabel;
         private System.Windows.Forms.Label usernameErrorLabel;
+        private SolutionUtils.PhoneTextBox tb_phoneNumber;
     }
 }

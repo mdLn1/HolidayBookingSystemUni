@@ -23,15 +23,6 @@
     <NavigationProperty Name="ConstraintsBroken" Relationship="bookingsystemModel.FK__Constrain__Holid__6D0D32F4" FromRole="HolidayRequest" ToRole="ConstraintsBroken" />
     <Property Name="DaysPeakTime" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="PeakTime">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="NoConstraintsApply" Type="Boolean" Nullable="false" />
-  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="ID" />
@@ -98,7 +89,6 @@
   <EntityContainer Name="HBSModel" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Departments" EntityType="Self.Department" />
     <EntitySet Name="HolidayRequests" EntityType="Self.HolidayRequest" />
-    <EntitySet Name="PeakTimes" EntityType="Self.PeakTime" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <AssociationSet Name="FK__Users__Departmen__75A278F5" Association="Self.FK__Users__Departmen__75A278F5">
@@ -157,7 +147,7 @@
   </EntityType>
   <Association Name="FK__Constrain__Holid__6D0D32F4">
     <End Type="bookingsystemModel.HolidayRequest" Role="HolidayRequest" Multiplicity="1" />
-    <End Type="bookingsystemModel.ConstraintsBroken" Role="ConstraintsBroken" Multiplicity="0..1" />
+    <End Type="bookingsystemModel.ConstraintsBroken" Role="ConstraintsBroken" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="HolidayRequest">
         <PropertyRef Name="ID" />
