@@ -11,6 +11,13 @@
     <style>
         body {
             background: #eee !important;
+            background-color: #124e78;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 1rem;
+            left: 20vh;
         }
 
         .login-form {
@@ -18,7 +25,7 @@
             text-align: center;
             position: relative;
             margin: 5rem auto;
-            border: 1px solid#888;
+            border: 1px solid #888;
             max-width: 440px;
             text-align: center;
             box-shadow: 0.75rem 1.5rem 3rem rgba(0, 0, 0, .5);
@@ -50,7 +57,9 @@
 <body>
     <form runat="server">
         <div class="container body-content">
-            <div class="wrapper">
+            <div class="wrapper" style="margin-top: 10rem; text-align: center;">
+                <h2>Welcome to Straight Walls Ltd!</h2>
+                <h3>Please fill the login form to access your details</h3>
                 <div class="login-form">
                     <div id="LogoutMessageAlert" class="alert alert-success" role="alert" runat="server" visible="false">You have successfully logged out.</div>
                     <h2 class="form-signin-heading">Login</h2>
@@ -68,5 +77,8 @@
             </div>
         </div>
     </form>
+    <footer>
+        <p>&copy; <%: DateTime.Now.Year %> - Madalin Preda Solutions</p>
+    </footer>
 </body>
 </html>

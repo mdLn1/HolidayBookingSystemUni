@@ -22,11 +22,12 @@ namespace HBSMobileApp.EmployeeService {
         [System.ServiceModel.OperationContractAttribute(Action="http://holidaybookingsystem.org/EmployeeLogin", ReplyAction="*")]
         System.Threading.Tasks.Task<HBSMobileApp.EmployeeService.EmployeeLoginResponse> EmployeeLoginAsync(HBSMobileApp.EmployeeService.EmployeeLoginRequest request);
         
+        // CODEGEN: Generating message contract since element name username from namespace http://holidaybookingsystem.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://holidaybookingsystem.org/HolidayRequest", ReplyAction="*")]
-        bool HolidayRequest(System.DateTime startDate, System.DateTime endDate, int workingDays);
+        HBSMobileApp.EmployeeService.HolidayRequestResponse HolidayRequest(HBSMobileApp.EmployeeService.HolidayRequestRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://holidaybookingsystem.org/HolidayRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> HolidayRequestAsync(System.DateTime startDate, System.DateTime endDate, int workingDays);
+        System.Threading.Tasks.Task<HBSMobileApp.EmployeeService.HolidayRequestResponse> HolidayRequestAsync(HBSMobileApp.EmployeeService.HolidayRequestRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -91,13 +92,97 @@ namespace HBSMobileApp.EmployeeService {
     public partial class EmployeeLoginResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool EmployeeLoginResult;
+        public int EmployeeLoginResult;
         
         public EmployeeLoginResponseBody() {
         }
         
-        public EmployeeLoginResponseBody(bool EmployeeLoginResult) {
+        public EmployeeLoginResponseBody(int EmployeeLoginResult) {
             this.EmployeeLoginResult = EmployeeLoginResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class HolidayRequestRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HolidayRequest", Namespace="http://holidaybookingsystem.org/", Order=0)]
+        public HBSMobileApp.EmployeeService.HolidayRequestRequestBody Body;
+        
+        public HolidayRequestRequest() {
+        }
+        
+        public HolidayRequestRequest(HBSMobileApp.EmployeeService.HolidayRequestRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://holidaybookingsystem.org/")]
+    public partial class HolidayRequestRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public System.DateTime startDate;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public System.DateTime endDate;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int workingDays;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string username;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string password;
+        
+        public HolidayRequestRequestBody() {
+        }
+        
+        public HolidayRequestRequestBody(System.DateTime startDate, System.DateTime endDate, int workingDays, string username, string password) {
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.workingDays = workingDays;
+            this.username = username;
+            this.password = password;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class HolidayRequestResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HolidayRequestResponse", Namespace="http://holidaybookingsystem.org/", Order=0)]
+        public HBSMobileApp.EmployeeService.HolidayRequestResponseBody Body;
+        
+        public HolidayRequestResponse() {
+        }
+        
+        public HolidayRequestResponse(HBSMobileApp.EmployeeService.HolidayRequestResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://holidaybookingsystem.org/")]
+    public partial class HolidayRequestResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int HolidayRequestResult;
+        
+        public HolidayRequestResponseBody() {
+        }
+        
+        public HolidayRequestResponseBody(int HolidayRequestResult) {
+            this.HolidayRequestResult = HolidayRequestResult;
         }
     }
     
@@ -133,7 +218,7 @@ namespace HBSMobileApp.EmployeeService {
             return base.Channel.EmployeeLogin(request);
         }
         
-        public bool EmployeeLogin(string username, string password) {
+        public int EmployeeLogin(string username, string password) {
             HBSMobileApp.EmployeeService.EmployeeLoginRequest inValue = new HBSMobileApp.EmployeeService.EmployeeLoginRequest();
             inValue.Body = new HBSMobileApp.EmployeeService.EmployeeLoginRequestBody();
             inValue.Body.username = username;
@@ -155,12 +240,37 @@ namespace HBSMobileApp.EmployeeService {
             return ((HBSMobileApp.EmployeeService.EmployeeServiceSoap)(this)).EmployeeLoginAsync(inValue);
         }
         
-        public bool HolidayRequest(System.DateTime startDate, System.DateTime endDate, int workingDays) {
-            return base.Channel.HolidayRequest(startDate, endDate, workingDays);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HBSMobileApp.EmployeeService.HolidayRequestResponse HBSMobileApp.EmployeeService.EmployeeServiceSoap.HolidayRequest(HBSMobileApp.EmployeeService.HolidayRequestRequest request) {
+            return base.Channel.HolidayRequest(request);
         }
         
-        public System.Threading.Tasks.Task<bool> HolidayRequestAsync(System.DateTime startDate, System.DateTime endDate, int workingDays) {
-            return base.Channel.HolidayRequestAsync(startDate, endDate, workingDays);
+        public int HolidayRequest(System.DateTime startDate, System.DateTime endDate, int workingDays, string username, string password) {
+            HBSMobileApp.EmployeeService.HolidayRequestRequest inValue = new HBSMobileApp.EmployeeService.HolidayRequestRequest();
+            inValue.Body = new HBSMobileApp.EmployeeService.HolidayRequestRequestBody();
+            inValue.Body.startDate = startDate;
+            inValue.Body.endDate = endDate;
+            inValue.Body.workingDays = workingDays;
+            inValue.Body.username = username;
+            inValue.Body.password = password;
+            HBSMobileApp.EmployeeService.HolidayRequestResponse retVal = ((HBSMobileApp.EmployeeService.EmployeeServiceSoap)(this)).HolidayRequest(inValue);
+            return retVal.Body.HolidayRequestResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<HBSMobileApp.EmployeeService.HolidayRequestResponse> HBSMobileApp.EmployeeService.EmployeeServiceSoap.HolidayRequestAsync(HBSMobileApp.EmployeeService.HolidayRequestRequest request) {
+            return base.Channel.HolidayRequestAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<HBSMobileApp.EmployeeService.HolidayRequestResponse> HolidayRequestAsync(System.DateTime startDate, System.DateTime endDate, int workingDays, string username, string password) {
+            HBSMobileApp.EmployeeService.HolidayRequestRequest inValue = new HBSMobileApp.EmployeeService.HolidayRequestRequest();
+            inValue.Body = new HBSMobileApp.EmployeeService.HolidayRequestRequestBody();
+            inValue.Body.startDate = startDate;
+            inValue.Body.endDate = endDate;
+            inValue.Body.workingDays = workingDays;
+            inValue.Body.username = username;
+            inValue.Body.password = password;
+            return ((HBSMobileApp.EmployeeService.EmployeeServiceSoap)(this)).HolidayRequestAsync(inValue);
         }
     }
 }

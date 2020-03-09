@@ -16,6 +16,10 @@ namespace HBSWeb
             {
                 HolidayRequestAlert.Visible = true;
             }
+            if (Session["userId"] == null)
+            {
+                Response.Redirect("~/");
+            }
 
             using (HBSModel _entity = new HBSModel())
             {

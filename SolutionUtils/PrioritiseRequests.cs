@@ -15,13 +15,12 @@ namespace SolutionUtils
             int peakTimeDays = 0;
             foreach (var peakTime in GeneralUtils.getPeakTimesForCurrentYear())
             {
-                if (areDaysInPeakTime(peakTime, new DateRange(holidayRequest.StartDate, holidayRequest.EndDate)))
+                if (GeneralUtils.isOverlappingDateRanges(new DateRange(holidayRequest.StartDate, holidayRequest.EndDate), peakTime))
                 {
                     DateTime startDate = holidayRequest.StartDate;
-                    while (startDate <= peakTime.EndDate)
+                    while (startDate <= peakTime.EndDate && startDate <= holidayRequest.EndDate)
                     {
-                        if (startDate >= peakTime.StartDate && startDate.DayOfWeek != DayOfWeek.Saturday
-                                && startDate.DayOfWeek != DayOfWeek.Sunday)
+                        if (startDate >= peakTime.StartDate && !GeneralUtils.isWeekendDay(startDate))
                         {
                             peakTimeDays++;
                         }

@@ -121,7 +121,8 @@ namespace HolidayBookingSystem.UserControls
                 currentlySelectedEmployeeId = employee.ID;
                 using (HBSModel model = new HBSModel())
                 {
-                    var holidayRequests = model.HolidayRequests.Where(x => x.UserID == employee.ID).ToList();
+                    var holidayRequests = model.HolidayRequests.Where(x => x.UserID == employee.ID
+                        && x.StatusRequest.Status == GeneralUtils.APPROVED).ToList();
                     List<DateRange> dateRanges = new List<DateRange>();
                     foreach (HolidayRequest holidayRequest in holidayRequests)
                     {

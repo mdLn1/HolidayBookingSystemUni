@@ -41,19 +41,18 @@ namespace HBSMobileApp
                 this.Cursor = Cursors.Wait;
                 Button button = (Button)sender;
                 button.Cursor = Cursors.Wait;
+                
                 EmployeeLoginResponse response = await client.EmployeeLoginAsync(username, password);
                 this.Cursor = Cursors.Arrow;
                 button.Cursor = Cursors.Hand;
-                if (!response.Body.EmployeeLoginResult)
+                if (response.Body.EmployeeLoginResult != 1)
                 {
                     errorBlock.Visibility = Visibility.Visible;
                     errorBlock.Text = "Invalid login attempt";
-                    usernameBox.Text = "";
-                    passwordBox.Password = "";
                 } else
                 {
-
                     Application.Current.Resources["username"] = username;
+                    Application.Current.Resources["password"] = password;
                     SubmitRequest submitRequest = new SubmitRequest();
                     submitRequest.Show();
                     this.Close();
@@ -64,6 +63,8 @@ namespace HBSMobileApp
                 errorBlock.Text = "Please enter credentials";
             }
         }
+
+       
 
     }
 }

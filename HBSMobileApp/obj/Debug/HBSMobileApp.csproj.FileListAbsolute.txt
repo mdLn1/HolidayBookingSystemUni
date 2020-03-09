@@ -59,3 +59,5 @@ C:\private\HBS\HBSMobileApp\bin\Debug\HBSWeb.pdb
 C:\private\HBS\HBSMobileApp\bin\Debug\HBSWeb.dll.config
 C:\private\HBS\HBSMobileApp\bin\Debug\System.Web.Optimization.xml
 C:\private\HBS\HBSMobileApp\bin\Debug\Microsoft.AspNet.FriendlyUrls.xml
+C:\private\HBS\HBSMobileApp\obj\Debug\Logout.g.cs
+C:\private\HBS\HBSMobileApp\obj\Debug\Logout.baml

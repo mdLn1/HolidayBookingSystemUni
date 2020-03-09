@@ -36,7 +36,8 @@ namespace HolidayBookingSystem.UserControls
         {
             using (HBSModel entity = new HBSModel())
             {
-                var holidayBookings = entity.HolidayRequests.ToList();
+                var holidayBookings = entity.HolidayRequests
+                    .Where(x => x.StatusRequest.Status == GeneralUtils.APPROVED).ToList();
                 populateBookingsList(holidayBookings);
                 var departments = entity.Departments.Where(x => x.DepartmentName != GeneralUtils.MANAGEMENT_DEPARTMENT);
                 departmentComboBox.Items.Clear();
@@ -49,7 +50,6 @@ namespace HolidayBookingSystem.UserControls
 
         public void populateBookingsList(List<HolidayRequest> holidayBookings)
         {
-            holidayBookings.RemoveAll(x => x.StatusRequest.Status != GeneralUtils.APPROVED);
             holidayBookingsListView.Items.Clear();
             if (holidayBookings.Count == 0)
             {
@@ -66,6 +66,8 @@ namespace HolidayBookingSystem.UserControls
                 arr[1] = booking.StartDate.ToShortDateString();
                 arr[2] = booking.EndDate.ToShortDateString();
                 arr[3] = booking.NumberOfDays.ToString();
+                arr[4] = booking.DaysPeakTime.ToString();
+
                 ListViewItem item = new ListViewItem(arr);
                 holidayBookingsListView.Items.Add(item);
             }
@@ -112,6 +114,12 @@ namespace HolidayBookingSystem.UserControls
         {
             ComboItem itm = (ComboItem)departmentComboBox.SelectedItem;
             populateEmployeesDropdown(itm.ID);
+        }
+
+        private void clearFilterButton_Click(object sender, EventArgs e)
+        {
+            initializeHolidayBookingsList();
+            employeesComboBox.Items.Clear();
         }
     }
 }

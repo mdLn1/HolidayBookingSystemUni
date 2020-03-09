@@ -62,9 +62,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Logout.xaml.cs">
+      <DependentUpon>Logout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SubmitRequest.xaml.cs">
       <DependentUpon>SubmitRequest.xaml</DependentUpon>
     </Compile>
+    <Page Include="Logout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,6 +109,9 @@
     </EmbeddedResource>
     <None Include="Connected Services\EmployeeService\EmployeeService.wsdl" />
     <None Include="Connected Services\EmployeeService\HBSMobileApp.EmployeeService.EmployeeLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\EmployeeService\HBSMobileApp.EmployeeService.HolidayRequestResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

@@ -158,6 +158,15 @@ public static class GeneralUtils
             return true;
         return false;
     }
+    public static bool isOverlappingDateRanges(DateRange existing, DateRange newAdded)
+    {
+        if (existing.EndDate > DateTime.Now
+              && ((existing.EndDate >= newAdded.StartDate && existing.EndDate <= newAdded.EndDate)
+              || (existing.StartDate <= newAdded.EndDate && existing.StartDate >= newAdded.StartDate)
+              || (existing.StartDate <= newAdded.StartDate && existing.EndDate >= newAdded.EndDate)))
+            return true;
+        return false;
+    }
 
     public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {

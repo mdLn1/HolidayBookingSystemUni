@@ -36,6 +36,7 @@ namespace HolidayBookingSystem.UserControls
         public void findSuggestions(HolidayRequest holidayRequest)
         {
             currentRequest = holidayRequest;
+            suggesstionConfirmedButton.Visible = false;
             this.Cursor = Cursors.WaitCursor;
             SuggestionsComponent suggestions = new SuggestionsComponent(currentRequest);
             label1.ForeColor = Color.Black;
@@ -46,6 +47,7 @@ namespace HolidayBookingSystem.UserControls
             {
                 label1.Text = "No suggestions found";
                 label1.ForeColor = Color.Red;
+                suggesstionConfirmedButton.Visible = false;
             }
             else
             {

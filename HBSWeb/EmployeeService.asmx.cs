@@ -15,48 +15,54 @@ namespace HBSWeb
     {
 
         [WebMethod(EnableSession = true)]
-        public bool EmployeeLogin(string username, string password)
+        public int EmployeeLogin(string username, string password)
         {
             using (HBSModel _entity = new HBSModel())
             {
                 var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
                 if (_user == null)
                 {
-                    return false;
+                    return -1;
                 }
                 if (!GeneralUtils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt) || _user.Role.RoleName == GeneralUtils.ADMIN_ROLE)
                 {
-                    return false;
+                    return -2;
                 }
 
-                Session["userId"] = _user.id;
+                return 1;
             }
-            return true;
         }
 
         [WebMethod(EnableSession = true)]
-        public bool HolidayRequest(DateTime startDate, DateTime endDate, int workingDays)
+        public int HolidayRequest(DateTime startDate, DateTime endDate, int workingDays, string username, string password)
         {
             if (startDate > endDate || startDate < DateTime.Now.AddDays(2) || workingDays == 0)
             {
-                return false;
+                return -4;
             }
             try
             {
                 using (HBSModel _entity = new HBSModel())
                 {
-                    var userId = (int)Session["userId"];
+                    var _user = _entity.Users.FirstOrDefault(x => x.Username == username);
+                    if (_user == null)
+                    {
+                        return -1;
+                    }
+                    if (!GeneralUtils.VerifyPasswordHash(password, _user.Pwd, _user.PwdSalt) || _user.Role.RoleName == GeneralUtils.ADMIN_ROLE)
+                    {
+                        return -2;
+                    }
                     HolidayRequest holidayRequest = new HolidayRequest()
                     {
                         StartDate = startDate,
                         EndDate = endDate,
-                        UserID = userId,
+                        UserID = _user.id,
                         NumberOfDays = workingDays
                     };
-                    var usr = _entity.Users.Find(userId);
                     holidayRequest.RequestStatusID = _entity.StatusRequests
                         .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
-                    holidayRequest.ConstraintsBroken = new ConstraintChecking(usr, holidayRequest).getBrokenConstraints();
+                    holidayRequest.ConstraintsBroken = new ConstraintChecking(_user, holidayRequest).getBrokenConstraints();
                     holidayRequest.DaysPeakTime = PrioritiseRequests.daysFallPeakTimes(holidayRequest);
                     _entity.HolidayRequests.Add(holidayRequest);
                     _entity.SaveChanges();
@@ -64,9 +70,9 @@ namespace HBSWeb
             }
             catch
             {
-                return false;
+                return -3;
             }
-            return true;
+            return 1;
         }
     }
 }

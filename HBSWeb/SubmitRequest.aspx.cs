@@ -27,13 +27,17 @@ namespace HBSWeb
             endDate = GeneralUtils.simplifyEndDate(endDate);
             if (workingDays == 0)
             {
-
                 displayHolidaySummary("You selected weekend days, no need for holiday allowance", GeneralUtils.DANGER_COLOR);
                 return;
             }
             else if (workingDays > GeneralUtils.MAX_POSSIBLE_HOLIDAY)
             {
                 displayHolidaySummary("Too many days selected, it exceeds the maximum allowance", GeneralUtils.DANGER_COLOR);
+                return;
+            }
+            if(startDate.Year > DateTime.Now.Year || endDate.Year > DateTime.Now.Year)
+            {
+                displayHolidaySummary("Sorry, not accepting holiday requests for next year yet", GeneralUtils.DANGER_COLOR);
                 return;
             }
             using (HBSModel _entity = new HBSModel())

@@ -27,7 +27,15 @@
             <RowDefinition Height="2*"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Name="txt1" Grid.ColumnSpan="2" Margin="5" FontSize="30" FontFamily="Segoe UI Semibold" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF8F9F2" FontWeight="Bold" FontStretch="Expanded">Request Holiday</TextBlock>
+        <Button Name="logoutButton" Grid.Column="0" Grid.Row="0" BorderBrush="#FF9E871B" FontWeight="Bold" FontSize="28" Foreground="#FFEEF3F3" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" Padding="10,1" Click="logoutButton_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0BB28C" Offset="0.05"/>
+                    <GradientStop Color="#FF08A66D" Offset="0.833"/>
+                </LinearGradientBrush>
+            </Button.Background> Logout
+        </Button>
+        <TextBlock Name="txt1" Grid.ColumnSpan="2" Margin="5" FontSize="30" FontFamily="Segoe UI Semibold" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF8F9F2" FontWeight="Bold" FontStretch="Expanded">Request Holiday</TextBlock>
         <TextBlock Name="txt2" FontSize="20" FontFamily="Segoe UI Semibold" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF8F9F2" FontWeight="Bold" FontStretch="Expanded">Start Date</TextBlock>
         <TextBlock Name="txt3" FontSize="20" FontFamily="Segoe UI Semibold" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFF8F9F2" FontWeight="Bold" FontStretch="Expanded">End Date</TextBlock>
         <TextBlock Name="errorBlock" TextWrapping="WrapWithOverflow" FontSize="20" FontFamily="Segoe UI Semibold" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFD61010" FontWeight="Bold" FontStretch="Expanded" Padding="10,0" Margin="29,15,0,0">Very long text</TextBlock>

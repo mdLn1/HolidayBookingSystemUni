@@ -40,21 +40,14 @@ namespace SolutionUtils
                     return 1;
                 if (x.TotalPeakDaysHoliday > y.TotalPeakDaysHoliday)
                     return 1;
+                if (x.RemainingDays >= y.RemainingDays)
+                    return -1;
                 if (x.DaysPeakTime == 0 && y.DaysPeakTime == 0)
                     return 0;
                 if (x.DaysPeakTime == 0)
                     return -1;
                 if (y.DaysPeakTime == 0)
                     return 1;
-                if (x.RemainingDays >= y.RemainingDays && x.DaysPeakTime <= y.DaysPeakTime)
-                    return -1;
-                if (x.RemainingDays >= y.RemainingDays && x.DaysPeakTime < y.DaysPeakTime)
-                    return 1;
-                if (x.RemainingDays < y.RemainingDays && x.DaysPeakTime >= y.DaysPeakTime)
-                    return 1;
-                if (x.RemainingDays < y.RemainingDays && x.DaysPeakTime < y.DaysPeakTime)
-                    return 1;
-             
                 return 0;
             }
 
