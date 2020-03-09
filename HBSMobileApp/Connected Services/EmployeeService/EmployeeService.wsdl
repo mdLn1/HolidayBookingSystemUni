@@ -101,10 +101,10 @@
   </wsdl:binding>
   <wsdl:service name="EmployeeService">
     <wsdl:port name="EmployeeServiceSoap" binding="tns:EmployeeServiceSoap">
-      <soap:address location="https://localhost:44357/EmployeeService.asmx" />
+      <soap:address location="https://localhost:44346/EmployeeService.asmx" />
     </wsdl:port>
     <wsdl:port name="EmployeeServiceSoap12" binding="tns:EmployeeServiceSoap12">
-      <soap12:address location="https://localhost:44357/EmployeeService.asmx" />
+      <soap12:address location="https://localhost:44346/EmployeeService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

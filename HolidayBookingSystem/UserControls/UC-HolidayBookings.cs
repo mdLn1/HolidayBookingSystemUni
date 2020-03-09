@@ -38,6 +38,12 @@ namespace HolidayBookingSystem.UserControls
             {
                 var holidayBookings = entity.HolidayRequests.ToList();
                 populateBookingsList(holidayBookings);
+                var departments = entity.Departments.Where(x => x.DepartmentName != GeneralUtils.MANAGEMENT_DEPARTMENT);
+                departmentComboBox.Items.Clear();
+                foreach (var department in departments)
+                {
+                    departmentComboBox.Items.Add(new ComboItem(department.DepartmentName, department.ID));
+                }
             }
         }
 
@@ -69,8 +75,20 @@ namespace HolidayBookingSystem.UserControls
         {
             using (HBSModel entity = new HBSModel())
             {
-                var employees = entity.Users.ToList();
-                employees.RemoveAll(x => x.Role.RoleName == GeneralUtils.ADMIN_ROLE);
+                var employees = entity.Users.Where(x => x.Username != GeneralUtils.ADMIN_ROLE).ToList();
+                employeesComboBox.Items.Clear();
+                foreach (var employee in employees)
+                {
+                    employeesComboBox.Items.Add(new ComboItem(employee.Username, employee.id));
+                }
+            }
+
+        }
+        public void populateEmployeesDropdown(int departmentId)
+        {
+            using (HBSModel entity = new HBSModel())
+            {
+                var employees = entity.Users.Where(x => x.DepartmentID == departmentId).ToList();
                 employeesComboBox.Items.Clear();
                 foreach (var employee in employees)
                 {
@@ -88,6 +106,12 @@ namespace HolidayBookingSystem.UserControls
                 var holidayBookings = entity.HolidayRequests.Where(x => x.UserID == itm.ID).ToList();
                 populateBookingsList(holidayBookings);
             }
+        }
+
+        private void departmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboItem itm = (ComboItem)departmentComboBox.SelectedItem;
+            populateEmployeesDropdown(itm.ID);
         }
     }
 }

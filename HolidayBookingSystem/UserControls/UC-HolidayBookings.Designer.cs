@@ -40,6 +40,10 @@
             this.clearFilterButton = new HolidayBookingSystem.CustomControls.ThemedButton();
             this.employeesComboBox = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.peakTimeDays = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
+            this.departmentComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -48,10 +52,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.holidayBookingsListView);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(755, 392);
+            this.groupBox1.Size = new System.Drawing.Size(457, 392);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Holiday Bookings";
@@ -62,15 +66,15 @@
             this.ID,
             this.StartDate,
             this.EndDate,
-            this.WorkingDays});
+            this.WorkingDays,
+            this.peakTimeDays});
             this.holidayBookingsListView.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.holidayBookingsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.holidayBookingsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.holidayBookingsListView.FullRowSelect = true;
             this.holidayBookingsListView.HideSelection = false;
             this.holidayBookingsListView.Location = new System.Drawing.Point(3, 16);
             this.holidayBookingsListView.Name = "holidayBookingsListView";
-            this.holidayBookingsListView.Size = new System.Drawing.Size(749, 373);
+            this.holidayBookingsListView.Size = new System.Drawing.Size(447, 370);
             this.holidayBookingsListView.TabIndex = 0;
             this.holidayBookingsListView.UseCompatibleStateImageBehavior = false;
             this.holidayBookingsListView.View = System.Windows.Forms.View.Details;
@@ -98,21 +102,24 @@
             // 
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox2.Location = new System.Drawing.Point(515, 0);
+            this.groupBox2.Location = new System.Drawing.Point(463, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(240, 392);
+            this.groupBox2.Size = new System.Drawing.Size(292, 392);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtered Search";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.departmentComboBox);
+            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.messageLabel);
             this.groupBox3.Controls.Add(this.clearFilterButton);
             this.groupBox3.Controls.Add(this.employeesComboBox);
-            this.groupBox3.Location = new System.Drawing.Point(6, 28);
+            this.groupBox3.Location = new System.Drawing.Point(26, 28);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(217, 313);
+            this.groupBox3.Size = new System.Drawing.Size(227, 344);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "By Employee Name";
@@ -123,7 +130,7 @@
             this.messageLabel.BackColor = System.Drawing.Color.Firebrick;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.messageLabel.Location = new System.Drawing.Point(46, 134);
+            this.messageLabel.Location = new System.Drawing.Point(46, 239);
             this.messageLabel.Name = "messageLabel";
             this.messageLabel.Padding = new System.Windows.Forms.Padding(3);
             this.messageLabel.Size = new System.Drawing.Size(110, 22);
@@ -138,7 +145,7 @@
             this.clearFilterButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearFilterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearFilterButton.ForeColor = System.Drawing.Color.White;
-            this.clearFilterButton.Location = new System.Drawing.Point(37, 180);
+            this.clearFilterButton.Location = new System.Drawing.Point(32, 283);
             this.clearFilterButton.Margin = new System.Windows.Forms.Padding(2);
             this.clearFilterButton.Name = "clearFilterButton";
             this.clearFilterButton.Size = new System.Drawing.Size(132, 43);
@@ -151,12 +158,47 @@
             this.employeesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.employeesComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.employeesComboBox.FormattingEnabled = true;
-            this.employeesComboBox.Location = new System.Drawing.Point(37, 82);
+            this.employeesComboBox.Location = new System.Drawing.Point(32, 200);
             this.employeesComboBox.MaxDropDownItems = 20;
             this.employeesComboBox.Name = "employeesComboBox";
             this.employeesComboBox.Size = new System.Drawing.Size(132, 24);
             this.employeesComboBox.TabIndex = 0;
             this.employeesComboBox.SelectedIndexChanged += new System.EventHandler(this.employeesComboBox_SelectedIndexChanged);
+            // 
+            // peakTimeDays
+            // 
+            this.peakTimeDays.Text = "Peak Time Days";
+            this.peakTimeDays.Width = 120;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(38, 171);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Please select employee";
+            // 
+            // departmentComboBox
+            // 
+            this.departmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.departmentComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.departmentComboBox.FormattingEnabled = true;
+            this.departmentComboBox.Location = new System.Drawing.Point(32, 132);
+            this.departmentComboBox.MaxDropDownItems = 20;
+            this.departmentComboBox.Name = "departmentComboBox";
+            this.departmentComboBox.Size = new System.Drawing.Size(132, 24);
+            this.departmentComboBox.TabIndex = 12;
+            this.departmentComboBox.SelectedIndexChanged += new System.EventHandler(this.departmentComboBox_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(38, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Please select department";
             // 
             // UC_HolidayBookings
             // 
@@ -188,5 +230,9 @@
         private System.Windows.Forms.ComboBox employeesComboBox;
         private CustomControls.ThemedButton clearFilterButton;
         private System.Windows.Forms.Label messageLabel;
+        private System.Windows.Forms.ColumnHeader peakTimeDays;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox departmentComboBox;
     }
 }

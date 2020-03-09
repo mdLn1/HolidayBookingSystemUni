@@ -29,12 +29,9 @@ D:\github_reps\HolidayBookingSystem\HBSMobileApp\bin\Debug\SolutionUtils.dll.con
 C:\private\HBS\HBSMobileApp\bin\Debug\HBSMobileApp.exe.config
 C:\private\HBS\HBSMobileApp\bin\Debug\HBSMobileApp.exe
 C:\private\HBS\HBSMobileApp\bin\Debug\HBSMobileApp.pdb
-C:\private\HBS\HBSMobileApp\bin\Debug\HBSWebService.dll
 C:\private\HBS\HBSMobileApp\bin\Debug\SolutionUtils.dll
 C:\private\HBS\HBSMobileApp\bin\Debug\HBSDatabase.dll
 C:\private\HBS\HBSMobileApp\bin\Debug\EntityFramework.dll
-C:\private\HBS\HBSMobileApp\bin\Debug\HBSWebService.pdb
-C:\private\HBS\HBSMobileApp\bin\Debug\HBSWebService.dll.config
 C:\private\HBS\HBSMobileApp\bin\Debug\SolutionUtils.pdb
 C:\private\HBS\HBSMobileApp\bin\Debug\SolutionUtils.dll.config
 C:\private\HBS\HBSMobileApp\bin\Debug\HBSDatabase.pdb
@@ -54,3 +51,11 @@ C:\private\HBS\HBSMobileApp\obj\Debug\HBSMobileApp.csproj.GenerateResource.cache
 C:\private\HBS\HBSMobileApp\obj\Debug\HBSMobileApp.csproj.CopyComplete
 C:\private\HBS\HBSMobileApp\obj\Debug\HBSMobileApp.exe
 C:\private\HBS\HBSMobileApp\obj\Debug\HBSMobileApp.pdb
+C:\private\HBS\HBSMobileApp\bin\Debug\HBSWeb.dll
+C:\private\HBS\HBSMobileApp\bin\Debug\System.Web.Optimization.dll
+C:\private\HBS\HBSMobileApp\bin\Debug\Microsoft.AspNet.FriendlyUrls.dll
+C:\private\HBS\HBSMobileApp\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\private\HBS\HBSMobileApp\bin\Debug\HBSWeb.pdb
+C:\private\HBS\HBSMobileApp\bin\Debug\HBSWeb.dll.config
+C:\private\HBS\HBSMobileApp\bin\Debug\System.Web.Optimization.xml
+C:\private\HBS\HBSMobileApp\bin\Debug\Microsoft.AspNet.FriendlyUrls.xml

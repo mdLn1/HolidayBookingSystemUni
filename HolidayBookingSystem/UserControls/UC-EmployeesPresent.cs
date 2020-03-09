@@ -52,6 +52,7 @@ namespace HolidayBookingSystem.UserControls
                         string[] arr = new string[5];
                         arr[0] = user.id.ToString();
                         arr[1] = user.Username;
+                        arr[2] = user.Department.DepartmentName;
                         ListViewItem item = new ListViewItem(arr);
                         onHolidayEmployeesListView.Items.Add(item);
                     }
@@ -60,6 +61,7 @@ namespace HolidayBookingSystem.UserControls
                         string[] arr = new string[5];
                         arr[0] = user.id.ToString();
                         arr[1] = user.Username;
+                        arr[2] = user.Department.DepartmentName;
                         ListViewItem item = new ListViewItem(arr);
                         workingEmployeesListView.Items.Add(item);
                     }

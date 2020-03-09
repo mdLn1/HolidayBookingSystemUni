@@ -116,9 +116,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HBSWebService\HBSWebService.csproj">
-      <Project>{7a9f90d3-bb5c-4b6c-abad-c8a7ec0a6511}</Project>
-      <Name>HBSWebService</Name>
+    <ProjectReference Include="..\HBSWeb\HBSWeb.csproj">
+      <Project>{8af8ab3a-64a7-4066-8ef5-b6f5f5771210}</Project>
+      <Name>HBSWeb</Name>
     </ProjectReference>
     <ProjectReference Include="..\SolutionUtils\SolutionUtils.csproj">
       <Project>{a7c5b690-e6f4-484b-83f8-c93423ebcc90}</Project>
