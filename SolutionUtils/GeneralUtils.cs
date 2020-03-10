@@ -44,6 +44,7 @@ public static class GeneralUtils
     public const double REQUIRED_PERCENTAGE_AT_LEAST_MAX = 60;
     public const double REQUIRED_PERCENTAGE_AT_LEAST_MIN = 40;
 
+    // max number of holiday request, before submitting a request
     public const int MAX_POSSIBLE_HOLIDAY = 40;
 
     // Months
@@ -57,15 +58,19 @@ public static class GeneralUtils
     public const string DANGER_COLOR = "#a94442";
     public const string SUCCESS_COLOR = "#3c763d";
 
+    // refers to one of the constraints
     public const int MINIMUM_NUMBER_MANAGERS_OR_SENIORS = 1;
 
+    // for Suggestions
     public static int MaxSuggestionsCount { get; set; } = 10;
 
+    // dates when no constraints apply
     public static List<DateRange> noConstraintsApply = new List<DateRange>()
     {
         new DateRange(new DateTime(2020, 12, 23), new DateTime(2021,1,3))
     };
 
+    // dates when a lesser percentage of meployees is required
     public static List<DateRange> lessEmployeePercentageRequired = new List<DateRange>()
     {
         new DateRange(new DateTime(2020, 08, 1), new DateTime(2020, 08, 31))
@@ -221,6 +226,7 @@ public static class GeneralUtils
         return true;
     }
 
+    // return name of the month based on a number between 1-12
     public static string getMonthName(int month)
     {
         switch (month)
@@ -252,6 +258,7 @@ public static class GeneralUtils
         }
     }
 
+    // returns the day number based on the name of the day
     public static int getDayValue(string day)
     {
         switch (day)
@@ -278,7 +285,12 @@ public static class GeneralUtils
         return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
     }
 
-    // https://stackoverflow.com/questions/2510383/how-can-i-calculate-what-date-good-friday-falls-on-given-a-year
+    /* Author: hunter
+     * Date Posted: March/2010
+     * Date Accessed: 21/02/2020
+     * Type: Source code
+     * Availability: https://stackoverflow.com/questions/2510383/how-can-i-calculate-what-date-good-friday-falls-on-given-a-year
+     */
     public static DateTime EasterSunday(int year)
     {
         int day = 0;

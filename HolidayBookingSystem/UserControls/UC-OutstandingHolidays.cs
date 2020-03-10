@@ -98,7 +98,7 @@ namespace HolidayBookingSystem.UserControls
             }
         }
 
-        public bool breaksConstraint(BreakingConstraints constraint)
+        private bool breaksConstraint(BreakingConstraints constraint)
         {
             if (constraint.AtLeastPercentage
                         || constraint.ExceedsHolidayEntitlement || constraint.ManagerOrSenior
@@ -127,7 +127,7 @@ namespace HolidayBookingSystem.UserControls
             }
         }
 
-        public void approveHolidayRequest()
+        private void approveHolidayRequest()
         {
             int selIndex = outstandingHolidaysListView.SelectedIndices[0];
             ListViewItem item = outstandingHolidaysListView.Items[selIndex];
@@ -143,7 +143,7 @@ namespace HolidayBookingSystem.UserControls
             messageLabel.BackColor = Color.Green;
             outstandingHolidaysListView.Items.RemoveAt(selIndex);
         }
-        public void declineHolidayRequest()
+        private void declineHolidayRequest()
         {
             int selIndex = outstandingHolidaysListView.SelectedIndices[0];
             ListViewItem item = outstandingHolidaysListView.Items[selIndex];

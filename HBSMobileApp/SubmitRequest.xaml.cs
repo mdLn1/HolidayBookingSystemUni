@@ -35,7 +35,7 @@ namespace HBSMobileApp
             errorBlock.Visibility = Visibility.Hidden;
         }
 
-        public void onSelectedEndDateChanged(object sender, SelectionChangedEventArgs e)
+        private void onSelectedEndDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (endDateCalendar.SelectedDate > startDateCalendar.SelectedDate)
             {
@@ -48,7 +48,7 @@ namespace HBSMobileApp
             }
         }
 
-        public void onSelectedStartDateChanged(object sender, SelectionChangedEventArgs e)
+        private void onSelectedStartDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime startDateTime = (DateTime)startDateCalendar.SelectedDate;
             if (startDateTime.Month > DateTime.Now.Month)

@@ -29,7 +29,7 @@ namespace HolidayBookingSystem
             //tb_password.Text = "Test123!";
         }
 
-        public void formValuesChanged(object sender, EventArgs e)
+        private void formValuesChanged(object sender, EventArgs e)
         {
             string username = tb_username.Text.Trim();
             string password = tb_password.Text.Trim();
@@ -150,7 +150,7 @@ namespace HolidayBookingSystem
             }
         }
 
-        public bool inputValuesChanged(string username, string password)
+        private bool inputValuesChanged(string username, string password)
         {
             if (String.IsNullOrEmpty(username)
                 || String.IsNullOrEmpty(password)

@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="ConstraintChecking.cs" />
     <Compile Include="DateRange.cs" />
-    <Compile Include="ErrorResponse.cs" />
     <Compile Include="GeneralUtils.cs" />
     <Compile Include="PrioritiseRequests.cs" />
     <Compile Include="PriorityRequest.cs" />

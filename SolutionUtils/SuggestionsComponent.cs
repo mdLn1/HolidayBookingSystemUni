@@ -29,12 +29,17 @@ namespace SolutionUtils
             
             DateTime currentStartDate = currentRequest.StartDate;
             DateTime currentEndDate = currentRequest.EndDate;
+            if (!constraintChecking.getBrokenConstraints().ExceedsHolidayEntitlement)
+            {
+                calculateSuggestionsBeforeStartDate(startCheck, currentEndDate);
 
-            calculateSuggestionsBeforeStartDate(startCheck, currentEndDate);
-
-            // add one to start date so moving range forward
-            startCheck = currentStartDate.AddDays(1);
-            calculateAvailableSuggestionsAfterEndDate(startCheck, currentEndDate);
+                // add one to start date so moving range forward
+                startCheck = currentStartDate.AddDays(1);
+                calculateAvailableSuggestionsAfterEndDate(startCheck, currentEndDate);
+            } else
+            {
+                numDaysBetween = currentRequest.User.RemainingDays;
+            }
 
             // only shorten holiday maximum to half
             numDaysBetween = (int)Math.Ceiling((double)numDaysBetween / 2);

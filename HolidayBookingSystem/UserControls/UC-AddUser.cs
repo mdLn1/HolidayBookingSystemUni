@@ -34,7 +34,7 @@ namespace HolidayBookingSystem
             hideErrors();
         }
 
-        public void hideErrors()
+        private void hideErrors()
         {
             usernameErrorLabel.Visible = false;
             passwordErrorLabel.Visible = false;

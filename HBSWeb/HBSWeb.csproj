@@ -203,7 +203,6 @@
     <Compile Include="SubmitRequest.aspx.designer.cs">
       <DependentUpon>SubmitRequest.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebAppUtils.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
