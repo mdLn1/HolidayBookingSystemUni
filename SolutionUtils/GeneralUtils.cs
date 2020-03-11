@@ -62,7 +62,7 @@ public static class GeneralUtils
     public const int MINIMUM_NUMBER_MANAGERS_OR_SENIORS = 1;
 
     // for Suggestions
-    public static int MaxSuggestionsCount { get; set; } = 10;
+    public const int MAX_SUGGESTIONS_COUNT = 10;
 
     // dates when no constraints apply
     public static List<DateRange> noConstraintsApply = new List<DateRange>()
@@ -156,21 +156,17 @@ public static class GeneralUtils
 
     public static bool isOverlappingHoliday(HolidayRequest existing, HolidayRequest newAdded)
     {
-        if (existing.EndDate > DateTime.Now
+        return existing.EndDate > DateTime.Now
               && ((existing.EndDate >= newAdded.StartDate && existing.EndDate <= newAdded.EndDate)
               || (existing.StartDate <= newAdded.EndDate && existing.StartDate >= newAdded.StartDate)
-              || (existing.StartDate <= newAdded.StartDate && existing.EndDate >= newAdded.EndDate)))
-            return true;
-        return false;
+              || (existing.StartDate <= newAdded.StartDate && existing.EndDate >= newAdded.EndDate));
     }
     public static bool isOverlappingDateRanges(DateRange existing, DateRange newAdded)
     {
-        if (existing.EndDate > DateTime.Now
+        return existing.EndDate > DateTime.Now
               && ((existing.EndDate >= newAdded.StartDate && existing.EndDate <= newAdded.EndDate)
               || (existing.StartDate <= newAdded.EndDate && existing.StartDate >= newAdded.StartDate)
-              || (existing.StartDate <= newAdded.StartDate && existing.EndDate >= newAdded.EndDate)))
-            return true;
-        return false;
+              || (existing.StartDate <= newAdded.StartDate && existing.EndDate >= newAdded.EndDate));
     }
 
     public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

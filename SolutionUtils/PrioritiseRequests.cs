@@ -5,22 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SolutionUtils;
+using static SolutionUtils.PriorityRequest;
 
 namespace SolutionUtils
 {
     public class PrioritiseRequests
     {
-        public static int daysFallPeakTimes(HolidayRequest holidayRequest)
+        public static int daysFallPeakTimesCount(DateTime startDate, DateTime endDate)
         {
             int peakTimeDays = 0;
             foreach (var peakTime in GeneralUtils.getPeakTimesForCurrentYear())
             {
-                if (GeneralUtils.isOverlappingDateRanges(new DateRange(holidayRequest.StartDate, holidayRequest.EndDate), peakTime))
+                if (GeneralUtils.isOverlappingDateRanges(
+                        new DateRange(startDate, endDate), peakTime))
                 {
-                    DateTime startDate = holidayRequest.StartDate;
-                    while (startDate <= peakTime.EndDate && startDate <= holidayRequest.EndDate)
+                    DateTime startCheck = startDate;
+                    while (startCheck <= peakTime.EndDate && startCheck <= endDate)
                     {
-                        if (startDate >= peakTime.StartDate && !GeneralUtils.isWeekendDay(startDate))
+                        if (startCheck >= peakTime.StartDate && !GeneralUtils.isWeekendDay(startCheck))
                         {
                             peakTimeDays++;
                         }
@@ -31,27 +33,15 @@ namespace SolutionUtils
             return peakTimeDays;
         }
 
-        public static bool areDaysInPeakTime(DateRange existing, DateRange newAdded)
-        {
-            if (existing.EndDate > DateTime.Now
-                  && ((existing.EndDate >= newAdded.StartDate && existing.EndDate <= newAdded.EndDate)
-                  || (existing.StartDate <= newAdded.EndDate && existing.StartDate >= newAdded.StartDate)
-                  || (existing.StartDate <= newAdded.StartDate && existing.EndDate >= newAdded.EndDate)))
-                return true;
-            return false;
-        }
-
         private List<PriorityRequest> holidayRequests;
         public PrioritiseRequests(List<PriorityRequest> holidayRequests)
         {
-
             this.holidayRequests = holidayRequests.ToList();
         }
 
         public List<PriorityRequest> getPrioritisedRequests()
         {
-            PriorityRequest.SortByPriority sBP =
-        new PriorityRequest.SortByPriority();
+            SortByPriority sBP = new SortByPriority();
             holidayRequests.Sort(sBP);
             return holidayRequests;
         }

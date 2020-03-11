@@ -105,7 +105,8 @@ namespace HolidayBookingSystem.UserControls
             using (HBSModel entity = new HBSModel())
             {
                 ComboItem itm = (ComboItem)employeesComboBox.SelectedItem;
-                var holidayBookings = entity.HolidayRequests.Where(x => x.UserID == itm.ID).ToList();
+                var holidayBookings = entity.HolidayRequests.Where(x => x.UserID == itm.ID
+                    && x.StatusRequest.Status == GeneralUtils.APPROVED).ToList();
                 populateBookingsList(holidayBookings);
             }
         }

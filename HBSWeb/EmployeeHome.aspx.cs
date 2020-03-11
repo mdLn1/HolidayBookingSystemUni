@@ -20,66 +20,74 @@ namespace HBSWeb
             {
                 Response.Redirect("~/");
             }
-
-            using (HBSModel _entity = new HBSModel())
+            try
             {
-                
-                int userId = (int) Session["userId"];
-                var userHolidayRequests = _entity.HolidayRequests.Where(request => request.UserID == userId)
-                    .OrderByDescending(x => x.StartDate).ToList();
-                foreach (var holidayRequest in userHolidayRequests)
+                using (HBSModel _entity = new HBSModel())
                 {
-                    TableRow tableRow = new TableRow();
+                    int userId = (int)Session["userId"];
+                    var userHolidayRequests = _entity.HolidayRequests.Where(request => request.UserID == userId)
+                        .OrderByDescending(x => x.StartDate).ToList();
+                    foreach (var holidayRequest in userHolidayRequests)
+                    {
+                        TableRow tableRow = new TableRow();
 
-                    var requestStatus = holidayRequest.StatusRequest.Status;
+                        var requestStatus = holidayRequest.StatusRequest.Status;
 
-                    tableRow.Cells.Add(new TableCell
-                    {
-                        Text = holidayRequest.StartDate.ToShortDateString()
-                    });
-
-                    tableRow.Cells.Add(new TableCell
-                    {
-                        Text = holidayRequest.EndDate.ToShortDateString()
-                    });
-                    tableRow.Cells.Add(new TableCell
-                    {
-                        Text = holidayRequest.NumberOfDays.ToString()
-                    });
-                    tableRow.Cells.Add(new TableCell
-                    {
-                        Text = requestStatus.ToUpper()
-                    });
-                    if(requestStatus == GeneralUtils.CHANGED)
-                    {
                         tableRow.Cells.Add(new TableCell
                         {
-                            Text = "Requires Attention"
+                            Text = holidayRequest.StartDate.ToShortDateString()
                         });
-                    } else
-                    {
+
                         tableRow.Cells.Add(new TableCell
                         {
-                            Text = "No Extra"
+                            Text = holidayRequest.EndDate.ToShortDateString()
                         });
+                        tableRow.Cells.Add(new TableCell
+                        {
+                            Text = holidayRequest.NumberOfDays.ToString()
+                        });
+                        tableRow.Cells.Add(new TableCell
+                        {
+                            Text = requestStatus.ToUpper()
+                        });
+                        if (requestStatus == GeneralUtils.CHANGED)
+                        {
+                            tableRow.Cells.Add(new TableCell
+                            {
+                                Text = "Requires Attention"
+                            });
+                        }
+                        else
+                        {
+                            tableRow.Cells.Add(new TableCell
+                            {
+                                Text = "No Extra"
+                            });
+                        }
+
+                        if (requestStatus == GeneralUtils.PENDING)
+                        {
+                            tableRow.CssClass = "warning";
+                        }
+                        else if (requestStatus == GeneralUtils.CHANGED)
+                        {
+                            tableRow.CssClass = "info";
+                        }
+                        else if (requestStatus == GeneralUtils.APPROVED)
+                        {
+                            tableRow.CssClass = "success";
+                        }
+                        else
+                        {
+                            tableRow.CssClass = "danger";
+                        }
+                        requestsTable.Rows.Add(tableRow);
                     }
-                    
-                    if (requestStatus == GeneralUtils.PENDING)
-                    {
-                        tableRow.CssClass = "warning";
-                    } else if(requestStatus == GeneralUtils.CHANGED)
-                    {
-                        tableRow.CssClass = "info";
-                    }
-                    else if (requestStatus == GeneralUtils.APPROVED)
-                    {
-                        tableRow.CssClass = "success";
-                    }
-                    else { 
-                        tableRow.CssClass = "danger";
-                    }
-                    requestsTable.Rows.Add(tableRow);
                 }
+            }
+            catch
+            {
+                Response.Write("Server encountered an issue during data fetching");
             }
         }
     }

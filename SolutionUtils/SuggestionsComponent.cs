@@ -9,13 +9,17 @@ namespace SolutionUtils
 {
     public class SuggestionsComponent
     {
-        private HolidayRequest currentRequest;
         private List<DateRange> suggestions;
+        private DateRange currentRequest;
         private ConstraintChecking constraintChecking;
-        public SuggestionsComponent(HolidayRequest request)
+        private int userId;
+        private int userHolidayRemainingDays;
+        public SuggestionsComponent(int userId, DateRange holidayDateRange, int userHolidayRemainingDays)
         {
-            currentRequest = request;
+            currentRequest = holidayDateRange;
+            this.userId = userId;
             suggestions = new List<DateRange>();
+            this.userHolidayRemainingDays = userHolidayRemainingDays;
         }
 
         public List<DateRange> getSuggestions()
@@ -24,33 +28,43 @@ namespace SolutionUtils
             int numDaysBetween = (currentRequest.EndDate - currentRequest.StartDate).Days + 1;
 
             DateTime startCheck = currentRequest.StartDate.AddDays(-GeneralUtils.SUGGESTIONS_MAX_DAYS_BOUNDARY);
+            if(startCheck.Date < DateTime.Now.AddDays(2))
+            {
+                startCheck = startCheck.AddDays(2);
+            }
             // make sure using the current request analyzed
-            constraintChecking = new ConstraintChecking(currentRequest.User, currentRequest);
-            
+            constraintChecking = new ConstraintChecking(userId, currentRequest.StartDate, currentRequest.EndDate);
+
             DateTime currentStartDate = currentRequest.StartDate;
             DateTime currentEndDate = currentRequest.EndDate;
-            if (!constraintChecking.getBrokenConstraints().ExceedsHolidayEntitlement)
-            {
-                calculateSuggestionsBeforeStartDate(startCheck, currentEndDate);
 
-                // add one to start date so moving range forward
-                startCheck = currentStartDate.AddDays(1);
-                calculateAvailableSuggestionsAfterEndDate(startCheck, currentEndDate);
-            } else
+            // if the broken constraint regards the holiday entitlement reduce the number of days for suggestion checks
+            if (constraintChecking.getBrokenConstraints().ExceedsHolidayEntitlement)
             {
-                numDaysBetween = currentRequest.User.RemainingDays;
+                currentEndDate = currentEndDate.AddDays(userHolidayRemainingDays - numDaysBetween);
+                numDaysBetween = userHolidayRemainingDays;
+                if (numDaysBetween < 1)
+                {
+                    return new List<DateRange>();
+                }
             }
+            calculateSuggestionsBeforeStartDate(startCheck, currentEndDate);
+
+            // add one to start date so moving range forward
+            startCheck = currentStartDate.AddDays(1);
+            calculateSuggestionsAfterEndDate(startCheck, currentEndDate);
 
             // only shorten holiday maximum to half
             numDaysBetween = (int)Math.Ceiling((double)numDaysBetween / 2);
 
             // starting from next day
             startCheck = currentStartDate.AddDays(1);
-            calculateSuggestionsByReducingDaysFromStart(startCheck, currentEndDate, numDaysBetween);
+            calculateSuggestionsByReducingDaysFromEnd(startCheck, currentEndDate, numDaysBetween);
 
             // reducing from day before end date
             DateTime endCheck = currentEndDate.AddDays(-1);
-            calculateSuggestionsByReducingDaysFromEnd(currentStartDate, endCheck, numDaysBetween);
+            calculateSuggestionsByReducingDaysFromStart(currentStartDate, endCheck, numDaysBetween);
+
 
             return suggestions;
 
@@ -66,7 +80,7 @@ namespace SolutionUtils
                     start = start.AddDays(1);
                     continue;
                 }
-                if (suggestions.Count > GeneralUtils.MaxSuggestionsCount)
+                if (suggestions.Count > GeneralUtils.MAX_SUGGESTIONS_COUNT)
                 {
                     break;
                 }
@@ -80,7 +94,7 @@ namespace SolutionUtils
             }
         }
 
-        public void calculateAvailableSuggestionsAfterEndDate(DateTime start, DateTime end)
+        public void calculateSuggestionsAfterEndDate(DateTime start, DateTime end)
         {
             // check if suggestion available in the future
             for (int i = 0; i < GeneralUtils.SUGGESTIONS_MAX_DAYS_BOUNDARY; i++)
@@ -90,7 +104,7 @@ namespace SolutionUtils
                     start = start.AddDays(1);
                     continue;
                 }
-                if (suggestions.Count > GeneralUtils.MaxSuggestionsCount)
+                if (suggestions.Count > GeneralUtils.MAX_SUGGESTIONS_COUNT)
                 {
                     break;
                 }
@@ -104,13 +118,13 @@ namespace SolutionUtils
             }
         }
 
-        public void calculateSuggestionsByReducingDaysFromEnd(DateTime start, DateTime end, int numDaysMaxReduced)
+        public void calculateSuggestionsByReducingDaysFromStart(DateTime start, DateTime end, int numDaysMaxReduced)
         {
-            // suggesstions from start decreasing days
+            // suggesstions using start date, decreasing days from end date
             for (int i = 1; i <= numDaysMaxReduced; i++)
             {
                 end = GeneralUtils.simplifyEndDate(end);
-                if (suggestions.Count > GeneralUtils.MaxSuggestionsCount)
+                if (suggestions.Count > GeneralUtils.MAX_SUGGESTIONS_COUNT)
                 {
                     break;
                 }
@@ -123,13 +137,13 @@ namespace SolutionUtils
             }
         }
 
-        public void calculateSuggestionsByReducingDaysFromStart(DateTime start, DateTime end, int numDaysMaxReduced)
+        public void calculateSuggestionsByReducingDaysFromEnd(DateTime start, DateTime end, int numDaysMaxReduced)
         {
-            // suggestions from end decreasing days
+            // suggestions from end date, decreasing days from start date
             for (int i = 1; i <= numDaysMaxReduced; i++)
             {
                 start = GeneralUtils.simplifyStartDate(start);
-                if (suggestions.Count > GeneralUtils.MaxSuggestionsCount)
+                if (suggestions.Count > GeneralUtils.MAX_SUGGESTIONS_COUNT)
                 {
                     break;
                 }

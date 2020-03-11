@@ -116,7 +116,7 @@ namespace HolidayBookingSystem
 
                     }
                     initializeUserList();
-                    initializeUserBox();
+                    initalizeUserInputs();
                 }
 
             }
@@ -158,7 +158,7 @@ namespace HolidayBookingSystem
                         _user.PwdSalt = passwordSalt;
                         _entity.SaveChanges();
                         MessageBox.Show("Password Updated", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        initializeUserBox();
+                        initalizeUserInputs();
                     }
                 }
 
@@ -230,7 +230,7 @@ namespace HolidayBookingSystem
             }
         }
 
-        private void initializeUserBox()
+        private void initalizeUserInputs()
         {
             tb_password.Text = "";
             tb_repeat_password.Text = "";

@@ -30,6 +30,12 @@ namespace SolutionUtils
             PriorityRequest ob = (PriorityRequest)obj;
             return this.RemainingDays - ob.RemainingDays;
         }
+        public static bool isAnyConstraintBroken(BreakingConstraints breakingConstrains)
+        {
+            return breakingConstrains.AtLeastPercentage
+                        || breakingConstrains.ExceedsHolidayEntitlement || breakingConstrains.ManagerOrSenior
+                            || breakingConstrains.HeadOrDeputy;
+        }
 
         public class SortByPriority : IComparer<PriorityRequest>
         {
@@ -42,8 +48,6 @@ namespace SolutionUtils
                     return 1;
                 if (x.RemainingDays >= y.RemainingDays)
                     return -1;
-                if (x.DaysPeakTime == 0 && y.DaysPeakTime == 0)
-                    return 0;
                 if (x.DaysPeakTime == 0)
                     return -1;
                 if (y.DaysPeakTime == 0)

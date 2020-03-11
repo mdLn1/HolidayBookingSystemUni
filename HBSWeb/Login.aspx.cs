@@ -55,7 +55,7 @@ namespace HBSWeb
             }
             catch (Exception ex)
             {
-                Response.Write("Something Failed During Login"+ex.Message);
+                Response.Write("Server encountered an issue during login " + ex.Message);
             }
         }
     }

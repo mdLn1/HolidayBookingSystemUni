@@ -38,7 +38,8 @@ namespace HolidayBookingSystem.UserControls
             currentRequest = holidayRequest;
             suggesstionConfirmedButton.Visible = false;
             this.Cursor = Cursors.WaitCursor;
-            SuggestionsComponent suggestions = new SuggestionsComponent(currentRequest);
+            SuggestionsComponent suggestions = new SuggestionsComponent(currentRequest.UserID
+                    , new DateRange(currentRequest.StartDate, currentRequest.EndDate), currentRequest.User.RemainingDays);
             label1.ForeColor = Color.Black;
 
             label1.Text = "Generating Suggestions. Please wait";

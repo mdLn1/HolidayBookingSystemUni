@@ -13,12 +13,20 @@ namespace SolutionUtils
         private List<User> usersFromDepartment;
         public ConstraintChecking(User user, HolidayRequest holidayRequest)
         {
-            this.holidayRequest = holidayRequest;
             entity = new HBSModel();
+            this.holidayRequest = holidayRequest;
             this.user = user;
             usersFromDepartment = entity.Users.Where(x => x.DepartmentID == user.DepartmentID && x.id != user.id).ToList();
         }
 
+        public ConstraintChecking(int userId, DateTime holidayStartDate, DateTime holidayEndDate)
+        {
+            entity = new HBSModel();
+            this.holidayRequest = entity.HolidayRequests
+                    .FirstOrDefault(x => x.EndDate == holidayEndDate && x.StartDate == holidayStartDate && x.UserID == userId);
+            this.user = entity.Users.Find(userId);
+            usersFromDepartment = entity.Users.Where(x => x.DepartmentID == user.DepartmentID && x.id != user.id).ToList();
+        }
 
         public void changeCurrentlyVerifiedHolidayRequest(DateRange dateRange)
         {
@@ -26,13 +34,17 @@ namespace SolutionUtils
             holidayRequest.EndDate = dateRange.EndDate;
         }
 
+        public void changeCurrentlyVerifiedHolidayRequest(DateTime start, DateTime end)
+        {
+            holidayRequest.StartDate = start;
+            holidayRequest.EndDate = end;
+        }
+
         public static bool areAnyConstraintsBroken(ConstraintsBroken constraintsBroken)
         {
-            if (constraintsBroken.AtLeastPercentage
+            return constraintsBroken.AtLeastPercentage
                         || constraintsBroken.ExceedsHolidayEntitlement || constraintsBroken.ManagerOrSenior
-                            || constraintsBroken.HeadOrDeputy)
-                return true;
-            return false;
+                            || constraintsBroken.HeadOrDeputy;
         }
 
         public ConstraintsBroken getBrokenConstraints()
@@ -80,14 +92,17 @@ namespace SolutionUtils
                 return false;
             }
             string userRole = user.Role.RoleName;
+
             if (isHolidayAllowanceExceeded())
                 return true;
+
             if (userRole == GeneralUtils.HEAD_ROLE || userRole == GeneralUtils.DEPUTY_HEAD_ROLE)
             {
                 if (isDeputyOrHeadOnHolidayAlready(userRole == GeneralUtils.DEPUTY_HEAD_ROLE
                     ? GeneralUtils.HEAD_ROLE : GeneralUtils.DEPUTY_HEAD_ROLE))
                     return true;
             }
+
             if (userRole == GeneralUtils.SENIOR_ROLE || userRole == GeneralUtils.MANAGER_ROLE)
             {
                 if (isNotMinimumNumberOfManagersOrSeniors(GeneralUtils.MINIMUM_NUMBER_MANAGERS_OR_SENIORS))
@@ -95,17 +110,15 @@ namespace SolutionUtils
                     return true;
                 }
             }
+
             double requiredPercentage = GeneralUtils.REQUIRED_PERCENTAGE_AT_LEAST_MAX;
             if (GeneralUtils.lessEmployeePercentageRequired.Any(x => holidayRequest.StartDate >= x.StartDate
                  && holidayRequest.EndDate <= x.EndDate))
             {
                 requiredPercentage = GeneralUtils.REQUIRED_PERCENTAGE_AT_LEAST_MIN;
             }
-            if (areThereNotEnoughEmployeesWorking(requiredPercentage))
-            {
-                return true;
-            }
-            return false;
+
+            return areThereNotEnoughEmployeesWorking(requiredPercentage);
         }
 
         private bool isHolidayAllowanceExceeded()
@@ -143,7 +156,7 @@ namespace SolutionUtils
             return numOfColleagues >= min;
         }
 
-        
+
 
         private bool areThereNotEnoughEmployeesWorking(double percentage)
         {

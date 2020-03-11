@@ -34,17 +34,27 @@ namespace HolidayBookingSystem.UserControls
         public UC_OutstandingHolidays()
         {
             InitializeComponent();
-            firstConstraintLabel.Text = GeneralUtils.CONSTRAINT_HOLIDAY_ENTITLEMENT_EXCEEDED;
-            secondConstraintLabel.Text = GeneralUtils.CONSTRAINT_DEPUTY_OR_HEAD;
-            thirdConstraintLabel.Text = GeneralUtils.CONSTRAINT_MINIMUM_SENIOR_OR_MANAGERS;
-            fourthConstraintLabel.Text = GeneralUtils.CONSTRAINT_AT_LEAST_60_PERCENT;
+            
             messageLabel.Visible = false;
             suggestionsButton.Visible = false;
             suggestionsPanel.Controls.Add(UC_Suggestions.Instance);
             UC_Suggestions.Instance.Dock = DockStyle.Fill;
             UC_Suggestions.Instance.Hide();
+            initializeConstraintsLabels();
         }
 
+        private void initializeConstraintsLabels()
+        {
+            firstConstraintLabel.Text = GeneralUtils.CONSTRAINT_HOLIDAY_ENTITLEMENT_EXCEEDED;
+            secondConstraintLabel.Text = GeneralUtils.CONSTRAINT_DEPUTY_OR_HEAD;
+            thirdConstraintLabel.Text = GeneralUtils.CONSTRAINT_MINIMUM_SENIOR_OR_MANAGERS;
+            fourthConstraintLabel.Text = GeneralUtils.CONSTRAINT_AT_LEAST_60_PERCENT;
+            firstConstraintLabel.ForeColor = Color.Black;
+            secondConstraintLabel.ForeColor = Color.Black;
+            thirdConstraintLabel.ForeColor = Color.Black;
+            fourthConstraintLabel.ForeColor = Color.Black;
+            suggestionsButton.Visible = false;
+        }
 
         public void initializeRequestsList()
         {
@@ -83,7 +93,7 @@ namespace HolidayBookingSystem.UserControls
                         arr[2] = request.EndDate.ToShortDateString();
                         arr[3] = request.WorkingDays.ToString();
                         ListViewItem item = new ListViewItem(arr);
-                        if (breaksConstraint(request.Constraints))
+                        if (PriorityRequest.isAnyConstraintBroken(request.Constraints))
                             item.BackColor = Color.SandyBrown;
                         else
                             item.BackColor = Color.Lime;
@@ -98,14 +108,6 @@ namespace HolidayBookingSystem.UserControls
             }
         }
 
-        private bool breaksConstraint(BreakingConstraints constraint)
-        {
-            if (constraint.AtLeastPercentage
-                        || constraint.ExceedsHolidayEntitlement || constraint.ManagerOrSenior
-                            || constraint.HeadOrDeputy)
-                return true;
-            return false;
-        }
 
 
         private void approveButton_Click(object sender, EventArgs e)
@@ -261,11 +263,7 @@ namespace HolidayBookingSystem.UserControls
             selectedItem = null;
             outstandingHolidaysListView.Items.RemoveAt(currentlySelectedIndex);
             UC_Suggestions.Instance.Hide();
-            firstConstraintLabel.ForeColor = Color.Black;
-            secondConstraintLabel.ForeColor = Color.Black;
-            thirdConstraintLabel.ForeColor = Color.Black;
-            fourthConstraintLabel.ForeColor = Color.Black;
-            suggestionsButton.Visible = false;
+            initializeConstraintsLabels();
         }
 
         private void suggestionsButton_Click(object sender, EventArgs e)

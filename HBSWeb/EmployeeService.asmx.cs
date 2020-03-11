@@ -63,7 +63,8 @@ namespace HBSWeb
                     holidayRequest.RequestStatusID = _entity.StatusRequests
                         .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
                     holidayRequest.ConstraintsBroken = new ConstraintChecking(_user, holidayRequest).getBrokenConstraints();
-                    holidayRequest.DaysPeakTime = PrioritiseRequests.daysFallPeakTimes(holidayRequest);
+                    holidayRequest.DaysPeakTime = PrioritiseRequests
+                        .daysFallPeakTimesCount(holidayRequest.StartDate, holidayRequest.EndDate);
                     _entity.HolidayRequests.Add(holidayRequest);
                     _entity.SaveChanges();
                 }

@@ -35,38 +35,46 @@ namespace HBSWeb
                 displayHolidaySummary("Too many days selected, it exceeds the maximum allowance", GeneralUtils.DANGER_COLOR);
                 return;
             }
-            if(startDate.Year > DateTime.Now.Year || endDate.Year > DateTime.Now.Year)
+            if (startDate.Year > DateTime.Now.Year || endDate.Year > DateTime.Now.Year)
             {
                 displayHolidaySummary("Sorry, not accepting holiday requests for next year yet", GeneralUtils.DANGER_COLOR);
                 return;
             }
-            using (HBSModel _entity = new HBSModel())
+            try
             {
-                int userId = (int)Session["userId"];
-
-                HolidayRequest holidayRequest = new HolidayRequest()
+                using (HBSModel _entity = new HBSModel())
                 {
-                    StartDate = startDate,
-                    EndDate = endDate,
-                    UserID = userId,
-                    NumberOfDays = workingDays
-                };
-                var usr = _entity.Users.Find(userId);
+                    int userId = (int)Session["userId"];
 
-                if (usr.HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.APPROVED
-                    || x.StatusRequest.Status == GeneralUtils.PENDING)
-                    .Any(x => GeneralUtils.isOverlappingHoliday(x, holidayRequest)))
-                {
-                    displayHolidaySummary("There is an overlap with your current pending or approved requests", GeneralUtils.DANGER_COLOR);
-                    return;
+                    HolidayRequest holidayRequest = new HolidayRequest()
+                    {
+                        StartDate = startDate,
+                        EndDate = endDate,
+                        UserID = userId,
+                        NumberOfDays = workingDays
+                    };
+                    var usr = _entity.Users.Find(userId);
+
+                    if (usr.HolidayRequests.Where(x => x.StatusRequest.Status == GeneralUtils.APPROVED
+                        || x.StatusRequest.Status == GeneralUtils.PENDING)
+                        .Any(x => GeneralUtils.isOverlappingHoliday(x, holidayRequest)))
+                    {
+                        displayHolidaySummary("There is an overlap with your current pending or approved requests", GeneralUtils.DANGER_COLOR);
+                        return;
+                    }
+                    holidayRequest.RequestStatusID = _entity.StatusRequests
+                        .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
+                    holidayRequest.ConstraintsBroken = new ConstraintChecking(usr, holidayRequest).getBrokenConstraints();
+                    holidayRequest.DaysPeakTime = PrioritiseRequests
+                            .daysFallPeakTimesCount(holidayRequest.StartDate, holidayRequest.EndDate);
+                    _entity.HolidayRequests.Add(holidayRequest);
+                    _entity.SaveChanges();
+                    Response.Redirect("/EmployeeHome?HolidayRequest=Success");
                 }
-                holidayRequest.RequestStatusID = _entity.StatusRequests
-                    .FirstOrDefault(status => status.Status == GeneralUtils.PENDING).ID;
-                holidayRequest.ConstraintsBroken = new ConstraintChecking(usr, holidayRequest).getBrokenConstraints();
-                holidayRequest.DaysPeakTime = PrioritiseRequests.daysFallPeakTimes(holidayRequest);
-                _entity.HolidayRequests.Add(holidayRequest);
-                _entity.SaveChanges();
-                Response.Redirect("/EmployeeHome?HolidayRequest=Success");
+            }
+            catch
+            {
+                Response.Write("Server encountered an issue while submitting your request");
             }
         }
 
@@ -133,8 +141,6 @@ namespace HBSWeb
                         submitButton.BorderColor = ColorTranslator.FromHtml(GeneralUtils.SUCCESS_COLOR);
                         submitButton.Enabled = true;
                     }
-
-
                 }
             }
         }
