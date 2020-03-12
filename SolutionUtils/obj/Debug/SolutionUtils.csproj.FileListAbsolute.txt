@@ -26,3 +26,17 @@ C:\private\HBS\SolutionUtils\obj\Debug\SolutionUtils.csprojAssemblyReference.cac
 C:\private\HBS\SolutionUtils\obj\Debug\SolutionUtils.csproj.CopyComplete
 C:\private\HBS\SolutionUtils\obj\Debug\SolutionUtils.dll
 C:\private\HBS\SolutionUtils\obj\Debug\SolutionUtils.pdb
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\SolutionUtils.dll.config
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\SolutionUtils.dll
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\SolutionUtils.pdb
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\EntityFramework.dll
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\EntityFramework.SqlServer.dll
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\HBSDatabase.dll
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\HBSDatabase.pdb
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\HBSDatabase.dll.config
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\EntityFramework.xml
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\bin\Debug\EntityFramework.SqlServer.xml
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\obj\Debug\SolutionUtils.csprojAssemblyReference.cache
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\obj\Debug\SolutionUtils.csproj.CopyComplete
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\obj\Debug\SolutionUtils.dll
+D:\github_reps\HolidayBookingSystemUni\SolutionUtils\obj\Debug\SolutionUtils.pdb
